@@ -32,7 +32,7 @@ function Inicial() {
 
         <FaixaUm>
 
-            <img src={hero} alt="heroimage" />
+            <img src={hero} alt="heroimage" draggable={false}/>
 
             <Apresentation>
                 <h1>Agenda Pessoal</h1>
@@ -43,7 +43,7 @@ function Inicial() {
         </FaixaUm>
 
         <FaixaDois>
-            <img src={notes} alt="notesimage" />
+            <img src={notes} alt="notesimage" draggable={false} />
 
             <Apresentation>
 
