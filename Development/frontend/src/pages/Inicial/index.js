@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import hero from '../../images/hero.svg';
 import notes from '../../images/notes.svg';
 
-import { Container, Header, ButtonBox, FaixaUm , Apresentation , FaixaDois } from './styles';
+import { GeoAlt } from 'react-bootstrap-icons';
+
+import {Container, Header, ButtonBox, FaixaUm , Apresentation , FaixaDois , Footer, Location } from './styles';
 
 function Inicial() {
   return (
@@ -15,13 +18,13 @@ function Inicial() {
 
             <ButtonBox>
 
-                {/* <a href="#"> */}
+                <Link to="/Criar-uma-conta">
                     Entrar
-                {/* </a> */}
+                </Link>
 
-                {/* <a href="#"> */}
+                <Link to="/Criar-uma-conta">
                     Cadastrar-se
-                {/* </a> */}
+                </Link>
 
             </ButtonBox>
 
@@ -52,6 +55,14 @@ function Inicial() {
             </Apresentation>
 
         </FaixaDois>
+
+        <Footer>
+            <span>Copyrigth &copy; by RedBox Connection</span>
+
+            <Location>
+                <GeoAlt /> São Paulo, Brasil
+            </Location>
+        </Footer>
 
       </Container>
   );

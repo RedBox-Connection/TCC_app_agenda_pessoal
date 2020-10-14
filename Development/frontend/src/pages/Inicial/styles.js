@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height:fit-content;
-  width:100vw;
+    display:flex;
+    flex-direction:column;
 
-  display:flex;
-  flex-direction:column;
+    max-width:100vw;
 `;
 
 export const Header = styled.div`
     height:10vh;
-    width:100vw;
+    max-width:100vw;
 
     display:flex;
     align-items:center;
@@ -25,8 +24,12 @@ export const ButtonBox = styled.div`
     display:flex;
     align-items:center;
     justify-content:space-between;
-    color:#000;
+    
     width:200px;
+
+    > *{
+        color:#000;
+    }
 
     > :nth-child(1){
         text-decoration:none;
@@ -50,7 +53,7 @@ export const ButtonBox = styled.div`
 `;
 
 export const FaixaUm  = styled.div`
-    width:100vw;
+    max-width:100vw;
     height:60vh;
 
     display:flex;
@@ -92,7 +95,7 @@ export const Apresentation  = styled.div`
 `;
 
 export const FaixaDois = styled.div`
-    width:100vw;
+    max-width:100vw;
     height:50vh;
 
     display:flex;
@@ -107,3 +110,31 @@ export const FaixaDois = styled.div`
     }
 `;
 
+export const Footer = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    max-width:100vw;
+    height:7vh;
+
+    padding:0 50px;
+
+    background-color:#2b2d42;
+
+    > *{
+        color:#fff;
+    }
+`;
+
+export const Location = styled.div`
+    display:flex;
+    align-items:center;
+
+    height:fit-content;
+    width:fit-content;
+
+    > span{
+        margin-left:8px;
+    }
+`;
