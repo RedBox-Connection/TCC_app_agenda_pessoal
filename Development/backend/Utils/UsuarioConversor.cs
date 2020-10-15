@@ -32,6 +32,7 @@ namespace backend.Utils
             Models.TbLogin tb = new Models.TbLogin();
             tb.DsEmail = req.Email;
             tb.DsSenha = req.Senha;
+            tb.DtUltLogin = DateTime.Now;
 
             return tb;
         }
