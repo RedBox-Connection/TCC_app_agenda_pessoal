@@ -27,11 +27,20 @@ namespace backend.Utils
             return resp;
         }
 
-        public Models.Response.CadastrarUsuarioResponse ToCadastrarUsuarioResponse(string nomeCompleto, int idLogin)
+        public Models.TbLogin ToTbLogin(Models.Request.LoginRequest req)
         {
-            Models.Response.CadastrarUsuarioResponse resp = new Models.Response.CadastrarUsuarioResponse();
+            Models.TbLogin tb = new Models.TbLogin();
+            tb.DsEmail = req.Email;
+            tb.DsSenha = req.Senha;
 
-            resp.IdLogin = idLogin;
+            return tb;
+        }
+
+        public Models.Response.LoginResponse ToLoginResponse(Models.TbLogin tb, string nomeCompleto)
+        {
+            Models.Response.LoginResponse resp = new Models.Response.LoginResponse();
+
+            resp.IdLogin = tb.IdLogin;
 
             int espaco = nomeCompleto.IndexOf(' ');
             resp.Nome = nomeCompleto.Substring(0, espaco);
