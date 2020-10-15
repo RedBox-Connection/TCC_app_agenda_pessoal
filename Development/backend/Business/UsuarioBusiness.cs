@@ -13,38 +13,27 @@ namespace backend.Business
 
         public bool SenhaForte(string senha)
         {
-            List<char> numeros = new List<char>();
-            List<char> caractersEspecial = new List<char>();
-            List<char> letraMaiuscula = new List<char>();
+            int numeros = 0;
+            int caractersEspecial = 0;
+            int letraMaiuscula = 0;
 
             foreach(char letra in senha)
             {
-                if(letra == '0' ||
-                   letra == '1' ||
-                   letra == '2' ||
-                   letra == '3' ||
-                   letra == '4' ||
-                   letra == '5' ||
-                   letra == '6' ||
-                   letra == '7' ||
-                   letra == '8' ||
-                   letra == '9')
-                    numeros.Add(letra);
-                else if(letra == '!' ||
-                        letra == '@' ||
-                        letra == '#' ||
-                        letra == '$' ||
-                        letra == '&')
-                         caractersEspecial.Add(letra);
+                if(letra == '0' || letra == '1' || letra == '2' ||
+                   letra == '3' || letra == '4' || letra == '5' ||
+                   letra == '6' || letra == '7' || letra == '8' || letra == '9')
+                    numeros++;
+                else if(letra == '!' || letra == '@' || letra == '#' ||
+                        letra == '$' || letra == '&')
+                         caractersEspecial++;
                 else if(letra.ToString() == letra.ToString().ToUpper())
-                    letraMaiuscula.Add(letra);
+                    letraMaiuscula++;
             }
 
-            bool numerosOk = numeros.Count >= 2;
-            bool especialOk = caractersEspecial.Count >= 1;
-            bool maiusculaOk = letraMaiuscula.Count >= 1;
-            bool tamanhoOk = senha.Length >= 8;
-            bool resp = numerosOk && especialOk && maiusculaOk && tamanhoOk;
+            bool resp = numeros >= 2 &&
+                        caractersEspecial >= 1 &&
+                        letraMaiuscula >= 1 &&
+                        senha.Length >= 8;
 
             return resp;
         }
