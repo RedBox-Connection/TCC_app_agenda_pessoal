@@ -17,8 +17,8 @@ function CadastrarUsuario() {
         <Rigth>
 
             <Login>
-                <span>Já tem uma conta</span>
-                <Link to="/">Entrar</Link>
+                <span>Já tem uma conta?</span>
+                <Link to="/Entrar">Entrar</Link>
             </Login>
 
             <Content>
@@ -33,7 +33,7 @@ function CadastrarUsuario() {
 
                     <InputWrapper>
                         <span>Email</span>
-                        <input type="e-mail" placeholder="Bruce.Wayne@gmail.com" />
+                        <input type="email" placeholder="Bruce.Wayne@gmail.com" />
                     </InputWrapper>
 
                     <InputWrapper>
@@ -45,7 +45,7 @@ function CadastrarUsuario() {
 
                 <ButtonBox>
                     <button>Criar minha conta grátis</button>
-                    <button>Cancelar</button>
+                    <Link to="/">Cancelar</Link>
                 </ButtonBox>
 
             </Content>

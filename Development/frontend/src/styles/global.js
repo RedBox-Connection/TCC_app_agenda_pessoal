@@ -16,11 +16,16 @@ const GlobalStyle = createGlobalStyle`
     body{
         font-family: 'Nunito', sans-serif;
         font-weight:400;
+        -webkit-font-smoothing: antialiased !important;
     }
 
     h1, h2, h3{
         font-family: 'Sora', sans-serif;
         font-weight:700;
+    }
+
+    button{
+        cursor:pointer;
     }
 `;
 

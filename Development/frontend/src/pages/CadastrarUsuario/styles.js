@@ -111,8 +111,13 @@ export const ButtonBox = styled.div`
     }
 
     >:nth-child(2){
+        width:fit-content;
+
         background-color:#ef233c;
         color:#fff;
-        border-radius:5px;
+        text-decoration:none;
+
+        border-radius:5px;  
+        padding:8px 20px;
     }
 `;

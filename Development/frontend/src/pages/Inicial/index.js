@@ -18,7 +18,7 @@ function Inicial() {
 
             <ButtonBox>
 
-                <Link to="/Criar-uma-conta">
+                <Link to="/Entrar">
                     Entrar
                 </Link>
 
