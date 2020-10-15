@@ -17,7 +17,7 @@ export const Header = styled.div`
 
     padding:0 50px;
 
-    background-color:#EDE7E3;
+    background-color:var(--bege);
 `;
 
 export const ButtonBox = styled.div`
@@ -41,7 +41,7 @@ export const ButtonBox = styled.div`
 
     > :nth-child(2){
         text-decoration:none;
-        background-color:#5dd39e;
+        background-color:var(--verde);
         color:#fff;
         padding:7px 13px;
         border-radius:3px;
@@ -60,7 +60,7 @@ export const FaixaUm  = styled.div`
     align-items:center;
     justify-content:space-evenly;
 
-    background-color:#489FB5;
+    background-color:var(--azul-primario);
 
     > img{
         height:70%;
@@ -84,7 +84,7 @@ export const Apresentation  = styled.div`
         width:fit-content;
 
         text-decoration:none;
-        background-color:#5dd39e;
+        background-color:var(--verde);
         color:#fff;
         
         padding:7px 13px;
@@ -103,7 +103,7 @@ export const FaixaDois = styled.div`
     align-items:center;
     justify-content:space-evenly;
 
-    background-color:#cae9ff;
+    background-color:var(--azul-claro);
 
     > img{
         height:70%;
@@ -120,7 +120,7 @@ export const Footer = styled.div`
 
     padding:0 50px;
 
-    background-color:#2b2d42;
+    background-color:var(--cinza);
 
     > *{
         color:#fff;

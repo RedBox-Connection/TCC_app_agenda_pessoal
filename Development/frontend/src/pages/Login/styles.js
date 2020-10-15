@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items:center;
   justify-content:center;
 
-  background-color:#fcfcfc;
+  background-color:var(--gelo);
 `;
 
 export const Header = styled.div`
@@ -36,7 +36,7 @@ export const Form = styled.div`
         border:none;
         border-radius:3px;
 
-        background-color:#5dd39e;
+        background-color:var(--verde);
         color:#fff;
         font-size:17px;
         
@@ -55,7 +55,7 @@ export const Cadastro = styled.div`
 
   > a{
         color:#000;
-        text-decoration-color:#489FB5;
+        text-decoration-color:var(--azul-primario);
         margin-left:15px;
     }
 `;

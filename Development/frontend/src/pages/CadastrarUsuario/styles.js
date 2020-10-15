@@ -18,7 +18,7 @@ export const Left = styled.div`
     height:100%;
     width:35vw;
 
-    background-color:#EDE7E3;
+    background-color:var(--bege);
 
     > h1{
         font-size:50px;
@@ -50,7 +50,7 @@ export const Login = styled.div`
 
     > a{
         color:#000;
-        text-decoration-color:#489FB5;
+        text-decoration-color:var(--azul-primario);
         margin-left:20px;
     }
 `;
@@ -75,6 +75,11 @@ export const InputBox = styled.div`
     flex-direction:column;
 
     margin:50px 0;
+
+    > p{
+        max-width:400px;
+        text-align:center;
+    }
 `;
 
 export const InputWrapper = styled.div`
@@ -103,7 +108,7 @@ export const ButtonBox = styled.div`
     }
 
     >:nth-child(1){
-        background-color:#5dd39e;
+        background-color:var(--verde);
         color:#fff;
         border-radius:5px;
         margin-bottom:15px;
@@ -113,7 +118,7 @@ export const ButtonBox = styled.div`
     >:nth-child(2){
         width:fit-content;
 
-        background-color:#ef233c;
+        background-color:var(--vermelho);
         color:#fff;
         text-decoration:none;
 

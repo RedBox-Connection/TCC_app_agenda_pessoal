@@ -9,6 +9,7 @@ import CadastrarUsuario from './pages/CadastrarUsuario';
 
 // Login
 import Login from './pages/Login';
+import EsqueciSenha from './pages/Login/EsqueciSenha';
 
 function Routes() {
   return(
@@ -16,7 +17,8 @@ function Routes() {
         <Switch>
             <Route path="/" component={Inicial} exact/>
             <Route path="/Criar-uma-conta" component={CadastrarUsuario} />
-            <Route path="/Entrar" component={Login} />
+            <Route path="/Entrar" component={Login} exact/>
+            <Route path="/Entrar/esqueci-a-senha" component={EsqueciSenha}/>
         </Switch>
     </BrowserRouter>
   );

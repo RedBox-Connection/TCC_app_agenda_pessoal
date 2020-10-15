@@ -1,7 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-    
+    :root{
+        --gelo: #fcfcfc;
+        --verde: #5dd39e;
+        --azul-primario: #489FB5;
+        --azul-claro: #cae9ff;
+        --cinza: #2b2d42;
+        --bege: #EDE7E3;
+        --vermelho: #ef233c;
+    }
+
     *{
         padding:0;
         margin:0;

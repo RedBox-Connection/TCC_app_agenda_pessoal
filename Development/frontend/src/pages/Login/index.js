@@ -23,7 +23,7 @@ function Login() {
                 <InputWrapper>
                   <span>Senha</span>
                   <input type="password" placeholder="Pelo menos 8 caracteres" /> 
-                  <Link to="/">
+                  <Link to="/Entrar/esqueci-a-senha">
                       Esqueci minha senha
                   </Link>
                 </InputWrapper>
