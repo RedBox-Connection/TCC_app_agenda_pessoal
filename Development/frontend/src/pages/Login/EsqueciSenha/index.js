@@ -16,7 +16,7 @@ function EsqueciSenha() {
                <span>Email</span>
                <input type="email" placeholder="Email" />
             </InputWrapper>
-            <p>Nós te enviaremos um código de segurança , após recebe-lo clique no botão de <strong>prosseguir</strong></p>
+            <p>Nós te enviaremos um código de segurança , para recebe-lo clique no botão de <strong>prosseguir</strong></p>
           </InputBox>
 
           <ButtonBox>
