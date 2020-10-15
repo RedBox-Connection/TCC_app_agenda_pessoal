@@ -71,5 +71,20 @@ namespace backend.Business
 
             return req;
         }
+
+        public async Task<Models.TbLogin> LoginAsync(Models.TbLogin req)
+        {
+            if(req.DsEmail == string.Empty || !req.DsEmail.Contains('@'))
+                throw new Exception("Email Invalido.");
+            if(req.DsSenha == string.Empty)
+                throw new Exception("Senha Invalida.");
+
+            req = await usuarioDb.LoginAsync(req);
+
+            if(req.IdLogin <= 0)
+                throw new Exception("Usuario não existe.");
+            
+            return req;
+        }
     }
 }
