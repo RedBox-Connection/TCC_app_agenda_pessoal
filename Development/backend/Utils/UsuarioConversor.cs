@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace backend.Utils
 {
@@ -48,5 +49,18 @@ namespace backend.Utils
 
             return resp;
         }
+
+         public Models.Response.LoginResponse ToLoginResponse(Models.TbLogin tb)
+        {
+            Models.Response.LoginResponse resp = new Models.Response.LoginResponse();
+
+            resp.IdLogin = tb.IdLogin;
+            string nomeCompleto = tb.TbUsuario.FirstOrDefault().NmUsuario;
+            int espaco = nomeCompleto.IndexOf(' ');
+            resp.Nome = nomeCompleto.Substring(0, espaco);
+
+            return resp;
+        }
+
     }
 }

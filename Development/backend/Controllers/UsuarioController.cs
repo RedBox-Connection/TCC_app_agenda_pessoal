@@ -37,5 +37,26 @@ namespace backend.Controllers
                 );
             }
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<Models.Response.LoginResponse>> LoginAsync(Models.Request.LoginRequest req)
+        {
+            try
+            {
+                Models.TbLogin tbLogin = usuarioCnv.ToCadastrarTbLogin(req.Email, req.Senha);
+
+                tbLogin = await usuarioBsn.LoginAsync(tbLogin);
+
+                Models.Response.LoginResponse resp = usuarioCnv.ToLoginResponse(tbLogin);
+
+                return resp;
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(400, ex.Message)
+                );
+            }
+        }
     }
 }
