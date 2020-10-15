@@ -44,8 +44,13 @@ namespace backend.Utils
 
             resp.IdLogin = tb.IdLogin;
 
-            int espaco = nomeCompleto.IndexOf(' ');
-            resp.Nome = nomeCompleto.Substring(0, espaco);
+            if(nomeCompleto.Contains(' '))
+            {
+                int espaco = nomeCompleto.IndexOf(' ');
+                resp.Nome = nomeCompleto.Substring(0, espaco);
+            }
+            else
+                resp.Nome = nomeCompleto;
 
             return resp;
         }
@@ -56,8 +61,14 @@ namespace backend.Utils
 
             resp.IdLogin = tb.IdLogin;
             string nomeCompleto = tb.TbUsuario.FirstOrDefault().NmUsuario;
-            int espaco = nomeCompleto.IndexOf(' ');
-            resp.Nome = nomeCompleto.Substring(0, espaco);
+            if(nomeCompleto.Contains(' '))
+            {
+                int espaco = nomeCompleto.IndexOf(' ');
+                resp.Nome = nomeCompleto.Substring(0, espaco);
+            }
+            else
+                resp.Nome = nomeCompleto;
+            
 
             return resp;
         }
