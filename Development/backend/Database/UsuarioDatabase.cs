@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 using System.Threading.Tasks;
 
@@ -26,6 +27,14 @@ namespace backend.Database
             await ctx.SaveChangesAsync();
 
             return req;
+        }
+
+        public async Task<Models.TbLogin> LoginAsync(Models.TbLogin req)
+        {
+            return await ctx.TbLogin
+                                     .Include(x => x.TbEsqueciSenha)
+                                     .Include(x => x.TbUsuario)
+                                     .FirstOrDefaultAsync(x => x.DsEmail == req.DsEmail && x.DsSenha == req.DsSenha);
         }
     }
 }
