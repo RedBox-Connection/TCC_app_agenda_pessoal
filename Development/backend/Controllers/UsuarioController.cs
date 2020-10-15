@@ -13,7 +13,7 @@ namespace backend.Controllers
         Business.UsuarioBusiness usuarioBsn = new Business.UsuarioBusiness();
         Utils.UsuarioConversor usuarioCnv = new Utils.UsuarioConversor();
 
-        [HttpPost]
+        [HttpPost("cadastrar")]
         public async Task<ActionResult<Models.Response.LoginResponse>> CadastrarUsuarioAsync(Models.Request.CadastrarUsuarioRequest req)
         {
             try
