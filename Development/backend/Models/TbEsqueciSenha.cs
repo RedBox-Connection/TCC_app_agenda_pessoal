@@ -15,7 +15,7 @@ namespace backend.Models
         public string DsEmailAlternativo { get; set; }
         [Required]
         [Column("nr_codigo", TypeName = "mediumtext")]
-        public string NrCodigo { get; set; }
+        public long NrCodigo { get; set; }
         [Column("tm_inclusao", TypeName = "datetime")]
         public DateTime TmInclusao { get; set; }
         [Column("tm_expiracao", TypeName = "datetime")]
