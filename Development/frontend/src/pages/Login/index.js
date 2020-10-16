@@ -1,42 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-import { Container, Header, Form, Cadastro } from './styles';
-import { InputBox, InputWrapper } from '../CadastrarUsuario/styles';
+import { Container, ImageContainer, Content} from './styles';
+
+import loginimage from '../../images/login.svg';
+
+
+import LoginInicial from './LoginInicial';
+import EsqueciSenha from './EsqueciSenha';
+import AutenticacaoSenha from './AutenticacaoSenha';
 
 function Login() {
   return(
       <Container>
+        <ImageContainer>
+          <h1>Organizer</h1>
+          <img src={loginimage} alt="loginimage" draggable={false}/>
+        </ImageContainer>
+        <Content>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/Entrar" component={LoginInicial} exact/>
+              <Route path="/Entrar/esqueci-a-senha" component={EsqueciSenha} exact />
+              <Route path="/Entrar/esqueci-a-senha/autenticacao" component={AutenticacaoSenha} />
+            </Switch>
+          </BrowserRouter>
 
-          <Header>
-            <h1>Organizer</h1>
-            <span>Olá quem é?</span>
-          </Header>
-
-          <Form>
-              <InputBox>
-                <InputWrapper>
-                  <span>Email</span>
-                  <input type="email" placeholder="Bruce.Wayne@gmail.com" /> 
-                </InputWrapper>
-
-                <InputWrapper>
-                  <span>Senha</span>
-                  <input type="password" placeholder="Pelo menos 8 caracteres" /> 
-                  <Link to="/Entrar/esqueci-a-senha">
-                      Esqueci minha senha
-                  </Link>
-                </InputWrapper>
-              </InputBox>
-              <button>
-                Entrar
-              </button>
-          </Form>
-
-          <Cadastro>
-              <span>Não tem uma conta?</span>
-              <Link to="/Criar-uma-conta">Crie uma!</Link>
-          </Cadastro>
+        </Content>
       </Container>
   );
 }

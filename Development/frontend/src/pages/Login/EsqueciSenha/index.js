@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { InputBox, InputWrapper } from '../../CadastrarUsuario/styles';
-import {  Header } from '../styles';
+import {  Header } from '../LoginInicial/styles';
 import { Container, ButtonBox } from './styles';
 
 function EsqueciSenha() {
@@ -20,7 +21,7 @@ function EsqueciSenha() {
           </InputBox>
 
           <ButtonBox>
-            <button>Prosseguir</button>
+            <Link to="/Entrar/esqueci-a-senha/autenticacao">Prosseguir</Link>
             <button>Cancelar</button>
           </ButtonBox>
           
