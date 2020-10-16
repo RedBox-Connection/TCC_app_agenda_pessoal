@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import cadastrar from '../../images/cadastrar.svg';
 
@@ -17,6 +17,8 @@ function CadastrarUsuario() {
     const [email , setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
+    const navegation = useHistory();
+
     const cadastrarUsuario = async () =>{
         try {
 
@@ -25,6 +27,14 @@ function CadastrarUsuario() {
                 nomeUsuario,
                 email,
                 senha
+            })
+
+            navegation.push({
+                pathname:"/", 
+                state:{
+                    idlogin:resp.idlogin,
+                    nomeUsuario:resp.nomeUsuario
+                }
             })
 
             return resp;
