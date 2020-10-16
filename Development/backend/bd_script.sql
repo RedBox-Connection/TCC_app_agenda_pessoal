@@ -22,6 +22,7 @@ create table tb_esqueci_senha(
 
 create table tb_usuario(
 	id_usuario int auto_increment primary key not null,
+    nm_perfil varchar(100) not null,
     nm_usuario varchar(100) not null,
     ds_foto varchar(200) not null,
     bt_receber_email bool not null,
@@ -39,6 +40,7 @@ create table tb_quadro(
 create table tb_time(
 	id_time int auto_increment primary key not null,
     nm_time varchar(100) not null,
+    ds_time varchar(500),
     ds_link_convite varchar(100),
     id_quadro int not null,
     foreign key (id_quadro) references tb_quadro (id_quadro) on delete cascade
@@ -100,8 +102,8 @@ insert into tb_login (ds_email, ds_senha, dt_ult_login) values ("email2@gmail.co
 
 select * from tb_login;
 
-insert into tb_usuario (nm_usuario, ds_foto, bt_receber_email, id_login) values ("Gustavo", "user.png", true, 1);
-insert into tb_usuario (nm_usuario, ds_foto, bt_receber_email, id_login) values ("Mario", "user.png", true, 2);
+insert into tb_usuario (nm_perfil, nm_usuario, ds_foto, bt_receber_email, id_login) values ("Gustavo", "Gustta", "user.png", true, 1);
+insert into tb_usuario (nm_perfil, nm_usuario, ds_foto, bt_receber_email, id_login) values ("Mario", "Mariozin", "user.png", true, 2);
 
 select * from tb_usuario;
 
@@ -114,7 +116,7 @@ insert into tb_quadro (nm_quadro, id_usuario) values ("RedBox", 1);
 
 select * from tb_quadro;
 
-insert into tb_time (nm_time, ds_link_convite, id_quadro) values ("RedBox", null, 2);
+insert into tb_time (nm_time, ds_time, ds_link_convite, id_quadro) values ("RedBox", "Melhor grupo de TCC do mundo", null, 2);
 
 select * from tb_time;
 

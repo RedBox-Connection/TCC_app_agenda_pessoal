@@ -190,6 +190,14 @@ namespace backend.Models
                 entity.HasIndex(e => e.IdQuadro)
                     .HasName("id_quadro");
 
+                entity.Property(e => e.DsLinkConvite)
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.DsTime)
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
                 entity.Property(e => e.NmTime)
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
@@ -211,6 +219,10 @@ namespace backend.Models
                 entity.HasIndex(e => e.IdUsuario)
                     .HasName("id_usuario");
 
+                entity.Property(e => e.DsPermissao)
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
                 entity.HasOne(d => d.IdTimeNavigation)
                     .WithMany(p => p.TbTimeIntegrante)
                     .HasForeignKey(d => d.IdTime)
@@ -231,6 +243,10 @@ namespace backend.Models
                     .HasName("id_login");
 
                 entity.Property(e => e.DsFoto)
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.NmPerfil)
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
 

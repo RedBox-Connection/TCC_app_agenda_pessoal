@@ -15,6 +15,9 @@ namespace backend.Models
         public int IdTime { get; set; }
         [Column("id_usuario")]
         public int IdUsuario { get; set; }
+        [Required]
+        [Column("ds_permissao", TypeName = "varchar(100)")]
+        public string DsPermissao { get; set; }
 
         [ForeignKey(nameof(IdTime))]
         [InverseProperty(nameof(TbTime.TbTimeIntegrante))]

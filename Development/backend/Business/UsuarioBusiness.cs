@@ -38,12 +38,44 @@ namespace backend.Business
             return resp;
         }
 
+        public async Task<bool> ValidarNomeUsuario(string nomeUsuario)
+        {
+            List<string> nomesUsuario = await usuarioDb.ConsultarNomesUsuario();
+
+            if(nomesUsuario == null || nomesUsuario.Count <= 0)
+                return false;
+
+            bool resp = nomesUsuario.Contains(nomeUsuario);
+
+            return resp;
+        }
+        
+        public async Task<bool> ValidarEmailUsuario(string emailUsuario)
+        {
+            List<string> emailsUsuario = await usuarioDb.ConsultarEmailsUsuario();
+
+            if(emailsUsuario == null || emailsUsuario.Count <= 0)
+                return false;
+
+            bool resp = emailsUsuario.Contains(emailUsuario);
+
+            return resp;
+        }
+
         public async Task<Models.TbUsuario> CadastrarUsuarioAsync(Models.TbUsuario req)
         {
             if(req.DsFoto == string.Empty)
                 throw new Exception("Foto não encontrada.");
             
             if(req.NmUsuario == string.Empty)
+                throw new Exception("Nome de usuário não pode estar vazio.");
+
+            bool nomeUsuarioOk = await this.ValidarNomeUsuario(req.NmUsuario);
+
+            if(nomeUsuarioOk)
+                throw new Exception("Nome de usuário já existe. Por favor insira um novo nome.");
+
+            if(req.NmPerfil == string.Empty)
                 throw new Exception("Nome não pode estar vazio.");
 
             req = await usuarioDb.CadastrarUsuarioAsync(req);
@@ -59,6 +91,11 @@ namespace backend.Business
 
             if(!req.DsEmail.Contains('@'))
                 throw new Exception("Email inválido, insira a empresa de seu email.");
+
+            bool emailOk = await this.ValidarEmailUsuario(req.DsEmail);
+
+            if(emailOk)
+                throw new Exception("Email já cadastrado, por favor insira outro email.");
 
             if(req.DsSenha == string.Empty)
                 throw new Exception("A senha não pode ser vazia.");
@@ -76,6 +113,7 @@ namespace backend.Business
         {
             if(req.DsEmail == string.Empty || !req.DsEmail.Contains('@'))
                 throw new Exception("Email Invalido.");
+
             if(req.DsSenha == string.Empty)
                 throw new Exception("Senha Invalida.");
 
