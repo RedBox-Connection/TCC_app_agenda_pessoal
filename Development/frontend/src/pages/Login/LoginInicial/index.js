@@ -38,7 +38,6 @@ function LoginInicial() {
       
     } catch (e) {
       toast.error("coisas ruins ocorreram :(")
-      console.log(e)
     }
   }
 
