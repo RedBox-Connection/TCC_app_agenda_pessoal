@@ -39,6 +39,7 @@ create table tb_quadro(
 create table tb_time(
 	id_time int auto_increment primary key not null,
     nm_time varchar(100) not null,
+    ds_link_convite varchar(100),
     id_quadro int not null,
     foreign key (id_quadro) references tb_quadro (id_quadro) on delete cascade
 );
@@ -47,6 +48,7 @@ create table tb_time_integrante(
 	id_integrante int auto_increment primary key not null,
     id_time int not null,
     id_usuario int not null,
+    ds_permissao varchar(100) not null,
     foreign key (id_usuario) references tb_usuario (id_usuario) on delete cascade,
     foreign key (id_time) references tb_time (id_time) on delete cascade
 );
@@ -112,12 +114,12 @@ insert into tb_quadro (nm_quadro, id_usuario) values ("RedBox", 1);
 
 select * from tb_quadro;
 
-insert into tb_time (nm_time, id_quadro) values ("RedBox", 2);
+insert into tb_time (nm_time, ds_link_convite, id_quadro) values ("RedBox", null, 2);
 
 select * from tb_time;
 
-insert into tb_time_integrante (id_time, id_usuario) values (1, 1);
-insert into tb_time_integrante (id_time, id_usuario) values (1, 2);
+insert into tb_time_integrante (id_time, id_usuario, ds_permissao) values (1, 1, "Admin");
+insert into tb_time_integrante (id_time, id_usuario, ds_permissao) values (1, 2, "Guest");
 
 select * from tb_time_integrante;
 
