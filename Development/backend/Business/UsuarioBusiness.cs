@@ -121,7 +121,7 @@ namespace backend.Business
             if(req.DsSenha == string.Empty)
                 throw new Exception("A senha não pode ser vazia.");
 
-            if(this.SenhaForte(req.DsSenha))
+            if(!this.SenhaForte(req.DsSenha))
                 throw new Exception("A senha deve conter pelo menos um caracter especial, " + 
                                     "uma letra maiúscula, dois números e oito digitos.");
 
