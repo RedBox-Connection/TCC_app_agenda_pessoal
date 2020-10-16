@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header } from '../LoginInicial/styles';
+import { Header } from '../styles';
 import { InputBox } from '../../CadastrarUsuario/styles';
 
 import { Container, InputWrapper } from './styles';
