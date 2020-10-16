@@ -10,28 +10,89 @@ namespace backend.Business
     public class EsqueciSenhaBusiness
     {
         Database.EsqueciSenhaDatabase esqueciSenhaDB = new Database.EsqueciSenhaDatabase();
-        public async Task<bool> ValidarCodigoDeRecuperacao(long Codigo)
+
+        public long GerarCodigoRecuperacao()
         {
-            List<long> Codigos = await esqueciSenhaDB.ConsultarCodigoDeRecuperacao();
+            Random rnd = new Random();
+            long resp = rnd.Next(1, 999999);
+            return resp;
+        }
+
+        public async Task<bool> ValidarCodigoDeRecuperacaoAsync(long Codigo)
+        {
+            List<long> codigos = await esqueciSenhaDB.ConsultarCodigosDeRecuperacaoAsync();
             
-            if(Codigos == null || Codigos.Count <= 0)
+            if(codigos == null)
                 return false;
 
-            bool resp = Codigos.Contains(Codigo);
+            if(codigos.Count == 0)
+                return true;
+
+            bool resp = !codigos.Contains(Codigo);
 
             return resp;
         }
 
-        public async Task<Models.TbEsqueciSenha> GerarCodigoRecuperacaoAsync(Models.TbEsqueciSenha req)
+        public async Task<Models.TbEsqueciSenha> SalvarCodigoRecuperacaoAsync(Models.TbEsqueciSenha req)
         {
-            bool codigoOk = await this.ValidarCodigoDeRecuperacao(req.NrCodigo);
+            if(req.IdLogin <= 0)
+                throw new Exception("Usuário não encontrado.");
 
-            if(DateTime.Now > req.TmExpiracao)
-                throw new Exception("O Codigo está vencido.");
-            
-            req = await esqueciSenhaDB.GerarCodigoRecuperacaoAsync(req);
-            
+            if(req.TmExpiracao < DateTime.Now)
+                throw new Exception("O código expirou, iremos reenviar o email de recuperação de senha.");
+
+            if(req.TmInclusao > DateTime.Now)
+                throw new Exception("Período do código inválido.");
+
+            if(req.NrCodigo <= 0)
+                throw new Exception("Código inválido.");
+
+            bool codigoOk = await this.ValidarCodigoDeRecuperacaoAsync(req.NrCodigo);
+            long codigoTest = req.NrCodigo;
+            while(codigoOk == false)
+            {
+                codigoTest = this.GerarCodigoRecuperacao();
+
+                codigoOk = await this.ValidarCodigoDeRecuperacaoAsync(codigoTest);
+            }
+
+            req.NrCodigo = codigoTest;
+
+            req = await esqueciSenhaDB.SalvarCodigoRecuperacaoAsync(req);
+
+            return req;   
+        }
+
+        public async Task<Models.TbEsqueciSenha> ConsultarRecuperacaoDeSenhaPorCodigoAsync(long codigo)
+        {
+            if(codigo <= 0 || codigo > 999999)
+                throw new Exception("Código inválido.");
+
+            Models.TbEsqueciSenha resp = await esqueciSenhaDB.ConsultarRecuperacaoDeSenhaPorCodigoAsync(codigo);
+
+            if(resp == null)
+                throw new Exception("Código não encontrado.");
+
+            if(resp.TmExpiracao < DateTime.Now)
+            {
+                resp = await this.DeletarRecuperacaoDeSenhaAsync(resp);
+
+                throw new Exception("O código expirou, iremos reenviar o email de recuperação de senha.");
+            }
+
+
+            return resp;
+        }
+
+        public async Task<Models.TbEsqueciSenha> DeletarRecuperacaoDeSenhaAsync(Models.TbEsqueciSenha req)
+        {
+            if(req == null)
+                throw new Exception("Código não encontrado.");
+
+            req = await esqueciSenhaDB.DeletarRecuperacaoDeSenha(req);
+
             return req;
         }
+
     }
 }

@@ -43,6 +43,11 @@ namespace backend.Database
             }
 
             return resp;
+        }
+
+        public async Task<Models.TbLogin> ConsultarLoginPorEmailAsync(string email)
+        {
+            return await ctx.TbLogin.FirstOrDefaultAsync(x => x.DsEmail == email);
         } 
 
         public async Task<Models.TbUsuario> CadastrarUsuarioAsync(Models.TbUsuario req)

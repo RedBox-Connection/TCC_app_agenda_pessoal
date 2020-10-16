@@ -62,6 +62,27 @@ namespace backend.Business
             return resp;
         }
 
+        public async Task<Models.TbLogin> ConsultarLoginPorEmailAsync(string email)
+        {
+            if(email == string.Empty)
+                throw new Exception("Email não pode ser vazio.");
+
+            if(!email.Contains('@'))
+                throw new Exception("Email inválido, insira a empresa de seu email.");
+
+            bool emailOk = await this.ValidarEmailUsuario(email);
+
+            if(emailOk == false)
+                throw new Exception("Email não cadastrado, por favor insira outro email.");
+
+            Models.TbLogin resp = await usuarioDb.ConsultarLoginPorEmailAsync(email);
+
+            if(resp == null)
+                throw new Exception("Usuário não existe.");
+
+            return resp;
+        } 
+
         public async Task<Models.TbUsuario> CadastrarUsuarioAsync(Models.TbUsuario req)
         {
             if(req.DsFoto == string.Empty)
