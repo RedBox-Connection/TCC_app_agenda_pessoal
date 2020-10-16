@@ -16,14 +16,15 @@ namespace backend.Utils
             return resp;
         }
 
-        public Models.TbUsuario ToCadastrarTbUsuario(string nomeCompleto, int idLogin)
+        public Models.TbUsuario ToCadastrarTbUsuario(string nomeUsuario, string nomeCompleto, int idLogin)
         {
             Models.TbUsuario resp = new Models.TbUsuario();
 
             resp.BtReceberEmail = true;
             resp.DsFoto = "user.png";
             resp.IdLogin = idLogin;
-            resp.NmUsuario = nomeCompleto;
+            resp.NmUsuario = nomeUsuario;
+            resp.NmPerfil = nomeCompleto;
 
             return resp;
         }
@@ -38,19 +39,12 @@ namespace backend.Utils
             return tb;
         }
 
-        public Models.Response.LoginResponse ToLoginResponse(Models.TbLogin tb, string nomeCompleto)
+        public Models.Response.LoginResponse ToLoginResponse(Models.TbLogin tb, string nomeUsuario)
         {
             Models.Response.LoginResponse resp = new Models.Response.LoginResponse();
 
             resp.IdLogin = tb.IdLogin;
-
-            if(nomeCompleto.Contains(' '))
-            {
-                int espaco = nomeCompleto.IndexOf(' ');
-                resp.Nome = nomeCompleto.Substring(0, espaco);
-            }
-            else
-                resp.Nome = nomeCompleto;
+            resp.NomeUsuario = nomeUsuario;
 
             return resp;
         }
@@ -60,15 +54,7 @@ namespace backend.Utils
             Models.Response.LoginResponse resp = new Models.Response.LoginResponse();
 
             resp.IdLogin = tb.IdLogin;
-            string nomeCompleto = tb.TbUsuario.FirstOrDefault().NmUsuario;
-            if(nomeCompleto.Contains(' '))
-            {
-                int espaco = nomeCompleto.IndexOf(' ');
-                resp.Nome = nomeCompleto.Substring(0, espaco);
-            }
-            else
-                resp.Nome = nomeCompleto;
-            
+            resp.NomeUsuario = tb.TbUsuario.FirstOrDefault().NmUsuario;            
 
             return resp;
         }

@@ -19,6 +19,10 @@ namespace backend.Models
         [Required]
         [Column("nm_time", TypeName = "varchar(100)")]
         public string NmTime { get; set; }
+        [Column("ds_time", TypeName = "varchar(500)")]
+        public string DsTime { get; set; }
+        [Column("ds_link_convite", TypeName = "varchar(100)")]
+        public string DsLinkConvite { get; set; }
         [Column("id_quadro")]
         public int IdQuadro { get; set; }
 

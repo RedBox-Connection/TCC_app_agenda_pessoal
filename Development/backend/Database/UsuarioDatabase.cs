@@ -13,6 +13,38 @@ namespace backend.Database
     {
         Models.tccdbContext ctx = new Models.tccdbContext();
 
+        public async Task<List<string>> ConsultarNomesUsuario()
+        {
+            List<Models.TbUsuario> usuarios = await ctx.TbUsuario.ToListAsync();
+
+            List<string> resp = new List<string>();
+
+            foreach(Models.TbUsuario tb in usuarios)
+            {
+                string x = tb.NmUsuario;
+
+                resp.Add(x);
+            }
+
+            return resp;
+        }
+
+        public async Task<List<string>> ConsultarEmailsUsuario()
+        {
+            List<Models.TbLogin> logins = await ctx.TbLogin.ToListAsync();
+
+            List<string> resp = new List<string>();
+
+            foreach(Models.TbLogin tb in logins)
+            {
+                string x = tb.DsEmail;
+
+                resp.Add(x);
+            }
+
+            return resp;
+        } 
+
         public async Task<Models.TbUsuario> CadastrarUsuarioAsync(Models.TbUsuario req)
         {
             await ctx.TbUsuario.AddAsync(req);

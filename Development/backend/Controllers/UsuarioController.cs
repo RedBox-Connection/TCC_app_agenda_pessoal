@@ -22,7 +22,7 @@ namespace backend.Controllers
 
                 tbLogin = await usuarioBsn.CadastrarLoginAsync(tbLogin);
 
-                Models.TbUsuario tbUsuario = usuarioCnv.ToCadastrarTbUsuario(req.NomeCompleto, tbLogin.IdLogin);
+                Models.TbUsuario tbUsuario = usuarioCnv.ToCadastrarTbUsuario(req.NomeUsuario, req.NomeCompleto, tbLogin.IdLogin);
 
                 tbUsuario = await usuarioBsn.CadastrarUsuarioAsync(tbUsuario);
 

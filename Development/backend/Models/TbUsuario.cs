@@ -19,6 +19,9 @@ namespace backend.Models
         [Column("id_usuario")]
         public int IdUsuario { get; set; }
         [Required]
+        [Column("nm_perfil", TypeName = "varchar(100)")]
+        public string NmPerfil { get; set; }
+        [Required]
         [Column("nm_usuario", TypeName = "varchar(100)")]
         public string NmUsuario { get; set; }
         [Required]
