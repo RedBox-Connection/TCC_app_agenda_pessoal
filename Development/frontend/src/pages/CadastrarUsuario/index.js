@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import cadastrar from '../../images/cadastrar.svg';
 
 import { Container, Left, Rigth, Login, Content, InputBox, InputWrapper, ButtonBox } from './styles';
@@ -39,7 +42,7 @@ function CadastrarUsuario() {
 
             return resp;
         } catch (e) {
-            console.log(e.response.erro)
+            toast.error("coisas ruins ocorreram :(")
         }
     }
 
@@ -93,7 +96,7 @@ function CadastrarUsuario() {
             </Content>
 
         </Rigth>
-
+        <ToastContainer />
     </Container>
   );
 }

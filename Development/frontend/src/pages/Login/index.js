@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { Container, ImageContainer, Content} from './styles';
 
@@ -18,14 +18,11 @@ function Login() {
           <img src={loginimage} alt="loginimage" draggable={false}/>
         </ImageContainer>
         <Content>
-          <BrowserRouter>
-            <Switch>
-              <Route path="/Entrar" component={LoginInicial} exact/>
-              <Route path="/Entrar/esqueci-a-senha" component={EsqueciSenha} exact />
-              <Route path="/Entrar/esqueci-a-senha/autenticacao" component={AutenticacaoSenha} />
-            </Switch>
-          </BrowserRouter>
-
+          <Switch>
+            <Route path="/Entrar" component={LoginInicial} exact/>
+            <Route path="/Entrar/esqueci-a-senha" component={EsqueciSenha} exact />
+            <Route path="/Entrar/esqueci-a-senha/autenticacao" component={AutenticacaoSenha} />
+          </Switch>
         </Content>
       </Container>
   );

@@ -8,7 +8,7 @@ export default class ApiCadastro{
 
     async cadastroCliente(req){
         const res = await apiCadastro.post('/cadastrar', req);
-        return res.data;
+        return res;
     }
 
 }
