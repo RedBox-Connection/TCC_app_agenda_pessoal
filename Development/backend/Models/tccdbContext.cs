@@ -25,13 +25,14 @@ namespace backend.Models
         public virtual DbSet<TbTime> TbTime { get; set; }
         public virtual DbSet<TbTimeIntegrante> TbTimeIntegrante { get; set; }
         public virtual DbSet<TbUsuario> TbUsuario { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 //optionsBuilder.UseMySql("server=localhost;user id=root;password=1234;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=A1234;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=diego06171825;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 

@@ -4,11 +4,11 @@ namespace backend.Utils
 {
     public class EsqueciSenhaConversor
     {
-        public Models.TbEsqueciSenha ToTbEsqueciSenha(long codigo, Models.TbLogin usuario)
+        public Models.TbEsqueciSenha ToTbEsqueciSenha(long codigo, Models.TbLogin usuario, string email)
         {
             Models.TbEsqueciSenha tb = new Models.TbEsqueciSenha();
             
-            tb.DsEmailAlternativo = null;
+            tb.DsEmailAlternativo = email;
             tb.IdLogin = usuario.IdLogin;
             tb.NrCodigo = codigo;
             tb.TmInclusao = DateTime.Now;
