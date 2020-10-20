@@ -17,6 +17,7 @@ import NotFound from './pages/NotFound';
 
 //Home
 import Layout from './components/Layout';
+import EscolherQuadro from './pages/EscolherQuadro';
 
 
 function Routes() {
@@ -28,7 +29,9 @@ function Routes() {
 
             <Route path="/Entrar" component={Login} />
             <Route path="/Esqueci-a-senha" component={EsqueciSenha} exact/>
-            <Route path="/Esqueci-a-senha/Autenticacao" component={AutenticacaoSenha} /> 
+            <Route path="/Esqueci-a-senha/Autenticacao" component={AutenticacaoSenha} />
+
+            <Route path="/Meus-quadros" component={EscolherQuadro} />
 
             <Route path="/Inicial" component={Layout} />
 
