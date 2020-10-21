@@ -4,15 +4,16 @@ export const Container = styled.div`
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
 
   max-width:100vw;
 `;
 
 export const Content = styled.div`
-  width:80vw;
+  width:85vw;
   height:calc(100vh - 13vh);
-  
-  padding-top:20px;
+
+  padding:50px 0;
 
   >h1{
       font-size:30px;
@@ -23,13 +24,20 @@ export const QuadrosContainer = styled.div`
   display:flex;
   align-items:center;
 
-  overflow-x:scroll;
-  overflow-y:hidden;
-  -webkit-overflow-scrolling: touch;
+  flex-wrap:wrap;
 
   width:100%;
   height:fit-content;
 
+`;
+
+export const Divider = styled.div`
+  height:1px;
+  width:100%;
+
+  margin:5px 0;
+
+  background-color:#ccc;
 `;
 
 export const AddTeam = styled.div`
@@ -37,14 +45,14 @@ export const AddTeam = styled.div`
   align-items:center;
   justify-content:center;
 
-  position:absolute;
-  bottom:5%;
-  right:5%;
+  
+  height:80px;
+  width:200px;
 
-  height:50px;
-  width:50px;
+  padding:5px 8px;
+  margin:10px 5px;
 
   background-color:var(--verde);
-  border-radius:50%;
-  font-size:50px;
+  border-radius:5px;
+  font-size:20px;
 `;
