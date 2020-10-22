@@ -16,7 +16,7 @@ namespace backend.Models
         }
 
         [Key]
-        [Column("id_usuario")]
+        [Column("id_usuario", TypeName = "int(11)")]
         public int IdUsuario { get; set; }
         [Required]
         [Column("nm_perfil", TypeName = "varchar(100)")]
@@ -29,7 +29,7 @@ namespace backend.Models
         public string DsFoto { get; set; }
         [Column("bt_receber_email")]
         public bool BtReceberEmail { get; set; }
-        [Column("id_login")]
+        [Column("id_login", TypeName = "int(11)")]
         public int IdLogin { get; set; }
 
         [ForeignKey(nameof(IdLogin))]

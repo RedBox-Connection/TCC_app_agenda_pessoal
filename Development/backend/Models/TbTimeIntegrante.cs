@@ -9,11 +9,11 @@ namespace backend.Models
     public partial class TbTimeIntegrante
     {
         [Key]
-        [Column("id_integrante")]
+        [Column("id_integrante", TypeName = "int(11)")]
         public int IdIntegrante { get; set; }
-        [Column("id_time")]
+        [Column("id_time", TypeName = "int(11)")]
         public int IdTime { get; set; }
-        [Column("id_usuario")]
+        [Column("id_usuario", TypeName = "int(11)")]
         public int IdUsuario { get; set; }
         [Required]
         [Column("ds_permissao", TypeName = "varchar(100)")]

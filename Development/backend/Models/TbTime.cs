@@ -14,7 +14,7 @@ namespace backend.Models
         }
 
         [Key]
-        [Column("id_time")]
+        [Column("id_time", TypeName = "int(11)")]
         public int IdTime { get; set; }
         [Required]
         [Column("nm_time", TypeName = "varchar(100)")]
@@ -23,7 +23,7 @@ namespace backend.Models
         public string DsTime { get; set; }
         [Column("ds_link_convite", TypeName = "varchar(100)")]
         public string DsLinkConvite { get; set; }
-        [Column("id_quadro")]
+        [Column("id_quadro", TypeName = "int(11)")]
         public int IdQuadro { get; set; }
 
         [ForeignKey(nameof(IdQuadro))]

@@ -1,4 +1,4 @@
--- drop database tccdb;
+drop database tccdb;
 create database tccdb;
 
 use tccdb;
@@ -12,7 +12,7 @@ create table tb_login(
 
 create table tb_esqueci_senha(
 	id_esqueci_senha int auto_increment primary key not null,
-    ds_email_alternativo varchar(100),
+    ds_email varchar(100),
     nr_codigo long not null,
     tm_inclusao datetime not null,
     tm_expiracao datetime not null,

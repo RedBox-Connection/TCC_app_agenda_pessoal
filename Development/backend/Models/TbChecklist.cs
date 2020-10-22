@@ -14,12 +14,12 @@ namespace backend.Models
         }
 
         [Key]
-        [Column("id_checklist")]
+        [Column("id_checklist", TypeName = "int(11)")]
         public int IdChecklist { get; set; }
         [Required]
         [Column("nm_checklist", TypeName = "varchar(100)")]
         public string NmChecklist { get; set; }
-        [Column("id_cartao")]
+        [Column("id_cartao", TypeName = "int(11)")]
         public int IdCartao { get; set; }
 
         [ForeignKey(nameof(IdCartao))]

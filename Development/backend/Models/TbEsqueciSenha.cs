@@ -9,10 +9,10 @@ namespace backend.Models
     public partial class TbEsqueciSenha
     {
         [Key]
-        [Column("id_esqueci_senha")]
+        [Column("id_esqueci_senha", TypeName = "int(11)")]
         public int IdEsqueciSenha { get; set; }
-        [Column("ds_email_alternativo", TypeName = "varchar(100)")]
-        public string DsEmailAlternativo { get; set; }
+        [Column("ds_email", TypeName = "varchar(100)")]
+        public string DsEmail { get; set; }
         [Required]
         [Column("nr_codigo", TypeName = "mediumtext")]
         public long NrCodigo { get; set; }
@@ -20,7 +20,7 @@ namespace backend.Models
         public DateTime TmInclusao { get; set; }
         [Column("tm_expiracao", TypeName = "datetime")]
         public DateTime TmExpiracao { get; set; }
-        [Column("id_login")]
+        [Column("id_login", TypeName = "int(11)")]
         public int IdLogin { get; set; }
 
         [ForeignKey(nameof(IdLogin))]

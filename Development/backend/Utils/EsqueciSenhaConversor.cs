@@ -8,7 +8,7 @@ namespace backend.Utils
         {
             Models.TbEsqueciSenha tb = new Models.TbEsqueciSenha();
             
-            tb.DsEmailAlternativo = email;
+            tb.DsEmail = email;
             tb.IdLogin = usuario.IdLogin;
             tb.NrCodigo = codigo;
             tb.TmInclusao = DateTime.Now;

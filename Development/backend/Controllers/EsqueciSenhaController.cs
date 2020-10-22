@@ -28,7 +28,7 @@ namespace backend.Controllers
 
                 tb = await esqueciSenhaBsn.SalvarCodigoRecuperacaoAsync(tb);
 
-                gerenciadorEmailDb.EnviarEmail(tb.DsEmailAlternativo, tb.TmExpiracao, tb.NrCodigo);
+                gerenciadorEmailDb.EnviarEmail(tb.DsEmail, tb.TmExpiracao, tb.NrCodigo);
 
                 Models.Response.CodigoRecuperacaoResponse resp = esqueciSenhaCnv.ToEsqueciSenhaResponse(tb, usuario);
 

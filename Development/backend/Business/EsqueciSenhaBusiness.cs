@@ -43,6 +43,9 @@ namespace backend.Business
 
             if(req.TmInclusao > DateTime.Now)
                 throw new Exception("Período do código inválido.");
+            
+            if(!req.DsEmail.Contains('@'))
+                throw new Exception("Este Email é invalido.");
 
             if(req.NrCodigo <= 0)
                 throw new Exception("Código inválido.");
