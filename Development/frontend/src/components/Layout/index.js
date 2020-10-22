@@ -1,13 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import CabecalhoLayout from '../CabecalhoLayout';
 import MenuLateral from '../MenuLateral';
 
 import { Container, Main } from './styles';
 
+// import NotFound from '../../pages/NotFound';
+
 //Configuração de usuário
 import ConfiguracaoUsuario from '../../pages/InsideLayout/ConfiguracaoUsuario';
+
 
 function Layout() {
   return (
@@ -15,11 +18,10 @@ function Layout() {
           <CabecalhoLayout />
           <Main>
               <MenuLateral />
-              <BrowserRouter>
                 <Switch>
-                    <Route path="/Inicial/a" component={ConfiguracaoUsuario} />
+                  <Route path="/Inicial" component={ConfiguracaoUsuario} />
+                  {/* <Route path="*" component={NotFound} /> */}
                 </Switch>
-              </BrowserRouter>
           </Main>
       </Container>
   );
