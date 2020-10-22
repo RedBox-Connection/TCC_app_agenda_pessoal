@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container, Profile } from './styles';
 
@@ -7,7 +8,7 @@ function CabecalhoLayout() {
       <Container>
           <h1>Organizer</h1>
           <Profile>
-              <span>Bruce Wayne</span>
+              <Link to="/Inicial/a">Bruce Wayne</Link>
               <strong>foto</strong>
           </Profile>
       </Container>

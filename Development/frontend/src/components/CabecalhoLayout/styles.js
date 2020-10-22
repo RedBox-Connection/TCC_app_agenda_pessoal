@@ -23,7 +23,7 @@ export const Profile = styled.div`
   display:flex;
   align-items:center;
 
-  > span{
+  > a{
       margin-right:15px
   }
 `;
