@@ -21,9 +21,11 @@ function EscolherQuadro() {
           <Content>
               <h1>Escolha um quadro pra entrar</h1>
               <QuadrosContainer>
+                <Link to="*" >
                   <AddTeam>
-                      <Link to="*" > Criar um time</Link>
+                       Criar um time
                   </AddTeam>
+                </Link>
                   {times.map(x => (
                      <QuadroButton nome={frase + x} />
                   ))}

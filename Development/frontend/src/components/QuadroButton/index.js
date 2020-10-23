@@ -5,9 +5,11 @@ import { Container } from './styles';
 
 function QuadroButton(props) {
   return (
+    <Link to="*">
       <Container>
-          <Link to="*">{props.nome}</Link>
+          {props.nome}
       </Container>
+    </Link>
   );
 }
 
