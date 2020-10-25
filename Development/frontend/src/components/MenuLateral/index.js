@@ -11,15 +11,15 @@ function MenuLateral() {
       <Container>
           <ItemLink>
               <Journal />
-              <Link to="/">Agenda</Link>
+              <Link to="/Agenda">Agenda</Link>
           </ItemLink>
           <ItemLink>
               <CheckCircle />
-              <Link to="/">Feitos</Link>
+              <Link to="/Agenda/Feitos">Feitos</Link>
           </ItemLink>
           <ItemLink>
               <Alarm />
-              <Link to="/">Atrasados</Link>
+              <Link to="/Agenda/Atrasados">Atrasados</Link>
           </ItemLink>
       </Container>
   );

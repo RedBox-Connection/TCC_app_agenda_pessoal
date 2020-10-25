@@ -10,6 +10,7 @@ export const Container = styled.div`
 
   padding:20px;
 `;
+
 export const Title = styled.div`
   width:100%;
 
