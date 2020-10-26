@@ -19,10 +19,6 @@ import NotFound from './pages/NotFound';
 import Layout from './components/Layout';
 import EscolherQuadro from './pages/EscolherQuadro';
 
-//Agenda 
-import Agenda from './pages/Agenda';
-import Feitos from './pages/Agenda/Feitos';
-import Atrasados from './pages/Agenda/Atrasados';
 
 
 function Routes() {
@@ -38,15 +34,9 @@ function Routes() {
 
             <Route path="/Meus-quadros" component={EscolherQuadro} />
 
-            <Route path="/Inicial" component={Layout} exact/>
-
-            <Route path="/Agenda" component={Agenda} />
-            <Route path="/Agenda/Feitos" component={Feitos} />
-            <Route path="/Agenda/Atrasados" component={Atrasados} />
+            <Route path="/Agenda" component={Layout} exact/>
 
             <Route path="*" component={NotFound} />
-
-            
         </Switch>
     </BrowserRouter>
   );

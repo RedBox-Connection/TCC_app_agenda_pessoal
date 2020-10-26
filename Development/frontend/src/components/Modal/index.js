@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { JournalCheck, JournalX, Trash } from 'react-bootstrap-icons'
+import { Check, JournalX, Trash } from 'react-bootstrap-icons'
 
 import { ModalContent, Container, Color, InputTitle, InputWrapper, InputDescription, CheckBox, End } from './styles';
 
@@ -38,8 +38,8 @@ const Modal = ({id = 'Modal', onClose = () => {}}) => {
                     </CheckBox>
 
                     <End>
-                        <button> <Trash width="30px" height="30px"/> </button>
-                        <button> <JournalCheck width="30px" height="30px"/> </button>
+                        <button> <Trash width="30px" height="50px"/> </button>
+                        <button> <Check width="30px" height="30px"/> </button>
                     </End>
                 </Container>
 
