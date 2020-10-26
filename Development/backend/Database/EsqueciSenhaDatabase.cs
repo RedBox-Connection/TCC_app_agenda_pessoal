@@ -46,11 +46,11 @@ namespace backend.Database
             return req;
         }
 
-        public async Task<Models.TbLogin> DeletarRecuperacaoDeSenhaAsync(Models.TbLogin novo,Models.TbLogin atual, Models.TbEsqueciSenha req)
+        public async Task<Models.TbLogin> DeletarRecuperacaoDeSenhaAsync(Models.TbLogin novo,Models.TbLogin atual, Models.TbEsqueciSenha reqEsqueciSenha)
         {
             atual.DsSenha = novo.DsSenha;
 
-            ctx.Remove(req);
+            ctx.TbEsqueciSenha.Remove(reqEsqueciSenha);
             await ctx.SaveChangesAsync();
             
 

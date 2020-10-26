@@ -15,7 +15,7 @@ namespace backend.Business
         public long GerarCodigoRecuperacao()
         {
             Random rnd = new Random();
-            long resp = rnd.Next(1, 999999);
+            long resp = rnd.Next(100000, 999999);
             return resp;
         }
 
