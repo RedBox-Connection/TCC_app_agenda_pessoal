@@ -24,8 +24,6 @@ import Agenda from './pages/Agenda';
 import Feitos from './pages/Agenda/Feitos';
 import Atrasados from './pages/Agenda/Atrasados';
 
-import Card from './components/Card';
-
 
 function Routes() {
   return(
