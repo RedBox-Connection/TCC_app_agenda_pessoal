@@ -23,17 +23,17 @@ function ConfiguracaoUsuario() {
               <UserInfo>
 
                 <InputWrapper>
-                  <span>Nome :</span>
+                  <span>Nome : </span>
                   <input type="text" value="Bruce Wayne" />
                 </InputWrapper>
 
                 <InputWrapper>
-                  <span>Nome de Usuário :</span>
+                  <span>Nome de Usuário : </span>
                   <input type="text" value="Bruce Wayne" />
                 </InputWrapper>
 
                 <InputWrapper>
-                  <span>Senha :</span>
+                  <span>Senha : </span>
                   <input type="password" value="********" />
                 </InputWrapper>
 

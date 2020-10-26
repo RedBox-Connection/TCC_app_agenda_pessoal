@@ -17,8 +17,10 @@ export const Main = styled.div`
     height:calc(100vh - 8vh);
 `;
 
-export const Cards = styled.div`
+export const CardContainer = styled.div`
     display:flex;
+    flex-direction:row;
+    justify-content:center;
     
     width:100vw;
     height:calc(100vh - 8vh);

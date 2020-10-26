@@ -1,21 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import CabecalhoLayout from '../../components/CabecalhoLayout';
+import Card from '../../components/Card';
 import MenuLateral from '../../components/MenuLateral';
 
-import { Cards, Container, Main } from './styles';
+import { CardContainer, Container, Main } from './styles';
 
 export default function Agenda() {
 
-    return(
+    return(  
         <Container>
             <CabecalhoLayout />
             <Main>
                 <MenuLateral />
-                <Cards>
-                    
-                </Cards>
+                <CardContainer>
+                    <Card />
+                </CardContainer>
             </Main>
+
         </Container>
     )
 }

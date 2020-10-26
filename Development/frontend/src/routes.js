@@ -24,6 +24,8 @@ import Agenda from './pages/Agenda';
 import Feitos from './pages/Agenda/Feitos';
 import Atrasados from './pages/Agenda/Atrasados';
 
+import Card from './components/Card';
+
 
 function Routes() {
   return(
@@ -45,6 +47,8 @@ function Routes() {
             <Route path="/Agenda/Atrasados" component={Atrasados} />
 
             <Route path="*" component={NotFound} />
+
+            
         </Switch>
     </BrowserRouter>
   );
