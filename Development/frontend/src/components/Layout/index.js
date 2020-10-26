@@ -1,20 +1,20 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter,Route, Switch } from 'react-router-dom';
 
 import CabecalhoLayout from '../CabecalhoLayout';
 import MenuLateral from '../MenuLateral';
 
-import { Container, Main } from './styles';
+import { Container, Main,Content } from './styles';
 
-// import NotFound from '../../pages/NotFound';
+import NotFound from '../../pages/NotFound';
 
 //Configuração de usuário
-import ConfiguracaoUsuario from '../../pages/InsideLayout/ConfiguracaoUsuario';
+// import ConfiguracaoUsuario from '../../pages/InsideLayout/ConfiguracaoUsuario/index';
 
 
 //Agenda 
-import Agenda from '../../pages/Agenda';
-// import Feitos from '../../pages/Agenda/Feitos';
+import Agenda from '../../pages/InsideLayout/Agenda';
+import Feitos from '../../pages/InsideLayout/Agenda/Feitos';
 // import Atrasados from '../../pages/Agenda/Atrasados';
 
 function Layout() {
@@ -22,14 +22,15 @@ function Layout() {
       <Container>
           <CabecalhoLayout />
           <Main>
-              <MenuLateral />
+              <BrowserRouter>
+                <MenuLateral />
+               <Content>
                 <Switch>
-                  <Route path="/Configurações" component={ConfiguracaoUsuario} />
-
-                  <Route path="/Agenda" component={Agenda} />
-                  {/* <Route path="/Agenda/Feitos" component={Feitos} />
-                  <Route path="/Agenda/Atrasados" component={Atrasados} /> */}
+                  <Route path="/inicial/Agenda" component={Agenda} />
+                  <Route path="/inicial/Feitos" component={Feitos} />
                 </Switch>
+                </Content>
+              </BrowserRouter>
           </Main>
       </Container>
   );

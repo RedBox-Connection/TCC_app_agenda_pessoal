@@ -34,7 +34,7 @@ function Routes() {
 
             <Route path="/Meus-quadros" component={EscolherQuadro} />
 
-            <Route path="/Agenda" component={Layout} exact/>
+            <Route path="/Inicial" component={Layout} exact/>
 
             <Route path="*" component={NotFound} />
         </Switch>

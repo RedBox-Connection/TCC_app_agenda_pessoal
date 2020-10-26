@@ -15,3 +15,11 @@ export const Main = styled.div`
     max-width:100vw;
     height:calc(100vh - 8vh);
 `;
+
+export const Content = styled.div`
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+
+`;
