@@ -9,6 +9,7 @@ namespace backend.Business
 {
     public class EsqueciSenhaBusiness
     {
+        Business.UsuarioBusiness usuarioBsn = new UsuarioBusiness();
         Database.EsqueciSenhaDatabase esqueciSenhaDB = new Database.EsqueciSenhaDatabase();
 
         public long GerarCodigoRecuperacao()
@@ -78,7 +79,7 @@ namespace backend.Business
 
             if(resp.TmExpiracao < DateTime.Now)
             {
-                resp = await this.DeletarRecuperacaoDeSenhaAsync(resp);
+                resp = await this.DeletarRecuperacaoDeSenhaPorTempoAsync(resp);
 
                 throw new Exception("O código expirou, iremos reenviar o email de recuperação de senha.");
             }
@@ -87,14 +88,43 @@ namespace backend.Business
             return resp;
         }
 
-        public async Task<Models.TbEsqueciSenha> DeletarRecuperacaoDeSenhaAsync(Models.TbEsqueciSenha req)
+        public async Task<Models.TbEsqueciSenha> DeletarRecuperacaoDeSenhaPorTempoAsync(Models.TbEsqueciSenha req)
         {
             if(req == null)
                 throw new Exception("Código não encontrado.");
 
-            req = await esqueciSenhaDB.DeletarRecuperacaoDeSenha(req);
+            req = await esqueciSenhaDB.DeletarRecuperacaoDeSenhaPorTempo(req);
 
             return req;
+        }
+
+        public async Task<Models.TbLogin> DeletarRecuperacaoDeSenhaAsync(Models.TbLogin novo, Models.TbLogin atual, Models.TbEsqueciSenha req)
+        {
+            if(req == null)
+                throw new Exception("Código não encontrado.");
+
+            bool senhaOk = usuarioBsn.SenhaForte(novo.DsSenha);
+
+            if(senhaOk == false)
+                throw new Exception("A senha deve conter pelo menos um caracter especial, " + 
+                                    "uma letra maiúscula, dois números e oito digitos.");
+
+            atual = await esqueciSenhaDB.DeletarRecuperacaoDeSenhaAsync(novo, atual, req);
+
+            return atual;
+        }
+
+        public async Task<Models.TbLogin> ConsultarLoginPorIdAsync(int? id)
+        {
+            if(id <= 0 || id == null)
+                throw new Exception("O id está inválido");
+
+            return await esqueciSenhaDB.ConsultarLoginPorIdAsync(id);
+        }
+
+        public async Task<Models.TbEsqueciSenha> ConsultarTbEsqueciSenhaPorIdLoginAsync(Models.TbLogin tbLogin)
+        {
+            return await esqueciSenhaDB.ConsultarTbEsqueciSenhaPorIdLoginAsync(tbLogin);
         }
 
     }

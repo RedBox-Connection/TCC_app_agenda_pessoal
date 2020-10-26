@@ -38,7 +38,7 @@ namespace backend.Database
             return await ctx.TbEsqueciSenha.FirstOrDefaultAsync(x => x.NrCodigo == codigo);
         }
 
-        public async Task<Models.TbEsqueciSenha> DeletarRecuperacaoDeSenha(Models.TbEsqueciSenha req)
+        public async Task<Models.TbEsqueciSenha> DeletarRecuperacaoDeSenhaPorTempo(Models.TbEsqueciSenha req)
         {
             ctx.Remove(req);
             await ctx.SaveChangesAsync();
@@ -46,5 +46,25 @@ namespace backend.Database
             return req;
         }
 
+        public async Task<Models.TbLogin> DeletarRecuperacaoDeSenhaAsync(Models.TbLogin novo,Models.TbLogin atual, Models.TbEsqueciSenha req)
+        {
+            atual.DsSenha = novo.DsSenha;
+
+            ctx.Remove(req);
+            await ctx.SaveChangesAsync();
+            
+
+            return atual;
+        }
+
+        public async Task<Models.TbLogin> ConsultarLoginPorIdAsync(int? id)
+        {
+            return await ctx.TbLogin.FirstOrDefaultAsync(x => x.IdLogin == id);
+        }
+
+        public async Task<Models.TbEsqueciSenha> ConsultarTbEsqueciSenhaPorIdLoginAsync(Models.TbLogin tbLogin)
+        {
+            return await ctx.TbEsqueciSenha.FirstOrDefaultAsync(x => x.IdLogin == tbLogin.IdLogin);
+        }
     }
 }

@@ -22,7 +22,17 @@ namespace backend.Utils
             return req.Codigo;
         }
 
-        public long ToCodigo(Models.Request.DeletarCodigoRecuperacaoRequest req)
+        public Models.TbLogin ToSenha(Models.Request.NovaSenhaRequest req)
+        {
+            Models.TbLogin tb = new Models.TbLogin();
+
+            tb.DsSenha = req.Senha;
+            
+
+            return tb;
+        }
+
+         public long ToCodigo(Models.Request.DeletarCodigoRecuperacaoRequest req)
         {
             return req.Codigo;
         }
