@@ -30,7 +30,7 @@ namespace backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=diego06171825;database=tccdb", x => x.ServerVersion("5.7.29-mysql"));
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=A1234;database=tccdb", x => x.ServerVersion("5.7.29-mysql"));
             }
         }
 
