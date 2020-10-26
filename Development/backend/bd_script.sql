@@ -107,7 +107,7 @@ insert into tb_usuario (nm_perfil, nm_usuario, ds_foto, bt_receber_email, id_log
 
 select * from tb_usuario;
 
-insert into tb_esqueci_senha (ds_email_alternativo, nr_codigo, tm_inclusao, tm_expiracao, id_login) values (null, 452689, "2020-10-13-19-15-00", "2020-10-13-19-45-00", 1);
+insert into tb_esqueci_senha (ds_email, nr_codigo, tm_inclusao, tm_expiracao, id_login) values (null, 452689, "2020-10-13-19-15-00", "2020-10-13-19-45-00", 1);
 
 select * from tb_esqueci_senha;
 
