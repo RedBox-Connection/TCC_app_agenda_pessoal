@@ -1,11 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import './styles.css';
+import NotFoundImage from '../../images/not_found.svg'
+
+import { Container, Main, Content } from './styles';
 
 function NotFound() {
   return (
-      <div className="not-found">
-      </div>
+    <Container>
+      <Main>
+        <img src={NotFoundImage} alt="NotFoundImage" />
+        <Content>
+          <h1>Oops!</h1>
+          <p>Parece que essa página não existe</p>
+          <Link to="/">Voltar para inicial</Link>
+        </Content>
+      </Main>
+    </Container>
   );
 }
 

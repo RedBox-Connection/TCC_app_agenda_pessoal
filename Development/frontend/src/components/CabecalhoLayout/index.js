@@ -8,7 +8,7 @@ function CabecalhoLayout() {
       <Container>
           <h1>Organizer</h1>
           <Profile>
-              <Link to="/Atrasados">Bruce Wayne</Link>
+              <Link to="/inicial/Configurações">Bruce Wayne</Link>
               <strong>foto</strong>
           </Profile>
       </Container>

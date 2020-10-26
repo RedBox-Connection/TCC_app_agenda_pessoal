@@ -9,7 +9,11 @@ import { Container, Main,Content } from './styles';
 import NotFound from '../../pages/NotFound';
 
 //Configuração de usuário
-// import ConfiguracaoUsuario from '../../pages/InsideLayout/ConfiguracaoUsuario/index';
+import ConfiguracaoUsuario from '../../pages/InsideLayout/ConfiguracaoUsuario/index';
+
+
+//inicial
+import WelcomePage from '../../pages/InsideLayout/WelcomePage';
 
 
 //Agenda 
@@ -20,18 +24,27 @@ import Feitos from '../../pages/InsideLayout/Agenda/Feitos';
 function Layout() {
   return (
       <Container>
-          <CabecalhoLayout />
-          <Main>
-              <BrowserRouter>
-                <MenuLateral />
-               <Content>
+        <BrowserRouter>
+            <CabecalhoLayout />
+            <Main>
+              
+            <MenuLateral />
+              <Content>
                 <Switch>
+
+                  <Route path="/inicial" component={WelcomePage} exact />
+
                   <Route path="/inicial/Agenda" component={Agenda} />
                   <Route path="/inicial/Feitos" component={Feitos} />
+
+                  <Route path="/inicial/Configurações" component={ConfiguracaoUsuario} />
+
+                  <Route path="*" component={NotFound} />
                 </Switch>
-                </Content>
-              </BrowserRouter>
-          </Main>
+              </Content>
+              </Main>
+          </BrowserRouter>
+          
       </Container>
   );
 }
