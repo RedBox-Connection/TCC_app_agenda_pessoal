@@ -33,7 +33,7 @@ function CadastrarUsuario() {
             })
 
             navegation.push({
-                pathname:"/", 
+                pathname:"/Meus-quadros", 
                 state:{
                     idlogin:resp.idlogin,
                     nomeUsuario:resp.nomeUsuario
@@ -42,7 +42,14 @@ function CadastrarUsuario() {
 
             return resp;
         } catch (e) {
-            toast.error("coisas ruins ocorreram :(")
+            const erro = e.response.data.erro;
+
+            if(erro !== ''){
+                toast.error(erro);
+            }
+            else{
+                toast.error("coisas ruins ocorreram :(")
+            }
         }
     }
 
@@ -84,6 +91,12 @@ function CadastrarUsuario() {
                     <InputWrapper>
                         <span>Senha</span>
                         <input type="password" placeholder="Pelo menos 8 caracteres" onChange={e => setSenha(e.target.value)}/>
+                        <p>
+                            A senha deve conter pelo menos 8 caracteres <br/> 
+                            1 letra maiuscula <br/>
+                            1 minuscula e<br/>
+                            1 caracterer especial        
+                        </p>
                     </InputWrapper>
 
                 </InputBox>

@@ -30,7 +30,7 @@ function Login() {
       })
 
       navegation.push({
-        pathname:"/", 
+        pathname:"/Meus-quadros", 
         state:{
             idlogin:resp.idlogin,
             nomeUsuario:resp.nomeUsuario
@@ -40,7 +40,18 @@ function Login() {
       return resp;
       
     } catch (e) {
-      toast.error("coisas ruins ocorreram :(")
+      const erro = e.response.data.erro ;
+
+      if(erro === "Object reference not set to an instance of an object."){
+        toast.error("Conta inexistente")
+      }
+      else if(erro !== ''){
+        toast.error(erro);
+      }
+      else{
+        toast.error("coisas ruins ocorreram :(")
+      }
+
     }
   }
 

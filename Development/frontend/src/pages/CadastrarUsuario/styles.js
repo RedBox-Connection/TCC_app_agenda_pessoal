@@ -74,7 +74,7 @@ export const InputBox = styled.div`
     display:flex;
     flex-direction:column;
 
-    margin:50px 0;
+    margin:30px 0;
 
     > p{
         max-width:400px;
@@ -94,6 +94,10 @@ export const InputWrapper = styled.div`
         border: 1px solid #ccc !important; 
 
         padding:0 15px;
+    }
+
+    > p{
+        font-size:11px;
     }
 `;
 
