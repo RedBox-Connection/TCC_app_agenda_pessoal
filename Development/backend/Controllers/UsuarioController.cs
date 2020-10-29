@@ -13,6 +13,7 @@ namespace backend.Controllers
         Business.UsuarioBusiness usuarioBsn = new Business.UsuarioBusiness();
         Utils.UsuarioConversor usuarioCnv = new Utils.UsuarioConversor();
         Business.QuadroBusiness quadroBsn = new Business.QuadroBusiness();
+        Database.GerenciadorFotoDatabase gerenciadorFotoDb = new Database.GerenciadorFotoDatabase();
 
         [HttpPost("cadastrar")]
         public async Task<ActionResult<Models.Response.LoginResponse>> CadastrarUsuarioAsync(Models.Request.CadastrarUsuarioRequest req)
@@ -60,6 +61,47 @@ namespace backend.Controllers
             {
                 return BadRequest(
                     new Models.Response.ErroResponse(400, ex.Message)
+                );
+            }
+        }
+
+        [HttpPost("adicionar-foto")]
+        public async Task<ActionResult<Models.Response.SalvarFotoPerfilResponse>> AdicionarFotoPerfil(Models.Request.SalvarFotoPerfilRequest req)
+        {
+            try
+            {
+                Models.TbUsuario tb = new Models.TbUsuario();
+                tb.DsFoto = gerenciadorFotoDb.GerarNovoNome(req.Foto.FileName);
+
+                await usuarioBsn.CadastrarUsuarioAsync(tb);
+
+                gerenciadorFotoDb.SalvarFoto(tb.DsFoto, req.Foto);
+
+                Models.Response.SalvarFotoPerfilResponse resp = usuarioCnv.ToFotoResponse(tb);
+
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(400, ex.Message)
+                );
+            }
+        }
+
+        [HttpGet("foto/{nome}")]
+        public async Task<ActionResult> BuscarFoto(string nome)
+        {
+            try 
+            {
+                byte[] foto = await gerenciadorFotoDb.LerFoto(nome);
+                string contentType = gerenciadorFotoDb.GerarContentType(nome);
+                return File(foto, contentType);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(404, ex.Message)
                 );
             }
         }

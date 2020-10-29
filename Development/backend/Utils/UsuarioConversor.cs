@@ -21,7 +21,6 @@ namespace backend.Utils
             Models.TbUsuario resp = new Models.TbUsuario();
 
             resp.BtReceberEmail = true;
-            resp.DsFoto = "user.png";
             resp.IdLogin = idLogin;
             resp.NmUsuario = nomeUsuario;
             resp.NmPerfil = nomeCompleto;
@@ -65,6 +64,16 @@ namespace backend.Utils
 
             resp.IdLogin = tb.IdLogin;
             resp.NomeUsuario = tb.TbUsuario.FirstOrDefault().NmUsuario;            
+
+            return resp;
+        }
+
+        public Models.Response.SalvarFotoPerfilResponse ToFotoResponse(Models.TbUsuario tb)
+        {
+            Models.Response.SalvarFotoPerfilResponse resp = new Models.Response.SalvarFotoPerfilResponse();
+
+            resp.Foto = tb.DsFoto;
+            resp.Nome = tb.NmUsuario;
 
             return resp;
         }
