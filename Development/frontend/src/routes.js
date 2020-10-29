@@ -19,7 +19,8 @@ import NotFound from './pages/NotFound';
 import Layout from './components/Layout';
 import EscolherQuadro from './pages/EscolherQuadro';
 
-
+//Convite para time
+import ConviteTime from './pages/ConviteTime';
 
 function Routes() {
   return(
@@ -33,6 +34,8 @@ function Routes() {
             <Route path="/Esqueci-a-senha/Autenticacao" component={AutenticacaoSenha} />
 
             <Route path="/Meus-quadros" component={EscolherQuadro} />
+
+            <Route path="/Convite" component={ConviteTime}/>
 
             <Route path="/Inicial" component={Layout} exact/>
 
