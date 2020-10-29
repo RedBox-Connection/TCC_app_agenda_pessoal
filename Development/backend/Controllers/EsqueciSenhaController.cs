@@ -89,15 +89,23 @@ namespace backend.Controllers
         [HttpDelete("recuperar-senha-deletar/{id}")]
         public async Task<ActionResult<Models.Response.CodigoRecuperacaoResponse>> DeletarRecuperacaoDeSenhaCodigoAsync(int? id, Models.Request.NovaSenhaRequest req)
         {
-            Models.TbLogin tbNovo = esqueciSenhaCnv.ToSenha(req);
-            Models.TbLogin tbAtual = await esqueciSenhaBsn.ConsultarLoginPorIdAsync(id);
-            Models.TbEsqueciSenha tbEsqueciSenha = await esqueciSenhaBsn.ConsultarTbEsqueciSenhaPorIdLoginAsync(tbAtual);
+            try{
+                Models.TbLogin tbNovo = esqueciSenhaCnv.ToSenha(req);
+                Models.TbLogin tbAtual = await esqueciSenhaBsn.ConsultarLoginPorIdAsync(id);
+                Models.TbEsqueciSenha tbEsqueciSenha = await esqueciSenhaBsn.ConsultarTbEsqueciSenhaPorIdLoginAsync(tbAtual);
 
-            tbAtual = await esqueciSenhaBsn.DeletarRecuperacaoDeSenhaAsync(tbNovo, tbAtual, tbEsqueciSenha);
+                tbAtual = await esqueciSenhaBsn.DeletarRecuperacaoDeSenhaAsync(tbNovo, tbAtual, tbEsqueciSenha);
 
-            Models.Response.CodigoRecuperacaoResponse resp = esqueciSenhaCnv.ToEsqueciSenhaResponse(tbEsqueciSenha, tbAtual);
+                Models.Response.CodigoRecuperacaoResponse resp = esqueciSenhaCnv.ToEsqueciSenhaResponse(tbEsqueciSenha, tbAtual);
 
-            return resp;
+                return resp;
+            }
+            catch(Exception e)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(400, e.Message)
+                ); 
+            }
         }
         
     }

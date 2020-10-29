@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Database
@@ -40,7 +41,7 @@ namespace backend.Database
 
         public async Task<Models.TbEsqueciSenha> DeletarRecuperacaoDeSenhaPorTempo(Models.TbEsqueciSenha req)
         {
-            ctx.Remove(req);
+            ctx.TbEsqueciSenha.Remove(req);
             await ctx.SaveChangesAsync();
 
             return req;
@@ -50,7 +51,15 @@ namespace backend.Database
         {
             atual.DsSenha = novo.DsSenha;
 
-            ctx.TbEsqueciSenha.Remove(reqEsqueciSenha);
+            List<Models.TbEsqueciSenha> lista = ctx.TbEsqueciSenha.Where(x => x.IdLogin == atual.IdLogin).ToList();
+
+            while(lista.Count() > 0)
+            {
+                lista.Remove(reqEsqueciSenha);
+                ctx.TbEsqueciSenha.Remove(reqEsqueciSenha);
+                reqEsqueciSenha = await this.ConsultarTbEsqueciSenhaPorIdLoginAsync(atual);
+            }
+
             await ctx.SaveChangesAsync();
             
 
