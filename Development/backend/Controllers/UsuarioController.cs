@@ -12,6 +12,7 @@ namespace backend.Controllers
     {
         Business.UsuarioBusiness usuarioBsn = new Business.UsuarioBusiness();
         Utils.UsuarioConversor usuarioCnv = new Utils.UsuarioConversor();
+        Business.QuadroBusiness quadroBsn = new Business.QuadroBusiness();
 
         [HttpPost("cadastrar")]
         public async Task<ActionResult<Models.Response.LoginResponse>> CadastrarUsuarioAsync(Models.Request.CadastrarUsuarioRequest req)
@@ -25,6 +26,10 @@ namespace backend.Controllers
                 Models.TbUsuario tbUsuario = usuarioCnv.ToCadastrarTbUsuario(req.NomeUsuario, req.NomeCompleto, tbLogin.IdLogin);
 
                 tbUsuario = await usuarioBsn.CadastrarUsuarioAsync(tbUsuario);
+
+                Models.TbQuadro tbQuadro = usuarioCnv.ToTbQuadro(tbUsuario.IdUsuario);
+
+                tbQuadro = await quadroBsn.CadastrarQuadroAsync(tbQuadro);
 
                 Models.Response.LoginResponse resp = usuarioCnv.ToLoginResponse(tbLogin, tbUsuario.NmUsuario);
 

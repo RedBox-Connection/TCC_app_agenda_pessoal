@@ -39,6 +39,16 @@ namespace backend.Utils
             return tb;
         }
 
+        public Models.TbQuadro ToTbQuadro(int idUsuario)
+        {
+            Models.TbQuadro resp = new Models.TbQuadro();
+
+            resp.IdUsuario = idUsuario;
+            resp.NmQuadro = "Meu 1º quadro";
+
+            return resp;
+        }
+
         public Models.Response.LoginResponse ToLoginResponse(Models.TbLogin tb, string nomeUsuario)
         {
             Models.Response.LoginResponse resp = new Models.Response.LoginResponse();

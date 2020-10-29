@@ -57,6 +57,7 @@ namespace backend.Database
             {
                 lista.Remove(reqEsqueciSenha);
                 ctx.TbEsqueciSenha.Remove(reqEsqueciSenha);
+                await ctx.SaveChangesAsync();
                 reqEsqueciSenha = await this.ConsultarTbEsqueciSenhaPorIdLoginAsync(atual);
             }
 

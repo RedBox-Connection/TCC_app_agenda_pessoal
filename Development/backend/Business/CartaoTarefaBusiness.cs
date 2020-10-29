@@ -12,7 +12,7 @@ namespace backend.Business
     {
         Database.CartaoTarefaDatabase cartaoTarefaDb = new Database.CartaoTarefaDatabase();
 
-        private Models.TbCartao ValidarCartaoTarefaRequest(Models.TbCartao req)
+        private void ValidarCartaoTarefaRequest(Models.TbCartao req)
         {
             if(req.DsCor == string.Empty)
                 throw new Exception("Cor não pode ser vazia.");
@@ -31,8 +31,6 @@ namespace backend.Business
 
             if(req.NmCartao == string.Empty)
                 throw new Exception("Nome do quadro não pode ser vazio.");
-
-            return req;
         }
 
         public async Task<Models.TbCartao> CadastrarCartaoTarefaAsync(Models.TbCartao req)
