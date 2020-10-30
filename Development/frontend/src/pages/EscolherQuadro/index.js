@@ -21,7 +21,7 @@ function EscolherQuadro() {
           <Content>
               <h1>Escolha um quadro pra entrar</h1>
               <QuadrosContainer>
-                <Link to="*" >
+                <Link to="/Novo-time" >
                   <AddTeam>
                        Criar um time
                   </AddTeam>

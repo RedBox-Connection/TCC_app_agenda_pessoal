@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
         max-width:100vw;
     }
 
-    body{
+    body, textarea{
         font-family: 'Nunito', sans-serif;
         font-weight:400;
         -webkit-font-smoothing: antialiased !important;
@@ -40,6 +40,11 @@ const GlobalStyle = createGlobalStyle`
     a{
         text-decoration:none;
         color:#000;
+    }
+
+    input{
+        border:none;
+        border: 1px solid #ccc !important; 
     }
 `;
 

@@ -22,6 +22,9 @@ import EscolherQuadro from './pages/EscolherQuadro';
 //Convite para time
 import ConviteTime from './pages/ConviteTime';
 
+//Criar time
+import NewTeam from './pages/NewTeam';
+
 function Routes() {
   return(
     <BrowserRouter>
@@ -34,6 +37,7 @@ function Routes() {
             <Route path="/Esqueci-a-senha/Autenticacao" component={AutenticacaoSenha} />
 
             <Route path="/Meus-quadros" component={EscolherQuadro} />
+            <Route path="/Novo-time" component={NewTeam} />
 
             <Route path="/Convite" component={ConviteTime}/>
 
