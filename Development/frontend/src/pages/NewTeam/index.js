@@ -7,6 +7,13 @@ import CabecalhoSimples from '../../components/CabecalhoSimples';
 import { Container, Content, InputBox, InputWrapper, LinkWrapper, ButtonBox } from './styles';
 
 function NewTeam() {
+
+  function copiarTexto(){
+      const input = document.getElementById("link-convite");
+      input.select();
+      document.execCommand('copy')
+  }
+
   return (
       <Container>
           <CabecalhoSimples />
@@ -26,8 +33,8 @@ function NewTeam() {
                 <LinkWrapper>
                   <span>Link para convite</span>
                   <div>
-                    <input type="text" value="o link do cara aqui" />
-                    <button>Copiar</button>
+                    <input type="text" value="o link do cara aqui" id="link-convite"/>
+                    <button onClick={copiarTexto}>Copiar</button>
                   </div>
                 </LinkWrapper>
               </InputBox>
