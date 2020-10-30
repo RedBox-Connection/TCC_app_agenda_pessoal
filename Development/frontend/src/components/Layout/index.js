@@ -8,8 +8,9 @@ import { Container, Main,Content } from './styles';
 
 import NotFound from '../../pages/NotFound';
 
-//Configuração de usuário
+//Configurações
 import ConfiguracaoUsuario from '../../pages/InsideLayout/ConfiguracaoUsuario/index';
+import ConfiguracaoTime from '../../pages/InsideLayout/ConfiguracaoTime';
 
 
 //inicial
@@ -38,6 +39,8 @@ function Layout() {
                   <Route path="/inicial/Feitos" component={Feitos} />
 
                   <Route path="/inicial/Configurações" component={ConfiguracaoUsuario} />
+
+                  <Route path="/inicial/ConfigurarTime" component={ConfiguracaoTime} />
 
                   <Route path="*" component={NotFound} />
                 </Switch>

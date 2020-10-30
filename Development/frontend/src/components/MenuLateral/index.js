@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Journal, CheckCircle, Alarm } from 'react-bootstrap-icons';
+import { Journal, CheckCircle, Alarm, Sliders } from 'react-bootstrap-icons';
 
 import { Container, ItemLink } from './styles';
 
@@ -20,6 +20,10 @@ function MenuLateral() {
           <ItemLink>
               <Alarm />
               <Link to="/Inicial/Atrasados">Atrasados</Link>
+          </ItemLink>
+          <ItemLink>
+              <Sliders />
+              <Link to="/inicial/ConfigurarTime">Configurações</Link>
           </ItemLink>
       </Container>
   );
