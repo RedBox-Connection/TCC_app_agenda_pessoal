@@ -29,6 +29,11 @@ namespace backend.Database
             return resp;
         }
 
+        public async Task<List<Models.TbUsuario>> ConsultarUsuariosAsync()
+        {
+            return await ctx.TbUsuario.ToListAsync();
+        }
+
         public async Task<List<string>> ConsultarEmailsUsuario()
         {
             List<Models.TbLogin> logins = await ctx.TbLogin.ToListAsync();
@@ -48,6 +53,11 @@ namespace backend.Database
         public async Task<Models.TbLogin> ConsultarLoginPorEmailAsync(string email)
         {
             return await ctx.TbLogin.FirstOrDefaultAsync(x => x.DsEmail == email);
+        }
+
+        public async Task<Models.TbUsuario> ConsultarUsuarioPorIdLoginAsync(int idLogin)
+        {
+            return await ctx.TbUsuario.FirstOrDefaultAsync(x => x.IdLogin == idLogin);
         } 
 
         public async Task<Models.TbUsuario> CadastrarUsuarioAsync(Models.TbUsuario req)
@@ -58,12 +68,34 @@ namespace backend.Database
             return req;
         }
 
+        public async Task<Models.TbUsuario> AlterarUsuarioAsync(Models.TbUsuario atual, Models.TbUsuario novo)
+        {
+            atual.NmUsuario = novo.NmUsuario;
+            atual.NmPerfil = novo.NmPerfil;
+            atual.DsFoto = novo.DsFoto;
+            atual.BtReceberEmail = novo.BtReceberEmail;
+
+            await ctx.SaveChangesAsync();
+
+            return atual;
+        }
+
         public async Task<Models.TbLogin> CadastrarLoginAsync(Models.TbLogin req)
         {
             await ctx.TbLogin.AddAsync(req);
             await ctx.SaveChangesAsync();
 
             return req;
+        }
+
+        public async Task<Models.TbLogin> AlterarLoginAsync(Models.TbLogin atual, Models.TbLogin novo)
+        {
+            atual.DsSenha = novo.DsSenha;
+            atual.DtUltLogin = novo.DtUltLogin;
+
+            await ctx.SaveChangesAsync();
+
+            return atual;
         }
 
         public async Task<Models.TbLogin> LoginAsync(Models.TbLogin req)

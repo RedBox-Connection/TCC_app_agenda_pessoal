@@ -78,5 +78,40 @@ namespace backend.Utils
             return resp;
         }
 
+        public Models.TbLogin ToTbLogin(Models.Request.AlterarUsuarioRequest req)
+        {
+            Models.TbLogin resp = new Models.TbLogin();
+
+            resp.DsEmail = req.Email;
+            resp.DsSenha = req.Senha;
+            resp.DtUltLogin = DateTime.Now;
+
+            return resp;
+        }
+
+        public Models.Response.AlterarUsuarioResponse ToAlterarUsuarioResponse(Models.TbLogin tbLogin, Models.TbUsuario tbUsuario)
+        {
+            Models.Response.AlterarUsuarioResponse resp = new Models.Response.AlterarUsuarioResponse();
+
+            resp.Senha = tbLogin.DsSenha;
+            resp.ReceberEmail = tbUsuario.BtReceberEmail;
+            resp.NomeUsuario = tbUsuario.NmUsuario;
+            resp.NomePerfil = tbUsuario.NmPerfil;
+            resp.IdLogin = tbLogin.IdLogin;
+            resp.Foto = tbUsuario.DsFoto;
+
+            return resp;
+        }
+
+        public Models.TbUsuario ToTbUsuario(Models.Request.AlterarUsuarioRequest req)
+        {
+            Models.TbUsuario resp = new Models.TbUsuario();
+
+            resp.NmUsuario = req.NomeUsuario;
+            resp.NmPerfil = req.NomePerfil;
+            resp.BtReceberEmail = req.ReceberEmail;
+
+            return resp;
+        }
     }
 }
