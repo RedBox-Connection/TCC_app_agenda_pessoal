@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 
-namespace backend.Database
+namespace backend.Business
 {
-    public class GerenciadorFotoDatabase
+    public class GerenciadorFoto
     {
         public string GerarNovoNome(string nome)
         {
-            string novoNome = Guid.NewGuid().ToString(); // "f0342-234239"
-            novoNome = novoNome + Path.GetExtension(nome); // "f0342-234239.jpg"
+            string novoNome = Guid.NewGuid().ToString();
+            novoNome = novoNome + Path.GetExtension(nome);
             return novoNome;
         }
 

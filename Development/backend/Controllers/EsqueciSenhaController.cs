@@ -10,7 +10,7 @@ namespace backend.Controllers
     [Route("[controller]")]
     public class EsqueciSenhaController : ControllerBase
     {
-        Database.GerenciadorEmail gerenciadorEmailDb = new Database.GerenciadorEmail();
+        Business.GerenciadorEmail gerenciadorEmailDb = new Business.GerenciadorEmail();
         Business.EsqueciSenhaBusiness esqueciSenhaBsn = new Business.EsqueciSenhaBusiness();
         Utils.EsqueciSenhaConversor esqueciSenhaCnv = new Utils.EsqueciSenhaConversor();
         Business.UsuarioBusiness usuarioBsn = new Business.UsuarioBusiness();
