@@ -10,10 +10,10 @@ export const Container = styled.div`
 `;
 
 export const CardContainer = styled.div`
+    padding:15px;
+    
     display:flex;
     flex-direction:row;
-    justify-content:center;
     
-
     background-color: white;
 `;

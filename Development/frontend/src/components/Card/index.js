@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useDrag } from 'react-dnd';
 
 import Modal from '../Modal';
 
@@ -6,10 +7,17 @@ import { CardContent, Color, Content } from './styles';
 
 export default function Card() {
 
+    const [{ isDragging }, dragRef ] = useDrag({
+        item: {type: 'CARD'},
+        collect: monitor => ({
+            idDragging: monitor.isDragging(),
+        }),
+    });
+
     const [isModalVisible,setIsModalVisible] = useState(false);
 
     return (
-        <CardContent>
+        <CardContent ref={dragRef}>
 
             <button onClick={() =>setIsModalVisible(true)}>
                 <Color />

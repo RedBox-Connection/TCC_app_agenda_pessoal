@@ -1,18 +1,25 @@
 import React from 'react';
 
-import Card from '../../../components/Card';
-import TeamCard from '../../../components/TeamCard';
+import { DndProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
+import List from '../../../components/List';
 
 import { CardContainer, Container } from './styles';
 
 export default function Agenda() {
 
     return(  
-        <Container>
-         <CardContainer>
-          <Card />
-          <TeamCard />
-        </CardContainer>
-        </Container>
+        <DndProvider backend={HTML5Backend}>
+            <Container>
+                <CardContainer>
+                    <List /> 
+                    <List />
+                    <List />
+                    <List />
+                    <List />
+                </CardContainer>
+            </Container>
+        </DndProvider>
     )
 }

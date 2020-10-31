@@ -13,6 +13,9 @@ export const CardContent = styled.div`
 
         border-radius:7px;
         border:none;
+        box-shadow: 0 1px 4px 0 rgba(192, 208, 203, 0.8);
+
+        cursor:grab;
     }
 `;
 
