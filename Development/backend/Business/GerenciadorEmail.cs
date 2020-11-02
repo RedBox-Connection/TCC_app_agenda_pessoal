@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 
 
-namespace backend.Database
+namespace backend.Business
 {
     public class GerenciadorEmail
     {

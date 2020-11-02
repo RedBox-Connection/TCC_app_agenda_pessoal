@@ -13,7 +13,7 @@ namespace backend.Controllers
         Business.UsuarioBusiness usuarioBsn = new Business.UsuarioBusiness();
         Utils.UsuarioConversor usuarioCnv = new Utils.UsuarioConversor();
         Business.QuadroBusiness quadroBsn = new Business.QuadroBusiness();
-        Database.GerenciadorFotoDatabase gerenciadorFotoDb = new Database.GerenciadorFotoDatabase();
+        Business.GerenciadorFoto gerenciadorFoto = new Business.GerenciadorFoto();
 
         [HttpPost("cadastrar")]
         public async Task<ActionResult<Models.Response.LoginResponse>> CadastrarUsuarioAsync(Models.Request.CadastrarUsuarioRequest req)
@@ -71,11 +71,11 @@ namespace backend.Controllers
             try
             {
                 Models.TbUsuario tb = new Models.TbUsuario();
-                tb.DsFoto = gerenciadorFotoDb.GerarNovoNome(req.Foto.FileName);
+                tb.DsFoto = gerenciadorFoto.GerarNovoNome(req.Foto.FileName);
 
                 await usuarioBsn.CadastrarUsuarioAsync(tb);
 
-                gerenciadorFotoDb.SalvarFoto(tb.DsFoto, req.Foto);
+                gerenciadorFoto.SalvarFoto(tb.DsFoto, req.Foto);
 
                 Models.Response.SalvarFotoPerfilResponse resp = usuarioCnv.ToFotoResponse(tb);
 
@@ -94,14 +94,43 @@ namespace backend.Controllers
         {
             try 
             {
-                byte[] foto = await gerenciadorFotoDb.LerFoto(nome);
-                string contentType = gerenciadorFotoDb.GerarContentType(nome);
+                byte[] foto = await gerenciadorFoto.LerFoto(nome);
+                string contentType = gerenciadorFoto.GerarContentType(nome);
                 return File(foto, contentType);
             }
             catch (System.Exception ex)
             {
                 return BadRequest(
                     new Models.Response.ErroResponse(404, ex.Message)
+                );
+            }
+        }
+
+        [HttpPut("alterar")]
+        public async Task<ActionResult<Models.Response.AlterarUsuarioResponse>> AlterarUsuarioAsync([FromForm] Models.Request.AlterarUsuarioRequest req)
+        {
+            try
+            {
+                Models.TbLogin tbLoginAtual = await usuarioBsn.ConsultarLoginPorEmailAsync(req.Email);
+                Models.TbLogin tbLoginNovo = usuarioCnv.ToTbLogin(req);
+
+                Models.TbUsuario tbUsuarioNovo = usuarioCnv.ToTbUsuario(req);
+                tbUsuarioNovo.DsFoto = gerenciadorFoto.GerarNovoNome(req.FotoPerfil.FileName);
+                Models.TbUsuario tbUsuarioAtual = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(tbLoginAtual.IdLogin);
+
+                tbLoginAtual = await usuarioBsn.AlterarLoginAsync(tbLoginAtual, tbLoginNovo);
+                tbUsuarioAtual = await usuarioBsn.AlterarUsuarioAsync(tbUsuarioAtual, tbUsuarioNovo);
+
+                gerenciadorFoto.SalvarFoto(tbUsuarioAtual.DsFoto, req.FotoPerfil);
+
+                Models.Response.AlterarUsuarioResponse resp = usuarioCnv.ToAlterarUsuarioResponse(tbLoginAtual, tbUsuarioAtual);
+                
+                return resp;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(400, e.Message)
                 );
             }
         }
