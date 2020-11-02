@@ -1,8 +1,10 @@
 import React from 'react';
 
+import TodoList from '../Checked-List/ToDoList';
+
 import { Check, JournalX, Trash } from 'react-bootstrap-icons'
 
-import { ModalContent, Comment, Container, Color, InputTitle, InputWrapper, InputDescription, CheckBox, End } from './styles';
+import { ModalContent, Comment, Container, InputTitle, InputWrapper, InputDescription, End } from './styles';
 
 const Modal = ({id = 'Modal', onClose = () => {}}) => {
 
@@ -13,13 +15,12 @@ const Modal = ({id = 'Modal', onClose = () => {}}) => {
     return(
         <ModalContent id={id} onClick={handleOutsideClick}>
 
-                <Container>
-                    <Color />
+                <Container color="lightskyblue">
                     <button onClick={onClose}>
                         <JournalX width="30px" height="30px"/>
                     </button>
                     <InputTitle>
-                        <input type="text" placeholder="Limpar a Bat caverna"/>
+                        <input type="text" placeholder="Tarefa"/>
                     </InputTitle>
 
                     <InputWrapper>
@@ -29,13 +30,10 @@ const Modal = ({id = 'Modal', onClose = () => {}}) => {
                     </InputWrapper>
 
                     <InputDescription>
-                        <label>Decrição:</label>
-                        <input type="text" placeholder="Deixar bem limpo."/>
+                        <textarea placeholder="Descrição"/>
                     </InputDescription>
 
-                    <CheckBox>
-                        <button>Adicionar Item</button>
-                    </CheckBox>
+                    <TodoList />
 
                     <Comment>
                         <input type="text" placeholder="Comentário" />

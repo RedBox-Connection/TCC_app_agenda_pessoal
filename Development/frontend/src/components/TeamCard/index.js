@@ -1,18 +1,10 @@
 import React, {useState} from 'react';
-import { useDrag } from 'react-dnd';
 
 import TeamModal from '../TeamModal';
 
 import { CardContent, Color, Content } from './styles';
 
 export default function TeamCard() {
-
-    const [{ isDragging }, dragRef ] = useDrag({
-        item: {type: 'CARD'},
-        collect: monitor => ({
-            idDragging: monitor.isDragging(),
-        }),
-    });
 
     const [isModalVisible,setIsModalVisible] = useState(false);
 
