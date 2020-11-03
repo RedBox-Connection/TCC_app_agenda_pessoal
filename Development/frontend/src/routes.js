@@ -9,8 +9,12 @@ import CadastrarUsuario from './pages/CadastrarUsuario';
 
 // Login
 import Login from './pages/Login';
+
+// Esqueci a senha
+
 import EsqueciSenha from './pages/Login/EsqueciSenha';
 import AutenticacaoSenha from './pages/Login/AutenticacaoSenha';
+import NovaSenha from './pages/Login/NovaSenha';
 
 //Not Found
 import NotFound from './pages/NotFound';
@@ -25,6 +29,7 @@ import ConviteTime from './pages/ConviteTime';
 //Criar time
 import NewTeam from './pages/NewTeam';
 
+
 function Routes() {
   return(
     <BrowserRouter>
@@ -35,6 +40,7 @@ function Routes() {
             <Route path="/Entrar" component={Login} />
             <Route path="/Esqueci-a-senha" component={EsqueciSenha} exact/>
             <Route path="/Esqueci-a-senha/Autenticacao" component={AutenticacaoSenha} />
+            <Route path="/Esqueci-a-senha/Nova-senha" component={NovaSenha} />
 
             <Route path="/Meus-quadros" component={EscolherQuadro} />
             <Route path="/Novo-time" component={NewTeam} />
