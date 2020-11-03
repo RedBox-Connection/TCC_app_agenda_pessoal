@@ -6,6 +6,12 @@ import { InputBox } from '../../CadastrarUsuario/styles';
 import { Container, InputWrapper } from './styles';
 
 function AutenticacaoSenha() {
+
+
+    // validar codigo async recuperar-senha-codigo
+    // Para o backend Consultar o codigo e confirmar se estiver correto
+
+
   return (
     <Container>
         <Header>

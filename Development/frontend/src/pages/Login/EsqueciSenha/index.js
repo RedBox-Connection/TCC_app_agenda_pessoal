@@ -6,6 +6,12 @@ import {  Header } from '../styles';
 import { Container, ButtonBox } from './styles';
 
 function EsqueciSenha() {
+
+  // Gerar codigo asysc recuperar-senha-email
+  // envio de email para o usuário
+  // backend recebe o email e envia
+
+
   return (
       <Container>
           <Header>
