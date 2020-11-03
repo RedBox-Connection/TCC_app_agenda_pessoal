@@ -43,7 +43,7 @@ namespace backend.Controllers
         }
 
         [HttpPut("recuperar-senha-codigo")]
-        public async Task<ActionResult<Models.Response.ValidarCodigoRecuperacaoResponse>> GerarCodigoAsync(Models.Request.ValidarCodigoRecuperacaoRequest req)
+        public async Task<ActionResult<Models.Response.ValidarCodigoRecuperacaoResponse>> ValidarCodigoAsync(Models.Request.ValidarCodigoRecuperacaoRequest req)
         {
             try
             {
