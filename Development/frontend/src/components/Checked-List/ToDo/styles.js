@@ -24,12 +24,18 @@ export const TodoText = styled.div`
 
 export const Icons = styled.div`
     .delete-icon{
-        height:25px;
-        width:25px;
+        height:30px;
+        width:60px;
+        background:#ff3333;
+        border:none;
+        margin:5px;
     }
     
     .edit-icon{
-        height:25px;
-        width:25px;
+        height:30px;
+        width:60px;
+        background:#ffff80;
+        border:none;
+        margin:5px;
     }
 `;
