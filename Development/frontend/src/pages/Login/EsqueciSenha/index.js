@@ -6,9 +6,9 @@ import {  Header } from '../styles';
 import { Container, ButtonBox, Loader } from './styles';
 
 import ClipLoader from "react-spinners/ClipLoader";
+import { toast, ToastContainer } from 'react-toastify';
 
 import ApiRecSenha from '../../../services/Login/RecuperacaoSenha/services';
-import { toast, ToastContainer } from 'react-toastify';
 
 const apiRecSenha = new ApiRecSenha();
 

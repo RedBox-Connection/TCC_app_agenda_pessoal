@@ -1,16 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Header } from '../styles';
 import { InputBox } from '../../CadastrarUsuario/styles';
 
-import { Container, InputWrapper } from './styles';
+import { Loader, Container, InputWrapper } from './styles';
+
+import ApiRecSenha from '../../../services/Login/RecuperacaoSenha/services';
+import { toast, ToastContainer } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+import ClipLoader from "react-spinners/ClipLoader";
+
+const apiRecSenha = new ApiRecSenha();
 
 function AutenticacaoSenha() {
 
+    const [loading, setLoading] = useState(false);
+    const navegation = useHistory();
 
-    // validar codigo async recuperar-senha-codigo
-    // Para o backend Consultar o codigo e confirmar se estiver correto
+    const [codigo, setCodigo] = useState('000000');
+    const req = {
+        codigo
+    };
 
+    const validarCodigoClick = async () => {
+        try {
+            setLoading(true);
+
+            const resp = await apiRecSenha.validarCodigo(req);
+
+            setLoading(false);
+
+            navegation.push({
+                pathname: '/Esqueci-a-senha/Nova-senha',
+                state: {
+                    idLogin: resp.idLogin,
+                    valido: resp.valido
+                }
+            });
+
+            return resp;
+        } catch (e) {
+            setLoading(false);
+            if(e.response.data.erro.includes('expirou')) {
+                toast.error(e.response.data.erro);
+                await apiRecSenha.deletarCodigoPorTempo(req);
+            }
+            toast.error(e.response.data.erro);
+        }
+    }
 
   return (
     <Container>
@@ -24,14 +61,21 @@ function AutenticacaoSenha() {
                 <span>Código</span>
                 <input type="number" 
                        min="111111"
-                       max="999999" 
+                       max="999999"
+                       onChange={(e) => {setCodigo(e.currentTarget.value)}} 
                 />
             </InputWrapper>
         </InputBox>
     
-        <button>
+        <button onClick={validarCodigoClick}>
             Prosseguir
         </button>
+
+        <Loader>
+            <ClipLoader loading={loading} />
+        </Loader>
+
+        <ToastContainer />
     </Container>
   );
 }

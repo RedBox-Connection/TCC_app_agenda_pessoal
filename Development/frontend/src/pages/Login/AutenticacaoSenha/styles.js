@@ -48,3 +48,16 @@ export const InputWrapper = styled.div`
         -webkit-appearance: none;
     }  
 `;
+
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  transform: translate(0%, -40%);
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+`;

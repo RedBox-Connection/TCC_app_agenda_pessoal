@@ -11,8 +11,13 @@ export default class ApiRecSenha{
         return res;
     }
 
-    async gerarCodigo(req) {
+    async validarCodigo(req) {
         const res = await apiRecuperacaoSenha.put('/recuperar-senha-codigo', req)
+        return res;
+    }
+
+    async deletarCodigoPorTempo(req) {
+        const res = await apiRecuperacaoSenha.delete('/recuperar-senha-deletar-tempo', req)
         return res;
     }
 }
