@@ -87,7 +87,7 @@ namespace backend.Controllers
         }
 
         [HttpDelete("recuperar-senha-deletar/{id}")]
-        public async Task<ActionResult<Models.Response.CodigoRecuperacaoResponse>> DeletarRecuperacaoDeSenhaCodigoAsync(int? id, Models.Request.NovaSenhaRequest req)
+        public async Task<ActionResult<Models.Response.CodigoRecuperacaoResponse>> AlterarSenhaDeletarCodigoAsync(int? id, Models.Request.NovaSenhaRequest req)
         {
             try{
                 Models.TbLogin tbNovo = esqueciSenhaCnv.ToSenha(req);
