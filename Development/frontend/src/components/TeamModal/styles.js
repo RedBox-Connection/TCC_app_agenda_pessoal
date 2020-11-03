@@ -18,15 +18,18 @@ export const Container = styled.div`
     background-color: white;
 
     height:590px;
-    width:400px;
+    width:410px;
     margin-top:10vh;
 
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:space-between;
 
-    border-radius:7px;
-    border:none;
+    border:5px solid ${props => props.color};
+
+    overflow:hidden;
+    overflow:auto;
 
     >button{
         background-color:transparent;
@@ -41,21 +44,12 @@ export const Container = styled.div`
     }
 `;
 
-export const Color = styled.div`
-    background-color: lightskyblue;
-    
-    height:10px;
-    width:400px;
-
-    border-radius:7px;
-    border:none;
-`;
-
 export const InputTitle = styled.div`
     >input{
         height:30px;
         width:350px;
         margin:10px;
+        padding:10px;
     }
 `;
 
@@ -70,6 +64,8 @@ export const InputWrapper = styled.div`
     >button{
         height:30px;
         width:40px;
+        
+        border:none;
     }
 `;
 
@@ -80,40 +76,29 @@ export const InputDescription = styled.div`
     display:flex;
     flex-direction:column;
     
-    >input{
-        height:30px;
+    >textarea{
+        height:250px;
         margin-top:10px;
+        padding:10px;
     }
 `;
 
-export const CheckBox = styled.div`
-    background-color:lightgrey;
-    
+export const End = styled.div`
     width:350px;
-    height:100px;
-    margin-top:10px;
 
     display:flex;
-    flex-direction:column;
-    justify-content:center;
+    flex-direction:row;
+    justify-content:space-between;
     align-items:center;
 
-    border-radius:7px;
-    border:none;
-
     >button{
-        height:30px;
-        width:150px;
-        
-        background-color:lightskyblue;
-
-        border-radius:7px;
+        background-color: transparent;
         border:none;
     }
 `;
 
 export const Comment = styled.div`
-    background-color:lightgrey;
+    background-color:#f2f2f2;
     
     width:350px;
     height:200px;
@@ -129,6 +114,7 @@ export const Comment = styled.div`
         height:30px;
         margin:10px;
         width:225px;
+        padding:10px;
     }
 
     >button {
@@ -138,22 +124,6 @@ export const Comment = styled.div`
         
         background-color:lightskyblue;
 
-        border-radius:7px;
-        border:none;
-    }
-`;
-
-export const End = styled.div`
-    width:350px;
-    margin-top:45px;
-
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    align-items:center;
-
-    >button{
-        background-color: transparent;
         border:none;
     }
 `;

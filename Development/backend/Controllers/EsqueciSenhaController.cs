@@ -10,7 +10,7 @@ namespace backend.Controllers
     [Route("[controller]")]
     public class EsqueciSenhaController : ControllerBase
     {
-        Business.GerenciadorEmail gerenciadorEmailDb = new Business.GerenciadorEmail();
+        Business.GerenciadorEmail gerenciadorEmailBsn = new Business.GerenciadorEmail();
         Business.EsqueciSenhaBusiness esqueciSenhaBsn = new Business.EsqueciSenhaBusiness();
         Utils.EsqueciSenhaConversor esqueciSenhaCnv = new Utils.EsqueciSenhaConversor();
         Business.UsuarioBusiness usuarioBsn = new Business.UsuarioBusiness();
@@ -28,7 +28,7 @@ namespace backend.Controllers
 
                 tb = await esqueciSenhaBsn.SalvarCodigoRecuperacaoAsync(tb);
 
-                gerenciadorEmailDb.EnviarEmail(tb.DsEmail, tb.TmExpiracao, tb.NrCodigo);
+                gerenciadorEmailBsn.EnviarEmail(tb.DsEmail, tb.TmExpiracao, tb.NrCodigo);
 
                 Models.Response.CodigoRecuperacaoResponse resp = esqueciSenhaCnv.ToEsqueciSenhaResponse(tb, usuario);
 
