@@ -198,8 +198,8 @@ namespace backend.Business
 
             req = await usuarioDb.LoginAsync(req);
 
-            if(req.IdLogin <= 0)
-                throw new Exception("Usuario não existe.");
+            if(req == null || req.IdLogin <= 0)
+                throw new Exception("Usuário não cadastrado.");
             
             return req;
         }

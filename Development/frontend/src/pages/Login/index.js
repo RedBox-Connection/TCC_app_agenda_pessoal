@@ -23,7 +23,6 @@ function Login() {
 
   const efetuarLogin = async () => {
     try {
-
       const resp = await api.loginUsuario({
         email,
         senha
@@ -40,7 +39,7 @@ function Login() {
       return resp;
       
     } catch (e) {
-      const erro = e.response.data.erro ;
+      const erro = e.response.data.erro;
 
       if(erro === "Object reference not set to an instance of an object."){
         toast.error("Conta inexistente")
