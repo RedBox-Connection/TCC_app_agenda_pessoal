@@ -114,6 +114,7 @@ export const Comment = styled.div`
         height:30px;
         margin:10px;
         width:225px;
+        padding:10px;
     }
 
     >button {

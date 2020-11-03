@@ -1,12 +1,10 @@
-//Mudar TeamModal
-
 import React from 'react';
 
 import { Check, JournalX, Trash } from 'react-bootstrap-icons';
 
 import TodoList from '../Checked-List/ToDoList';
 
-import { ModalContent, Container, Color, InputTitle, InputWrapper, InputDescription, CheckBox, End } from './styles';
+import { ModalContent, Container, InputTitle, InputWrapper, InputDescription, End } from './styles';
 
 const Modal = ({id = 'Modal', onClose = () => {}}) => {
 
