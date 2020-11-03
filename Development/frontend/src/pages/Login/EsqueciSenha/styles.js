@@ -12,6 +12,19 @@ export const Container = styled.div`
   background-color:var(--gelo);
 `;
 
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  transform: translate(0%, -40%);
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+`;
+
 export const ButtonBox = styled.div`
   display:flex;
   flex-direction:column;

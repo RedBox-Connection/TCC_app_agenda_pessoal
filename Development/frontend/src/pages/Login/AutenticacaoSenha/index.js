@@ -23,7 +23,7 @@ function AutenticacaoSenha() {
             <InputWrapper>
                 <span>Código</span>
                 <input type="number" 
-                       min="0"
+                       min="111111"
                        max="999999" 
                 />
             </InputWrapper>
