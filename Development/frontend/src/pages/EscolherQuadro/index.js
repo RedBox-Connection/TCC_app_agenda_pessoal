@@ -42,11 +42,12 @@ function EscolherQuadro(props) {
 
   useEffect(() => {
     consultarQuadrosClick();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
       <Container>
-        <LoadingBar ref={ref}/>
+        <LoadingBar color="#489FB5" height={5} ref={ref}/>
           <CabecalhoSimples />
           <Content>
               <h1>Olá {nomeUsuario}, escolha o quadro que deseja entrar:</h1>
@@ -57,7 +58,7 @@ function EscolherQuadro(props) {
                   </AddTeam>
                 </Link>
                   {quadros.map(quadro => (
-                     <QuadroButton key={quadro.idQuadro} nome={quadro.nomeQuadro}/>
+                     <QuadroButton key={quadro.idQuadro} nomeQuadro={quadro.nomeQuadro} nomeUsuario={nomeUsuario}/>
                   ))}
               </QuadrosContainer>
           </Content>

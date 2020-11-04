@@ -5,9 +5,15 @@ import { Container } from './styles';
 
 function QuadroButton(props) {
   return (
-    <Link to="*">
+    <Link to={{
+      pathname: '/Inicial',
+      state: {
+        idLogin: props.key,
+        nomeUsuario: props.nomeUsuario
+      }
+    }}>
       <Container>
-          {props.nome}
+          {props.nomeQuadro}
       </Container>
     </Link>
   );

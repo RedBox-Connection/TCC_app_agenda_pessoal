@@ -51,7 +51,7 @@ function Inicial() {
                     O jeito mais fácil de definir lembretes, tarefas e obrigações
                 </p>
 
-                {/* {/* <a href="#"> Começar agora </a> */}
+                <a href="/Criar-uma-conta"> Começar agora </a>
             </Apresentation>
 
         </FaixaDois>
