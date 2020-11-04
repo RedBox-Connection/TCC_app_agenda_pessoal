@@ -199,7 +199,7 @@ namespace backend.Business
             req = await usuarioDb.LoginAsync(req);
 
             if(req == null || req.IdLogin <= 0)
-                throw new Exception("Usuário não cadastrado.");
+                throw new Exception("Email ou senha inválido, verifique suas credênciais.");
             
             return req;
         }

@@ -8,16 +8,21 @@ export default class ApiRecSenha{
 
     async envioDeEmail(req) {
         const res = await apiRecuperacaoSenha.post('/recuperar-senha-email', req)
-        return res;
+        return res.data;
     }
 
     async validarCodigo(req) {
         const res = await apiRecuperacaoSenha.put('/recuperar-senha-codigo', req)
-        return res;
+        return res.data;
     }
 
     async deletarCodigoPorTempo(req) {
         const res = await apiRecuperacaoSenha.delete('/recuperar-senha-deletar-tempo', req)
-        return res;
+        return res.data;
+    }
+
+    async alterarSenha(idLogin, req) {
+        const res = await apiRecuperacaoSenha.put(`/recuperar-senha-deletar/${idLogin}`, req)
+        return res.data;
     }
 }

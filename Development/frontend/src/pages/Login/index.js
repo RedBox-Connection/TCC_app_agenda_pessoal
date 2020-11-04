@@ -75,9 +75,12 @@ function Login() {
 
                     <InputWrapper>
                     <span>Senha</span>
-                    <input type="password" placeholder="Pelo menos 8 caracteres" onChange={e => setSenha(e.target.value)} /> 
-                        <Link to="/Esqueci-a-senha">
-                        Esqueci minha senha
+                    <input type="password" placeholder="********" onChange={e => setSenha(e.target.value)} /> 
+                        <Link to={{
+                          pathname: '/Esqueci-a-senha',
+                          state: email
+                        }}>
+                          Esqueci minha senha
                         </Link>
                     </InputWrapper>
               </InputBox>

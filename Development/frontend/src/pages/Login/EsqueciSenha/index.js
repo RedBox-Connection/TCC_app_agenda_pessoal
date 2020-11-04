@@ -12,12 +12,12 @@ import ApiRecSenha from '../../../services/Login/RecuperacaoSenha/services';
 
 const apiRecSenha = new ApiRecSenha();
 
-function EsqueciSenha() {
+function EsqueciSenha(props) {
 
   const [loading, setLoading] = useState(false);
   const navegation = useHistory();
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(props.location.state);
   const req = {
     email
   };
@@ -54,13 +54,13 @@ function EsqueciSenha() {
           <InputBox>
             <InputWrapper>
                <span>Email</span>
-               <input type="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value)}}/>
+               <input type="email" placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
             </InputWrapper>
             <p>Nós te enviaremos um código de segurança , para recebe-lo clique no botão de <strong>prosseguir</strong></p>
           </InputBox>
 
           <ButtonBox>
-            <Link onClick={enviarEmailClick}>Prosseguir</Link>
+            <button onClick={enviarEmailClick}>Prosseguir</button>
             <Link to="/Entrar">Cancelar</Link>
           </ButtonBox>
 

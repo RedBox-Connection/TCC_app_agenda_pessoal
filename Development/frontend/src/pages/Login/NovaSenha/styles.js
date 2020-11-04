@@ -70,3 +70,16 @@ export const InputWrapper = styled.div`
       padding: 0 15px;
   }
 `;
+
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  transform: translate(300%, 360%);
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+`;

@@ -86,12 +86,13 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPut("recuperar-senha-deletar/{id}")]
-        public async Task<ActionResult<Models.Response.CodigoRecuperacaoResponse>> AlterarSenhaDeletarCodigoAsync(int? id, Models.Request.NovaSenhaRequest req)
+        [HttpPut("recuperar-senha-deletar/{idLogin}")]
+        public async Task<ActionResult<Models.Response.CodigoRecuperacaoResponse>> AlterarSenhaDeletarCodigoAsync(int? idLogin, Models.Request.NovaSenhaRequest req)
         {
             try{
+                esqueciSenhaBsn.ValidarSenhasIdenticas(req.Senha, req.ConfirmarSenha);
                 Models.TbLogin tbNovo = esqueciSenhaCnv.ToSenha(req);
-                Models.TbLogin tbAtual = await esqueciSenhaBsn.ConsultarLoginPorIdAsync(id);
+                Models.TbLogin tbAtual = await esqueciSenhaBsn.ConsultarLoginPorIdAsync(idLogin);
                 Models.TbEsqueciSenha tbEsqueciSenha = await esqueciSenhaBsn.ConsultarTbEsqueciSenhaPorIdLoginAsync(tbAtual);
 
                 tbAtual = await esqueciSenhaBsn.DeletarRecuperacaoDeSenhaAsync(tbNovo, tbAtual, tbEsqueciSenha);

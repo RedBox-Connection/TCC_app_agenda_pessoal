@@ -90,12 +90,12 @@ function CadastrarUsuario() {
 
                     <InputWrapper>
                         <span>Senha</span>
-                        <input type="password" placeholder="Pelo menos 8 caracteres" onChange={e => setSenha(e.target.value)}/>
+                        <input type="password" onChange={e => setSenha(e.target.value)}/>
                         <p>
-                            A senha deve conter pelo menos 8 caracteres <br/> 
-                            1 letra maiuscula <br/>
+                            A senha deve conter pelo menos 8 caracteres, <br/> 
+                            1 letra maiuscula, <br/>
                             1 minuscula e<br/>
-                            1 caracterer especial        
+                            1 caracterer especial.        
                         </p>
                     </InputWrapper>
 

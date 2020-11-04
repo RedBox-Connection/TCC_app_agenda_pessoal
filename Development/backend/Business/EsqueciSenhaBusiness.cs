@@ -34,6 +34,12 @@ namespace backend.Business
             return resp;
         }
 
+        public void ValidarSenhasIdenticas(string senha, string confirmarSenha)
+        {
+            if(senha != confirmarSenha)
+                throw new Exception("As senhas não se condizem, por favor insira senhas correspondentes.");
+        }
+
         public async Task<Models.TbEsqueciSenha> SalvarCodigoRecuperacaoAsync(Models.TbEsqueciSenha req)
         {
             if(req.IdLogin <= 0)
