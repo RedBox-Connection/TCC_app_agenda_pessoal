@@ -31,7 +31,10 @@ function Login() {
   const efetuarLogin = async () => {
     try {
       setLoading(true);
-      const resp = await api.loginUsuario(req)
+
+      const resp = await api.loginUsuario(req);
+
+      setLoading(false);
 
       navegation.push({
         pathname:"/Meus-quadros", 
@@ -44,6 +47,7 @@ function Login() {
       return resp;
       
     } catch (e) {
+      setLoading(false)
       toast.error(e.response.data.erro);
     }
   }
