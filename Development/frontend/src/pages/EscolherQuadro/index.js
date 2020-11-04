@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CabecalhoSimples from '../../components/CabecalhoSimples';
 import QuadroButton from '../../components/QuadroButton';
 
-import { Container, Content, QuadrosContainer, AddTeam } from './styles';
+import { Container, Content, QuadrosContainer, AddTeam, AddBoard } from './styles';
 
 import ApiQuadro from '../../services/Quadro/services';
 import { toast } from 'react-toastify';
@@ -60,6 +60,11 @@ function EscolherQuadro(props) {
                   {quadros.map(quadro => (
                      <QuadroButton key={quadro.idQuadro} nomeQuadro={quadro.nomeQuadro} nomeUsuario={nomeUsuario}/>
                   ))}
+                <Link to="/Novo-quadro">
+                  <AddBoard>
+                       Criar um quadro
+                  </AddBoard>
+                </Link>
               </QuadrosContainer>
           </Content>
       </Container>

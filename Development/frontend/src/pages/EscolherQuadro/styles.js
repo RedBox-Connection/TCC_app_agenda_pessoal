@@ -47,3 +47,20 @@ export const AddTeam = styled.div`
   border-radius:5px;
   font-size:20px;
 `;
+
+export const AddBoard = styled.div`
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  
+  height:80px;
+  width:200px;
+
+  padding:5px 8px;
+  margin:10px 5px;
+
+  background-color:var(--verde);
+  border-radius:5px;
+  font-size:20px;
+`;
