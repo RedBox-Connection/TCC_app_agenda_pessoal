@@ -16,7 +16,7 @@ namespace backend.Business
 
         public async void SalvarFoto(string nome, IFormFile foto)
         {
-            string caminhoFoto = Path.Combine(AppContext.BaseDirectory, "Storage", "Fotos", nome);
+            string caminhoFoto = Path.Combine(AppContext.BaseDirectory, "Storage", "Images", nome);
 
             using (FileStream fs = new FileStream(caminhoFoto, FileMode.Create))
             {
@@ -26,7 +26,7 @@ namespace backend.Business
 
         public async Task<byte[]> LerFoto(string nome)
         {
-            string caminhoFoto = Path.Combine(AppContext.BaseDirectory, "Storage", "Fotos", nome);
+            string caminhoFoto = Path.Combine(AppContext.BaseDirectory, "Storage", "Images", nome);
             byte[] foto = await File.ReadAllBytesAsync(caminhoFoto);
 
             return foto;

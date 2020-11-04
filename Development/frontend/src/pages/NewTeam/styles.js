@@ -49,30 +49,30 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const LinkWrapper = styled.div`
-  display:flex;
-  flex-direction:column;
+// export const LinkWrapper = styled.div`
+//   display:flex;
+//   flex-direction:column;
 
-  width: 400px;
+//   width: 400px;
 
-  margin: 5px 0;
+//   margin: 5px 0;
 
-  > div{
-      display:flex;
-      justify-content:space-between;
-  }
+//   > div{
+//       display:flex;
+//       justify-content:space-between;
+//   }
 
-  > div input{
-      height:35px;
-      width:320px;
+//   > div input{
+//       height:35px;
+//       width:320px;
 
-      padding:0 15px;
-  }
+//       padding:0 15px;
+//   }
 
-  > div button{
-      padding:0 10px;
-  }
-`;
+//   > div button{
+//       padding:0 10px;
+//   }
+// `;
 
 export const ButtonBox = styled.div`
   display:flex;

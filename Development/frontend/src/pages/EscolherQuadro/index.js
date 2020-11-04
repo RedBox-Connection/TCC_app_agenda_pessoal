@@ -26,8 +26,6 @@ function EscolherQuadro(props) {
 
       const resp = await apiQuadro.consultarQuadrosAsync(idLogin);
 
-      console.log(resp);
-
       setQuadros([...resp]);
       
       ref.current.complete();
@@ -58,7 +56,8 @@ function EscolherQuadro(props) {
                   </AddTeam>
                 </Link>
                   {quadros.map(quadro => (
-                     <QuadroButton key={quadro.idQuadro} nomeQuadro={quadro.nomeQuadro} nomeUsuario={nomeUsuario}/>
+                     <QuadroButton nomeQuadro={quadro.nomeQuadro} nomeUsuario={nomeUsuario}
+                                   idLogin={idLogin}/>
                   ))}
                 <Link to="/Novo-quadro">
                   <AddBoard>

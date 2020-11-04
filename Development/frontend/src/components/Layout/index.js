@@ -22,11 +22,15 @@ import Agenda from '../../pages/InsideLayout/Agenda';
 import Feitos from '../../pages/InsideLayout/Agenda/Feitos';
 // import Atrasados from '../../pages/Agenda/Atrasados';
 
-function Layout() {
+function Layout(props) {
+
+  const nomeUsuario = props.location.state.nomeUsuario;
+  const idLogin = props.location.state.idLogin;
+
   return (
       <Container>
         <BrowserRouter>
-            <CabecalhoLayout />
+            <CabecalhoLayout nomeUsuario={nomeUsuario}/>
             <Main>
               
             <MenuLateral />

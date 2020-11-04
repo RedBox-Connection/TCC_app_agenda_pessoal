@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
 function QuadroButton(props) {
+
+  console.log(props);
+
   return (
     <Link to={{
       pathname: '/Inicial',
       state: {
-        idLogin: props.key,
+        idLogin: props.idLogin,
         nomeUsuario: props.nomeUsuario
       }
     }}>

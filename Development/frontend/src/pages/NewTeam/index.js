@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom';
 
 import CabecalhoSimples from '../../components/CabecalhoSimples';
 
-import { Container, Content, InputBox, InputWrapper, LinkWrapper, ButtonBox } from './styles';
+import { Container, Content, InputBox, InputWrapper, ButtonBox } from './styles';
+
+// LinkWrapper
 
 function NewTeam() {
 
-  function copiarTexto(){
-      const input = document.getElementById("link-convite");
-      input.select();
-      document.execCommand('copy')
-  }
+  // function copiarTexto(){
+  //     const input = document.getElementById("link-convite");
+  //     input.select();
+  //     document.execCommand('copy')
+  // }
 
   return (
       <Container>
@@ -30,13 +32,13 @@ function NewTeam() {
                   <textarea placeholder="Os maiores heróis da terra, designados a proteger os fracos e combater os vilões que juram destruir a terra ">
                   </textarea>
                 </InputWrapper>
-                <LinkWrapper>
+                {/* <LinkWrapper>
                   <span>Link para convite</span>
                   <div>
                     <input type="text" value="o link do cara aqui" id="link-convite"/>
                     <button onClick={copiarTexto}>Copiar</button>
                   </div>
-                </LinkWrapper>
+                </LinkWrapper> */}
               </InputBox>
 
               <ButtonBox>
