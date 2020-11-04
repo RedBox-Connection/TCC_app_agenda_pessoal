@@ -26,8 +26,9 @@ import EscolherQuadro from './pages/EscolherQuadro';
 //Convite para time
 import ConviteTime from './pages/ConviteTime';
 
-//Criar time
+//Criar quadros
 import NewTeam from './pages/NewTeam';
+import CriarQuadro from './pages/CriarQuadro';
 
 
 function Routes() {
@@ -44,6 +45,7 @@ function Routes() {
 
             <Route path="/Meus-quadros" component={EscolherQuadro} />
             <Route path="/Novo-time" component={NewTeam} />
+            <Route path="/Novo-quadro" component={CriarQuadro} />
 
             <Route path="/Convite" component={ConviteTime}/>
 
