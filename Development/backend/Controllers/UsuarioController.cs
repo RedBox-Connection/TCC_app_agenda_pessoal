@@ -14,19 +14,26 @@ namespace backend.Controllers
         Utils.UsuarioConversor usuarioCnv = new Utils.UsuarioConversor();
         Business.QuadroBusiness quadroBsn = new Business.QuadroBusiness();
         Business.GerenciadorFoto gerenciadorFoto = new Business.GerenciadorFoto();
+        Business.EsqueciSenhaBusiness esqueciSenhaBsn = new Business.EsqueciSenhaBusiness();
 
         [HttpPost("cadastrar")]
         public async Task<ActionResult<Models.Response.LoginResponse>> CadastrarUsuarioAsync(Models.Request.CadastrarUsuarioRequest req)
         {
             try
             {
+                esqueciSenhaBsn.ValidarSenhasIdenticas(req.Senha, req.ConfirmarSenha);
+
                 Models.TbLogin tbLogin = usuarioCnv.ToCadastrarTbLogin(req.Email, req.Senha);
+
+                Models.TbUsuario tbUsuario = usuarioCnv.ToCadastrarTbUsuario(req.NomeUsuario, req.NomeCompleto);
+
+                bool ignoreValidation = await usuarioBsn.ValidarCadastroUsuarioLogin(tbUsuario, tbLogin);
 
                 tbLogin = await usuarioBsn.CadastrarLoginAsync(tbLogin);
 
-                Models.TbUsuario tbUsuario = usuarioCnv.ToCadastrarTbUsuario(req.NomeUsuario, req.NomeCompleto, tbLogin.IdLogin);
-
                 tbUsuario = await usuarioBsn.CadastrarUsuarioAsync(tbUsuario);
+
+                tbUsuario = await usuarioBsn.CadastrarUsuarioLoginAsync(tbUsuario, tbLogin.IdLogin);
 
                 Models.TbQuadro tbQuadro = usuarioCnv.ToTbQuadro(tbUsuario.IdUsuario);
 

@@ -6,8 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import cadastrar from '../../images/cadastrar.svg';
 
-import { Container, Left, Rigth, Login, Content, InputBox, InputWrapper, ButtonBox } from './styles';
+import { Loader, Container, Left, Rigth, Login, Content, InputBox, InputWrapper, ButtonBox } from './styles';
 
+import ClipLoader from "react-spinners/ClipLoader";
 
 import ApiCadastro from '../../services/Cadastro/services';
 
@@ -19,37 +20,38 @@ function CadastrarUsuario() {
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [email , setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [confirmarSenha, setConfirmarSenha] = useState('');
+    const req = {
+        nomeCompleto,
+        nomeUsuario,
+        email,
+        senha,
+        confirmarSenha
+    }
 
     const navegation = useHistory();
+    const [loading, setLoading] = useState(false);
 
     const cadastrarUsuario = async () =>{
         try {
+            setLoading(true);
 
-            const resp = await api.cadastroCliente({
-                nomeCompleto,
-                nomeUsuario,
-                email,
-                senha
-            })
+            const resp = await api.cadastroCliente(req)
 
             navegation.push({
                 pathname:"/Meus-quadros", 
                 state:{
-                    idlogin:resp.idlogin,
-                    nomeUsuario:resp.nomeUsuario
+                    idlogin: resp.idlogin,
+                    nomeUsuario: resp.nomeUsuario
                 }
             })
 
+            setLoading(false);
+
             return resp;
         } catch (e) {
-            const erro = e.response.data.erro;
-
-            if(erro !== ''){
-                toast.error(erro);
-            }
-            else{
-                toast.error("coisas ruins ocorreram :(")
-            }
+            setLoading(false);
+            toast.error(e.response.data.erro);
         }
     }
 
@@ -85,12 +87,12 @@ function CadastrarUsuario() {
 
                     <InputWrapper>
                         <span>Email</span>
-                        <input type="email" placeholder="Bruce.Wayne@gmail.com" onChange={e => setEmail(e.target.value)} />
+                        <input type="email" placeholder="bruce.wayne@gmail.com" onChange={e => setEmail(e.target.value)} />
                     </InputWrapper>
 
                     <InputWrapper>
                         <span>Senha</span>
-                        <input type="password" onChange={e => setSenha(e.target.value)}/>
+                        <input type="password" placeholder="********" onChange={e => setSenha(e.target.value)}/>
                         <p>
                             A senha deve conter pelo menos 8 caracteres, <br/> 
                             1 letra maiuscula, <br/>
@@ -99,12 +101,21 @@ function CadastrarUsuario() {
                         </p>
                     </InputWrapper>
 
+                    <InputWrapper>
+                        <span>Confirme sua Senha</span>
+                        <input type="password" placeholder="********" onChange={(e) => {setConfirmarSenha(e.target.value)}}/>
+                    </InputWrapper>
+
                 </InputBox>
 
                 <ButtonBox>
                     <button onClick={cadastrarUsuario}>Criar minha conta!</button>
                     <Link to="/">Cancelar</Link>
                 </ButtonBox>
+
+                <Loader>
+                    <ClipLoader loading={loading}/>
+                </Loader>
 
             </Content>
 

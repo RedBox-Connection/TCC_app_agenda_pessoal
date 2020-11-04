@@ -47,6 +47,9 @@ namespace backend.Business
 
             bool resp = nomesUsuario.Contains(nomeUsuario);
 
+            if(resp)
+                throw new Exception("Nome de usuário já existe. Por favor insira um novo nome.");
+
             return resp;
         }
 
@@ -74,6 +77,9 @@ namespace backend.Business
                 return false;
 
             bool resp = emailsUsuario.Contains(emailUsuario);
+
+            if(resp)
+                throw new Exception("Email já cadastrado, por favor insira outro email.");
 
             return resp;
         }
@@ -142,16 +148,19 @@ namespace backend.Business
 
         public async Task<Models.TbUsuario> CadastrarUsuarioAsync(Models.TbUsuario req)
         {
-            this.ValidarUsuarioRequest(req);
-
-            bool nomeUsuarioOk = await this.ValidarNomeUsuario(req.NmUsuario);
-
-            if(nomeUsuarioOk)
-                throw new Exception("Nome de usuário já existe. Por favor insira um novo nome.");
-
             req = await usuarioDb.CadastrarUsuarioAsync(req);
 
             return req;
+        }
+
+        public async Task<Models.TbUsuario> CadastrarUsuarioLoginAsync(Models.TbUsuario semLogin, int idLogin)
+        {
+            if(idLogin <= 0)
+                throw new Exception("Usuário não pode ser cadastrado, tente novamente.");
+
+            semLogin = await usuarioDb.CadastrarUsuarioLoginAsync(semLogin, idLogin);
+
+            return semLogin;
         }
 
         public async Task<Models.TbUsuario> AlterarUsuarioAsync(Models.TbUsuario atual, Models.TbUsuario novo)
@@ -167,13 +176,6 @@ namespace backend.Business
 
         public async Task<Models.TbLogin> CadastrarLoginAsync(Models.TbLogin req)
         {
-            this.ValidarLoginRequest(req);
-
-            bool emailOk = await this.ValidarEmailUsuario(req.DsEmail);
-
-            if(emailOk)
-                throw new Exception("Email já cadastrado, por favor insira outro email.");
-
             req = await usuarioDb.CadastrarLoginAsync(req);
 
             return req;
@@ -202,6 +204,19 @@ namespace backend.Business
                 throw new Exception("Email ou senha inválido, verifique suas credênciais.");
             
             return req;
+        }
+
+        public async Task<bool> ValidarCadastroUsuarioLogin(Models.TbUsuario tbUsuario, Models.TbLogin tbLogin)
+        {
+            this.ValidarUsuarioRequest(tbUsuario);
+
+            bool ignore = await this.ValidarNomeUsuario(tbUsuario.NmUsuario);
+
+            this.ValidarLoginRequest(tbLogin);
+
+            bool ignore2 = await this.ValidarEmailUsuario(tbLogin.DsEmail);
+
+            return true;
         }
     }
 }

@@ -68,6 +68,15 @@ namespace backend.Database
             return req;
         }
 
+        public async Task<Models.TbUsuario> CadastrarUsuarioLoginAsync(Models.TbUsuario semLogin, int idLogin)
+        {
+            semLogin.IdLogin = idLogin;
+
+            await ctx.SaveChangesAsync();
+
+            return semLogin;
+        }
+
         public async Task<Models.TbUsuario> AlterarUsuarioAsync(Models.TbUsuario atual, Models.TbUsuario novo)
         {
             atual.NmUsuario = novo.NmUsuario;

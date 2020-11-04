@@ -130,3 +130,17 @@ export const ButtonBox = styled.div`
         padding:8px 20px;
     }
 `;
+
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  top: 95.5%;
+  left: 56%;
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+`;

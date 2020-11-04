@@ -16,12 +16,13 @@ namespace backend.Utils
             return resp;
         }
 
-        public Models.TbUsuario ToCadastrarTbUsuario(string nomeUsuario, string nomeCompleto, int idLogin)
+        public Models.TbUsuario ToCadastrarTbUsuario(string nomeUsuario, string nomeCompleto)
         {
             Models.TbUsuario resp = new Models.TbUsuario();
 
             resp.BtReceberEmail = true;
-            resp.IdLogin = idLogin;
+            resp.DsFoto = "user.png";
+            resp.IdLogin = 1;
             resp.NmUsuario = nomeUsuario;
             resp.NmPerfil = nomeCompleto;
 
