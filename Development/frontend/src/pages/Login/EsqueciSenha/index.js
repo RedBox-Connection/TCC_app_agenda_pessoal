@@ -54,7 +54,7 @@ function EsqueciSenha(props) {
           <InputBox>
             <InputWrapper>
                <span>Email</span>
-               <input type="email" placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+               <input type="email" placeholder="bruce.wayne@gmail.com" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
             </InputWrapper>
             <p>Nós te enviaremos um código de segurança , para recebe-lo clique no botão de <strong>prosseguir</strong></p>
           </InputBox>

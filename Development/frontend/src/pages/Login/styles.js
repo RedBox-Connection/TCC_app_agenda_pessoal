@@ -85,3 +85,16 @@ export const Cadastro = styled.div`
         margin-left:15px;
     }
 `;
+
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  transform: translate(0%, 300%);
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+`;

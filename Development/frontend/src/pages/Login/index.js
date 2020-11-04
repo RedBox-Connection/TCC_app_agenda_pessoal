@@ -4,11 +4,12 @@ import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Header, Form, Cadastro, Container, ImageContainer, Content} from './styles';
+import { Loader, Header, Form, Cadastro, Container, ImageContainer, Content} from './styles';
 import { InputBox, InputWrapper } from '../CadastrarUsuario/styles';
 
 
 import loginimage from '../../images/login.svg';
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 import ApiLogin from '../../services/Login/services';
@@ -16,41 +17,34 @@ const api = new ApiLogin();
 
 function Login() {
 
+  const [loading, setLoading] = useState(false); 
+
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const req = {
+    email,
+    senha
+  }
 
   const navegation = useHistory();
 
   const efetuarLogin = async () => {
     try {
-      const resp = await api.loginUsuario({
-        email,
-        senha
-      })
+      setLoading(true);
+      const resp = await api.loginUsuario(req)
 
       navegation.push({
         pathname:"/Meus-quadros", 
         state:{
-            idlogin:resp.idlogin,
-            nomeUsuario:resp.nomeUsuario
+            idlogin: resp.idlogin,
+            nomeUsuario: resp.nomeUsuario
         }        
       })
 
       return resp;
       
     } catch (e) {
-      const erro = e.response.data.erro;
-
-      if(erro === "Object reference not set to an instance of an object."){
-        toast.error("Conta inexistente")
-      }
-      else if(erro !== ''){
-        toast.error(erro);
-      }
-      else{
-        toast.error("coisas ruins ocorreram :(")
-      }
-
+      toast.error(e.response.data.erro);
     }
   }
 
@@ -70,7 +64,7 @@ function Login() {
               <InputBox>
                     <InputWrapper>
                     <span>Email</span>
-                        <input type="email" placeholder="Bruce.Wayne@gmail.com" onChange={e => setEmail(e.target.value) } /> 
+                        <input type="email" placeholder="bruce.wayne@gmail.com" onChange={e => setEmail(e.target.value) } /> 
                     </InputWrapper>
 
                     <InputWrapper>
@@ -87,6 +81,9 @@ function Login() {
                   <button onClick={efetuarLogin}>
                     Entrar
                   </button>
+              <Loader>
+                <ClipLoader loading={loading}/>
+              </Loader>
             </Form>
 
             <Cadastro>
