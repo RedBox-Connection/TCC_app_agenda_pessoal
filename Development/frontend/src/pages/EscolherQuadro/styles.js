@@ -31,15 +31,6 @@ export const QuadrosContainer = styled.div`
 
 `;
 
-export const Divider = styled.div`
-  height:1px;
-  width:100%;
-
-  margin:5px 0;
-
-  background-color:#ccc;
-`;
-
 export const AddTeam = styled.div`
   display:flex;
   align-items:center;

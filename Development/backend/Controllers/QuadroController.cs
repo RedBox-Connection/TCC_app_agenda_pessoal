@@ -14,6 +14,7 @@ namespace backend.Controllers
     {
         Utils.QuadroConversor quadroCnv = new Utils.QuadroConversor();
         Business.QuadroBusiness quadroBsn = new Business.QuadroBusiness();
+        Business.UsuarioBusiness usuarioBsn = new Business.UsuarioBusiness();
         
         [HttpPost("cadastrar")]
         public async Task<ActionResult<Models.Response.QuadroResponse>> CadastrarQuadroAsync(Models.Request.CadastrarAlterarQuadroRequest req)
@@ -36,12 +37,14 @@ namespace backend.Controllers
             }
         }
 
-        [HttpGet("consultar/{idUsuario}")]
-        public async Task<ActionResult<Models.Response.ConsultarQuadrosResponse>> ConsultarQuadrosResponse(int idUsuario)
+        [HttpGet("consultar/{idLogin}")]
+        public async Task<ActionResult<Models.Response.ConsultarQuadrosResponse>> ConsultarQuadrosAsync(int idLogin)
         {
             try
             {
-                List<Models.TbQuadro> tbQuadros = await quadroBsn.ConsultarQuadrosPorIdUsuarioAsync(idUsuario);
+                Models.TbUsuario tbUsuario = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(idLogin);
+
+                List<Models.TbQuadro> tbQuadros = await quadroBsn.ConsultarQuadrosPorIdUsuarioAsync(tbUsuario.IdUsuario);
 
                 if(tbQuadros == null)
                     return NotFound();

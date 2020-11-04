@@ -1,38 +1,64 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import CabecalhoSimples from '../../components/CabecalhoSimples';
 import QuadroButton from '../../components/QuadroButton';
 
-import { Container, Content, QuadrosContainer,Divider ,AddTeam } from './styles';
+import { Container, Content, QuadrosContainer, AddTeam } from './styles';
 
-function EscolherQuadro() {
+import ApiQuadro from '../../services/Quadro/services';
+import { toast } from 'react-toastify';
+import LoadingBar from 'react-top-loading-bar'
+const apiQuadro = new ApiQuadro();
 
-    let times = [];
-    for(var i = 1; i <= 50; i++){
-        times.push(i);
+function EscolherQuadro(props) {
+
+  const ref = useRef(null);
+
+  const idLogin = props.location.state.idLogin;
+  const nomeUsuario = props.location.state.nomeUsuario;
+
+  const [quadros, setQuadros] = useState([]);
+
+  const consultarQuadrosClick = async () => {
+    try {
+      ref.current.continuousStart();
+
+      const resp = await apiQuadro.consultarQuadrosAsync(idLogin);
+
+      console.log(resp);
+
+      setQuadros([...resp]);
+      
+      ref.current.complete();
+
+      return resp;
+    } catch (e) {
+      console.log(e.response);
+      ref.current.complete();
+      toast.error(e.response.data.erro);
     }
-    let frase = "Time";
+  }
 
+  useEffect(() => {
+    consultarQuadrosClick();
+  }, [])
 
   return (
       <Container>
+        <LoadingBar ref={ref}/>
           <CabecalhoSimples />
           <Content>
-              <h1>Escolha um quadro pra entrar</h1>
+              <h1>Olá {nomeUsuario}, escolha o quadro que deseja entrar:</h1>
               <QuadrosContainer>
                 <Link to="/Novo-time" >
                   <AddTeam>
                        Criar um time
                   </AddTeam>
                 </Link>
-                  {times.map(x => (
-                     <QuadroButton nome={frase + x} />
+                  {quadros.map(quadro => (
+                     <QuadroButton key={quadro.idQuadro} nome={quadro.nomeQuadro}/>
                   ))}
-              </QuadrosContainer>
-              <Divider />
-              <QuadrosContainer>
-                  <QuadroButton nome="Agenda Pessoal" />
               </QuadrosContainer>
           </Content>
       </Container>

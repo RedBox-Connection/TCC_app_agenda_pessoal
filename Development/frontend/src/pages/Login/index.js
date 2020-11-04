@@ -39,7 +39,7 @@ function Login() {
       navegation.push({
         pathname:"/Meus-quadros", 
         state:{
-            idlogin: resp.idlogin,
+            idLogin: resp.idLogin,
             nomeUsuario: resp.nomeUsuario
         }        
       })
