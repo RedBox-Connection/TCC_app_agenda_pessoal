@@ -15,7 +15,7 @@ namespace backend.Models
         }
 
         [Key]
-        [Column("id_cartao", TypeName = "int(11)")]
+        [Column("id_cartao")]
         public int IdCartao { get; set; }
         [Required]
         [Column("nm_cartao", TypeName = "varchar(100)")]
@@ -32,7 +32,7 @@ namespace backend.Models
         [Required]
         [Column("ds_status", TypeName = "varchar(100)")]
         public string DsStatus { get; set; }
-        [Column("id_quadro", TypeName = "int(11)")]
+        [Column("id_quadro")]
         public int IdQuadro { get; set; }
 
         [ForeignKey(nameof(IdQuadro))]

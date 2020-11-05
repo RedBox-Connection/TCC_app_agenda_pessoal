@@ -6,9 +6,8 @@ const apiCabecalhoLayout = axios.create({
 
 export default class ApiCabecalhoLayout{
 
-    buscarImagem(foto) {
-        const urlFoto = `${apiCabecalhoLayout.defaults.baseURL}/foto/${foto}`;
-        console.log(urlFoto);
+    buscarImagem(idLogin) {
+        const urlFoto = `${apiCabecalhoLayout.defaults.baseURL}/foto/imagem/${idLogin}`;
         return urlFoto;
     }
 

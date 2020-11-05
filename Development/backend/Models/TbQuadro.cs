@@ -15,12 +15,12 @@ namespace backend.Models
         }
 
         [Key]
-        [Column("id_quadro", TypeName = "int(11)")]
+        [Column("id_quadro")]
         public int IdQuadro { get; set; }
         [Required]
         [Column("nm_quadro", TypeName = "varchar(100)")]
         public string NmQuadro { get; set; }
-        [Column("id_usuario", TypeName = "int(11)")]
+        [Column("id_usuario")]
         public int IdUsuario { get; set; }
 
         [ForeignKey(nameof(IdUsuario))]

@@ -9,16 +9,16 @@ namespace backend.Models
     public partial class TbCartaoComentario
     {
         [Key]
-        [Column("id_comentario", TypeName = "int(11)")]
+        [Column("id_comentario")]
         public int IdComentario { get; set; }
         [Required]
         [Column("ds_comentario", TypeName = "varchar(300)")]
         public string DsComentario { get; set; }
         [Column("dt_inclusao", TypeName = "datetime")]
         public DateTime DtInclusao { get; set; }
-        [Column("id_cartao", TypeName = "int(11)")]
+        [Column("id_cartao")]
         public int IdCartao { get; set; }
-        [Column("id_usuario", TypeName = "int(11)")]
+        [Column("id_usuario")]
         public int IdUsuario { get; set; }
 
         [ForeignKey(nameof(IdCartao))]

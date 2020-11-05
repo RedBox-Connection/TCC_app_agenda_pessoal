@@ -96,16 +96,18 @@ namespace backend.Controllers
             }
         }
 
-        [HttpGet("foto/{nome}")]
-        public async Task<ActionResult> BuscarFoto(string nome)
+        [HttpGet("foto/imagem/{idLogin}")]
+        public async Task<ActionResult> BuscarFoto(int idLogin)
         {
             try 
             {
-                byte[] foto = await gerenciadorFoto.LerFoto(nome);
-                string contentType = gerenciadorFoto.GerarContentType(nome);
+                Models.TbUsuario tbUsuario = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(idLogin);
+
+                byte[] foto = await gerenciadorFoto.LerFoto(tbUsuario.DsFoto);
+                string contentType = gerenciadorFoto.GerarContentType(tbUsuario.DsFoto);
                 return File(foto, contentType);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(
                     new Models.Response.ErroResponse(404, ex.Message)
@@ -118,6 +120,8 @@ namespace backend.Controllers
         {
             try
             {
+                esqueciSenhaBsn.ValidarSenhasIdenticas(req.Senha, req.ConfirmarSenha);
+
                 Models.TbLogin tbLoginAtual = await usuarioBsn.ConsultarLoginPorEmailAsync(req.Email);
                 Models.TbLogin tbLoginNovo = usuarioCnv.ToTbLogin(req);
 
@@ -138,6 +142,25 @@ namespace backend.Controllers
             {
                 return BadRequest(
                     new Models.Response.ErroResponse(400, e.Message)
+                );
+            }
+        }
+
+        [HttpGet("consultar/{idLogin}")]
+        public async Task<ActionResult<Models.Response.UsuarioResponse>> ConsultarUsuarioPorLoginAsync(int idLogin)
+        {
+            try
+            {
+                Models.TbUsuario tbUsuario = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(idLogin);
+
+                Models.Response.UsuarioResponse resp = usuarioCnv.ToUsuarioResponse(tbUsuario);
+
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(400, ex.Message)
                 );
             }
         }

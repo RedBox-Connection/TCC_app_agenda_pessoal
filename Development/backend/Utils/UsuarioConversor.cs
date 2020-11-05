@@ -107,10 +107,25 @@ namespace backend.Utils
         public Models.TbUsuario ToTbUsuario(Models.Request.AlterarUsuarioRequest req)
         {
             Models.TbUsuario resp = new Models.TbUsuario();
-
+            
+            resp.DsFoto = "user.png";
             resp.NmUsuario = req.NomeUsuario;
             resp.NmPerfil = req.NomePerfil;
             resp.BtReceberEmail = req.ReceberEmail;
+
+            return resp;
+        }
+
+        public Models.Response.UsuarioResponse ToUsuarioResponse(Models.TbUsuario req)
+        {
+            Models.Response.UsuarioResponse resp = new Models.Response.UsuarioResponse();
+
+            resp.Email = req.IdLoginNavigation.DsEmail;
+            resp.NomePerfil = req.NmPerfil;
+            resp.NomeUsuario = req.NmUsuario;
+            resp.ReceberEmail = req.BtReceberEmail;
+            resp.Senha = req.IdLoginNavigation.DsSenha;
+            resp.FotoPerfil = req.DsFoto;
 
             return resp;
         }

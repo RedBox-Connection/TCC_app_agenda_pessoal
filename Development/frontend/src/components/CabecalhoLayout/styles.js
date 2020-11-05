@@ -28,7 +28,9 @@ export const Profile = styled.div`
   }
 
   > img{
-    width: 50px;
     height: 50px;
+    width: 50px;
+
+    border-radius:50%;
   }
 `;

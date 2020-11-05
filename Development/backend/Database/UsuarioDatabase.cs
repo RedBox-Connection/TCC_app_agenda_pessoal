@@ -57,7 +57,8 @@ namespace backend.Database
 
         public async Task<Models.TbUsuario> ConsultarUsuarioPorIdLoginAsync(int idLogin)
         {
-            return await ctx.TbUsuario.FirstOrDefaultAsync(x => x.IdLogin == idLogin);
+            return await ctx.TbUsuario.Include(x => x.IdLoginNavigation)
+                                      .FirstOrDefaultAsync(x => x.IdLogin == idLogin);
         } 
 
         public async Task<Models.TbUsuario> CadastrarUsuarioAsync(Models.TbUsuario req)

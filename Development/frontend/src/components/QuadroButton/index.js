@@ -5,8 +5,6 @@ import { Container } from './styles';
 
 function QuadroButton(props) {
 
-  console.log(props);
-
   return (
     <Link to={{
       pathname: '/Inicial',

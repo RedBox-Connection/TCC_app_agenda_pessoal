@@ -53,15 +53,18 @@ namespace backend.Business
             return resp;
         }
 
-        private async Task<bool> ValidarAlterarNomeUsuario(string nomeUsuario, int idUsuario)
+        private async Task<bool> ValidarAlterarNomeUsuario(string nomeUsuarioAtual, string nomeUsuarioNovo, int idUsuarioNovo)
         {
+            if(nomeUsuarioAtual == nomeUsuarioNovo)
+                return false;
+
             List<Models.TbUsuario> usuarios = await usuarioDb.ConsultarUsuariosAsync();
 
-            if(usuarios.Any(x => x.IdUsuario == idUsuario && x.NmUsuario == nomeUsuario))
+            if(usuarios.Any(x => x.IdUsuario == idUsuarioNovo && x.NmUsuario == nomeUsuarioNovo))
                 return true;
             else
             {
-                bool nomeUsuarioOk = await this.ValidarNomeUsuario(nomeUsuario);
+                bool nomeUsuarioOk = await this.ValidarNomeUsuario(nomeUsuarioNovo);
                 if(nomeUsuarioOk)
                     throw new Exception("Nome de usuário já existe. Por favor insira um novo nome.");
             }
@@ -80,6 +83,33 @@ namespace backend.Business
 
             if(resp)
                 throw new Exception("Email já cadastrado, por favor insira outro email.");
+
+            return resp;
+        }
+
+        private async Task<bool> ValidarEmailLogin(string emailUsuario)
+        {
+            List<string> emailsUsuario = await usuarioDb.ConsultarEmailsUsuario();
+
+            if(emailsUsuario == null || emailsUsuario.Count <= 0)
+                return false;
+
+            bool resp = emailsUsuario.Contains(emailUsuario);
+
+            if(!resp)
+                throw new Exception("Email não cadastrado, por favor insira outro email ou cadastre-se.");
+
+            return resp;
+        }
+
+        private async Task<bool> ValidarEmailAlterarUsuario(string emailUsuario)
+        {
+            List<string> emailsUsuario = await usuarioDb.ConsultarEmailsUsuario();
+
+            if(emailsUsuario == null || emailsUsuario.Count <= 0)
+                return false;
+
+            bool resp = emailsUsuario.Contains(emailUsuario);
 
             return resp;
         }
@@ -120,7 +150,7 @@ namespace backend.Business
             if(!email.Contains('@'))
                 throw new Exception("Email inválido, insira a empresa de seu email.");
 
-            bool emailOk = await this.ValidarEmailUsuario(email);
+            bool emailOk = await this.ValidarEmailAlterarUsuario(email);
 
             if(emailOk == false)
                 throw new Exception("Email não cadastrado, por favor insira outro email.");
@@ -167,7 +197,7 @@ namespace backend.Business
         {
             this.ValidarUsuarioRequest(novo);
 
-            await this.ValidarAlterarNomeUsuario(novo.NmUsuario, novo.IdUsuario);
+            await this.ValidarAlterarNomeUsuario(atual.NmUsuario, novo.NmUsuario, novo.IdUsuario);
 
             atual = await usuarioDb.AlterarUsuarioAsync(atual, novo);
 
@@ -197,6 +227,8 @@ namespace backend.Business
 
             if(req.DsSenha == string.Empty)
                 throw new Exception("Senha Invalida.");
+
+            bool ignore = await this.ValidarEmailLogin(req.DsEmail);
 
             req = await usuarioDb.LoginAsync(req);
 

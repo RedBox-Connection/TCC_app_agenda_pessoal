@@ -30,7 +30,7 @@ namespace backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=A1234;database=tccdb", x => x.ServerVersion("5.7.29-mysql"));
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=A1234;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 
@@ -45,20 +45,20 @@ namespace backend.Models
                     .HasName("id_quadro");
 
                 entity.Property(e => e.DsCartao)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.DsCor)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.DsStatus)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.NmCartao)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdQuadroNavigation)
                     .WithMany(p => p.TbCartao)
@@ -78,8 +78,8 @@ namespace backend.Models
                     .HasName("id_usuario");
 
                 entity.Property(e => e.DsComentario)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdCartaoNavigation)
                     .WithMany(p => p.TbCartaoComentario)
@@ -101,8 +101,8 @@ namespace backend.Models
                     .HasName("id_cartao");
 
                 entity.Property(e => e.NmChecklist)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdCartaoNavigation)
                     .WithMany(p => p.TbChecklist)
@@ -119,8 +119,8 @@ namespace backend.Models
                     .HasName("id_checklist");
 
                 entity.Property(e => e.NmItem)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdChecklistNavigation)
                     .WithMany(p => p.TbChecklistItem)
@@ -137,12 +137,12 @@ namespace backend.Models
                     .HasName("id_login");
 
                 entity.Property(e => e.DsEmail)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.NrCodigo)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdLoginNavigation)
                     .WithMany(p => p.TbEsqueciSenha)
@@ -156,12 +156,12 @@ namespace backend.Models
                     .HasName("PRIMARY");
 
                 entity.Property(e => e.DsEmail)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.DsSenha)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
             });
 
             modelBuilder.Entity<TbQuadro>(entity =>
@@ -173,8 +173,8 @@ namespace backend.Models
                     .HasName("id_usuario");
 
                 entity.Property(e => e.NmQuadro)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.TbQuadro)
@@ -191,16 +191,16 @@ namespace backend.Models
                     .HasName("id_quadro");
 
                 entity.Property(e => e.DsLinkConvite)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.DsTime)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.NmTime)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdQuadroNavigation)
                     .WithMany(p => p.TbTime)
@@ -220,8 +220,8 @@ namespace backend.Models
                     .HasName("id_usuario");
 
                 entity.Property(e => e.DsPermissao)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdTimeNavigation)
                     .WithMany(p => p.TbTimeIntegrante)
@@ -243,16 +243,16 @@ namespace backend.Models
                     .HasName("id_login");
 
                 entity.Property(e => e.DsFoto)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.NmPerfil)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.NmUsuario)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.HasOne(d => d.IdLoginNavigation)
                     .WithMany(p => p.TbUsuario)

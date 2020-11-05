@@ -32,7 +32,6 @@ function EscolherQuadro(props) {
 
       return resp;
     } catch (e) {
-      console.log(e.response);
       ref.current.complete();
       toast.error(e.response.data.erro);
     }

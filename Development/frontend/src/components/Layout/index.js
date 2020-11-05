@@ -30,7 +30,7 @@ function Layout(props) {
   return (
       <Container>
         <BrowserRouter>
-            <CabecalhoLayout nomeUsuario={nomeUsuario}/>
+            <CabecalhoLayout nomeUsuario={nomeUsuario} idLogin={idLogin}/>
             <Main>
               
             <MenuLateral />
@@ -42,7 +42,7 @@ function Layout(props) {
                   <Route path="/inicial/Agenda" component={Agenda} />
                   <Route path="/inicial/Feitos" component={Feitos} />
 
-                  <Route path="/inicial/Configurações" component={ConfiguracaoUsuario} />
+                  <Route path="/inicial/Configuracoes" component={ConfiguracaoUsuario} />
 
                   <Route path="/inicial/ConfigurarTime" component={ConfiguracaoTime} />
 

@@ -41,13 +41,17 @@ export const UserPhoto = styled.div`
     border-radius:50%;
   }
 
-  > button{
-    border:none;
-    background-color:transparent;
+  > label{
+    font-size: 20px;
 
-    font-size:20px;
+    border: none;
+
+    cursor: pointer;
   }
 
+  > input{
+    display: none
+  }
 `;
 
 
@@ -82,10 +86,11 @@ export const ButtonBox = styled.div`
   width:100%;
   
   display:flex;
+  flex-direction: column;
   align-items:center;
   justify-content:center;
 
-  > button{
+  > :nth-child(1){
     border:none;
     border-radius:3px;
 
@@ -94,6 +99,21 @@ export const ButtonBox = styled.div`
 
     padding:8px 15px;
     font-size:20px;
+
+    margin: 2px;
+  }
+
+  > :nth-child(2){
+    border:none;
+    border-radius:3px;
+
+    background-color:var(--vermelho);
+    color:#fff;
+
+    padding:8px 15px;
+    font-size:15px;
+
+    margin: 2px;
   }
 `;
 
@@ -105,7 +125,20 @@ export const LogoutBox = styled.div`
   display:flex;
   align-items:center;
 
-  > span{
+  > Link{
     margin-left:5px;
   }
+`;
+
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  transform: translate(0%, 300%);
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
 `;

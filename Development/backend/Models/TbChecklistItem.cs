@@ -9,14 +9,14 @@ namespace backend.Models
     public partial class TbChecklistItem
     {
         [Key]
-        [Column("id_item", TypeName = "int(11)")]
+        [Column("id_item")]
         public int IdItem { get; set; }
         [Required]
         [Column("nm_item", TypeName = "varchar(100)")]
         public string NmItem { get; set; }
         [Column("bt_feito")]
         public bool BtFeito { get; set; }
-        [Column("id_checklist", TypeName = "int(11)")]
+        [Column("id_checklist")]
         public int IdChecklist { get; set; }
 
         [ForeignKey(nameof(IdChecklist))]
