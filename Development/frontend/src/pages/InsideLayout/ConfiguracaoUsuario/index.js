@@ -27,8 +27,12 @@ function ConfiguracaoUsuario(props) {
 
   const [imagem, setImagem] = useState('');
   const [imagemPreview, setImagemPreview] = useState(fotoApi.buscarImagem(idLogin));
-  const req = {
-    fotoPerfil: imagem,
+  const reqFoto = {
+    idLogin,
+    fotoPerfil: imagem
+  };
+
+  const reqUsuario = {
     nomePerfil,
     nomeUsuario,
     senha,
@@ -61,25 +65,79 @@ function ConfiguracaoUsuario(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const alterarUsuarioClick = async () => {
+  const alterarFotoUsuario = async () => {
     try {
       setLoading(true);
 
-      const resp = await configuracaoUsuarioApi.alterarUsuarioAsync(req);
+      const resp = await configuracaoUsuarioApi.alterarFotoUsuarioAsync(reqFoto);
+
+      setLoading(false);
+
+      toast.success("Foto alterada com sucesso.");
+
+      return resp;
+    } catch (e) {
+      setLoading(false);
+      toast.error(e.response.data.erro);
+    }
+  }
+
+  const alterarUsuarioInfo = async () => {
+    try {
+      setLoading(true);
+
+      const resp = await configuracaoUsuarioApi.alterarUsuarioInfoAsync(reqUsuario);
 
       setLoading(false);
 
       toast.success("Informações alteradas com sucesso.");
 
-      navegation.push({
-        pathname: '/Inicial',
-        state: {
-          idLogin,
-          nomeUsuario
-        }
-      });
-
       return resp;
+    } catch (e) {
+      setLoading(false);
+      toast.error(e.response.data.erro);
+    }
+  }
+
+  const alterarUsuarioClick = async () => {
+    try {
+      if(imagem === '') {
+        setLoading(true);
+
+        const respUsuario = await alterarUsuarioInfo();
+
+        setLoading(false);
+
+        navegation.push({
+          pathname: '/Inicial',
+          state: {
+            idLogin,
+            nomeUsuario: respUsuario.nomeUsuario
+          }
+        });
+
+        return respUsuario;
+      } else {
+        setLoading(true);
+
+        console.log(imagem);
+
+        const respImagem = await alterarFotoUsuario();
+
+        const respUsuario = await alterarUsuarioInfo();
+
+        setLoading(false);
+
+        navegation.push({
+          pathname: '/Inicial',
+          state: {
+            idLogin,
+            nomeUsuario: respUsuario.nomeUsuario
+          }
+        });
+
+        return {respUsuario, respImagem};
+      }
     } catch (e) {
       setLoading(false);
       toast.error(e.response.data.erro);

@@ -82,8 +82,16 @@ namespace backend.Database
         {
             atual.NmUsuario = novo.NmUsuario;
             atual.NmPerfil = novo.NmPerfil;
-            atual.DsFoto = novo.DsFoto;
             atual.BtReceberEmail = novo.BtReceberEmail;
+
+            await ctx.SaveChangesAsync();
+
+            return atual;
+        }
+
+        public async Task<Models.TbUsuario> AlterarFotoUsuarioAsync(Models.TbUsuario atual, Models.TbUsuario novo)
+        {
+            atual.DsFoto = novo.DsFoto;
 
             await ctx.SaveChangesAsync();
 
@@ -110,10 +118,18 @@ namespace backend.Database
 
         public async Task<Models.TbLogin> LoginAsync(Models.TbLogin req)
         {
-            return await ctx.TbLogin
-                                     .Include(x => x.TbEsqueciSenha)
-                                     .Include(x => x.TbUsuario)
-                                     .FirstOrDefaultAsync(x => x.DsEmail == req.DsEmail && x.DsSenha == req.DsSenha);
+            return await ctx.TbLogin.Include(x => x.TbEsqueciSenha)
+                                    .Include(x => x.TbUsuario)
+                                    .FirstOrDefaultAsync(x => x.DsEmail == req.DsEmail && x.DsSenha == req.DsSenha);
+        }
+
+        public async Task<Models.TbLogin> AtualizarLoginAsync(Models.TbLogin loginAntigo, Models.TbLogin loginAtual)
+        {
+            loginAntigo.DtUltLogin = loginAtual.DtUltLogin;
+
+            await ctx.SaveChangesAsync();
+
+            return loginAntigo;
         }
     }
 }

@@ -99,7 +99,16 @@ namespace backend.Utils
             resp.NomeUsuario = tbUsuario.NmUsuario;
             resp.NomePerfil = tbUsuario.NmPerfil;
             resp.IdLogin = tbLogin.IdLogin;
-            resp.Foto = tbUsuario.DsFoto;
+
+            return resp;
+        }
+
+        public Models.Response.AlterarFotoPerfilResponse ToAlterarFotoPerfilResponse(Models.TbUsuario req)
+        {
+            Models.Response.AlterarFotoPerfilResponse resp = new Models.Response.AlterarFotoPerfilResponse();
+
+            resp.IdLogin = req.IdLogin;
+            resp.FotoPerfil = req.DsFoto;
 
             return resp;
         }
@@ -108,7 +117,6 @@ namespace backend.Utils
         {
             Models.TbUsuario resp = new Models.TbUsuario();
             
-            resp.DsFoto = "user.png";
             resp.NmUsuario = req.NomeUsuario;
             resp.NmPerfil = req.NomePerfil;
             resp.BtReceberEmail = req.ReceberEmail;

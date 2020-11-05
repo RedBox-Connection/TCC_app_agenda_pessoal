@@ -14,13 +14,27 @@ namespace backend.Business
             return novoNome;
         }
 
-        public async void SalvarFoto(string nome, IFormFile foto)
+        public string AlterarNomeFoto(IFormFile novoNome, string antigoNome)
+        {
+            if(novoNome == null)
+            {
+                this.SalvarFoto(antigoNome, novoNome);
+                return novoNome.FileName;
+            }
+            else
+            {
+                this.SalvarFoto(this.GerarNovoNome(novoNome.FileName), novoNome);
+                return novoNome.FileName;
+            }
+        }
+
+        public void SalvarFoto(string nome, IFormFile foto)
         {
             string caminhoFoto = Path.Combine(AppContext.BaseDirectory, "Storage", "Images", nome);
 
             using (FileStream fs = new FileStream(caminhoFoto, FileMode.Create))
             {
-                await foto.CopyToAsync(fs);
+                foto.CopyTo(fs);
             }
         }
 

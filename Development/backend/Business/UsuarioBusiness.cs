@@ -115,10 +115,7 @@ namespace backend.Business
         }
 
         private void ValidarUsuarioRequest(Models.TbUsuario req)
-        {
-            if(req.DsFoto == string.Empty)
-                throw new Exception("Foto não encontrada.");
-            
+        {            
             if(req.NmUsuario == string.Empty)
                 throw new Exception("Nome de usuário não pode estar vazio.");
 
@@ -204,6 +201,16 @@ namespace backend.Business
             return atual;
         }
 
+        public async Task<Models.TbUsuario> AlterarFotoUsuarioAsync(Models.TbUsuario atual, Models.TbUsuario novo)
+        {
+            if(novo.DsFoto == string.Empty)
+                throw new Exception("A foto não pode ser vazia, por favor insira um arquivo.");
+
+            atual = await usuarioDb.AlterarFotoUsuarioAsync(atual, novo);
+
+            return atual;
+        }
+
         public async Task<Models.TbLogin> CadastrarLoginAsync(Models.TbLogin req)
         {
             req = await usuarioDb.CadastrarLoginAsync(req);
@@ -236,6 +243,13 @@ namespace backend.Business
                 throw new Exception("Email ou senha inválido, verifique suas credênciais.");
             
             return req;
+        }
+
+        public async Task<Models.TbLogin> AtualizarLoginAsync(Models.TbLogin loginAntigo, Models.TbLogin loginAtual)
+        {
+            loginAntigo = await usuarioDb.AtualizarLoginAsync(loginAntigo, loginAtual);
+
+            return loginAntigo;
         }
 
         public async Task<bool> ValidarCadastroUsuarioLogin(Models.TbUsuario tbUsuario, Models.TbLogin tbLogin)

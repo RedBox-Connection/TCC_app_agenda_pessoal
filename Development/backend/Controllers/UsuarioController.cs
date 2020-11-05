@@ -56,11 +56,14 @@ namespace backend.Controllers
         {
             try
             {
-                Models.TbLogin tbLogin = usuarioCnv.ToCadastrarTbLogin(req.Email, req.Senha);
+                Models.TbLogin tbLoginAtual = usuarioCnv.ToCadastrarTbLogin(req.Email, req.Senha);
+                Models.TbLogin tbLoginAntigo = await usuarioBsn.ConsultarLoginPorEmailAsync(req.Email);
 
-                tbLogin = await usuarioBsn.LoginAsync(tbLogin);
+                tbLoginAntigo = await usuarioBsn.LoginAsync(tbLoginAntigo);
 
-                Models.Response.LoginResponse resp = usuarioCnv.ToLoginResponse(tbLogin);
+                tbLoginAtual = await usuarioBsn.AtualizarLoginAsync(tbLoginAntigo, tbLoginAtual);
+
+                Models.Response.LoginResponse resp = usuarioCnv.ToLoginResponse(tbLoginAtual);
 
                 return resp;
             }
@@ -115,8 +118,33 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPut("alterar")]
-        public async Task<ActionResult<Models.Response.AlterarUsuarioResponse>> AlterarUsuarioAsync([FromForm] Models.Request.AlterarUsuarioRequest req)
+        [HttpPut("alterar/foto")]
+        public async Task<ActionResult<Models.Response.AlterarFotoPerfilResponse>> AlterarFotoUsuarioAsync([FromForm] Models.Request.AlterarFotoPerfilRequest req)
+        {
+            try
+            {
+                Models.TbUsuario tbUsuarioAtual = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(req.IdLogin);
+                Models.TbUsuario tbUsuarioNovo = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(req.IdLogin);
+                tbUsuarioNovo.DsFoto = gerenciadorFoto.GerarNovoNome(req.FotoPerfil.FileName);
+
+                tbUsuarioAtual = await usuarioBsn.AlterarFotoUsuarioAsync(tbUsuarioAtual, tbUsuarioNovo);
+
+                gerenciadorFoto.SalvarFoto(tbUsuarioAtual.DsFoto, req.FotoPerfil);
+
+                Models.Response.AlterarFotoPerfilResponse resp = usuarioCnv.ToAlterarFotoPerfilResponse(tbUsuarioAtual);
+
+                return resp;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(400, e.Message)
+                );
+            }
+        }
+
+        [HttpPut("alterar/info")]
+        public async Task<ActionResult<Models.Response.AlterarUsuarioResponse>> AlterarUsuarioAsync(Models.Request.AlterarUsuarioRequest req)
         {
             try
             {
@@ -126,13 +154,10 @@ namespace backend.Controllers
                 Models.TbLogin tbLoginNovo = usuarioCnv.ToTbLogin(req);
 
                 Models.TbUsuario tbUsuarioNovo = usuarioCnv.ToTbUsuario(req);
-                tbUsuarioNovo.DsFoto = gerenciadorFoto.GerarNovoNome(req.FotoPerfil.FileName);
                 Models.TbUsuario tbUsuarioAtual = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(tbLoginAtual.IdLogin);
 
                 tbLoginAtual = await usuarioBsn.AlterarLoginAsync(tbLoginAtual, tbLoginNovo);
                 tbUsuarioAtual = await usuarioBsn.AlterarUsuarioAsync(tbUsuarioAtual, tbUsuarioNovo);
-
-                gerenciadorFoto.SalvarFoto(tbUsuarioAtual.DsFoto, req.FotoPerfil);
 
                 Models.Response.AlterarUsuarioResponse resp = usuarioCnv.ToAlterarUsuarioResponse(tbLoginAtual, tbUsuarioAtual);
                 
