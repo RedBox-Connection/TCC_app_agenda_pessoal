@@ -58,7 +58,13 @@ function EscolherQuadro(props) {
                      <QuadroButton nomeQuadro={quadro.nomeQuadro} nomeUsuario={nomeUsuario}
                                    idLogin={idLogin}/>
                   ))}
-                <Link to="/Novo-quadro">
+                <Link to={{
+                  pathname: "/Novo-quadro",
+                  state: {
+                    idLogin,
+                    nomeUsuario
+                  }  
+                }}>
                   <AddBoard>
                        Criar um quadro
                   </AddBoard>

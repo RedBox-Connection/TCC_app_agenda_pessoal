@@ -21,7 +21,9 @@ namespace backend.Controllers
         {
             try
             {
-                Models.TbQuadro tbQuadro =  quadroCnv.ToTbQuadro(req);
+                Models.TbUsuario tbUsuario = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(req.IdLogin);
+
+                Models.TbQuadro tbQuadro =  quadroCnv.ToTbQuadro(req, tbUsuario);
 
                 tbQuadro = await quadroBsn.CadastrarQuadroAsync(tbQuadro);
 
@@ -68,7 +70,9 @@ namespace backend.Controllers
             {
                 Models.TbQuadro tbQuadroAtual = await quadroBsn.ConsultarQuadroPorIdQuadroAsync(idQuadro);
 
-                Models.TbQuadro tbQuadroNovo = quadroCnv.ToTbQuadro(req);
+                Models.TbUsuario tbUsuario = await usuarioBsn.ConsultarUsuarioPorIdLoginAsync(req.IdLogin);
+
+                Models.TbQuadro tbQuadroNovo = quadroCnv.ToTbQuadro(req, tbUsuario);
 
                 tbQuadroAtual = await quadroBsn.AlterarQuadroAsync(tbQuadroAtual, tbQuadroNovo);
 

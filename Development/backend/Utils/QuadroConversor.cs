@@ -6,11 +6,11 @@ namespace backend.Utils
 {
     public class QuadroConversor
     {
-        public Models.TbQuadro ToTbQuadro(Models.Request.CadastrarAlterarQuadroRequest req)
+        public Models.TbQuadro ToTbQuadro(Models.Request.CadastrarAlterarQuadroRequest req, Models.TbUsuario tbUsuario)
         {
             Models.TbQuadro resp = new Models.TbQuadro();
 
-            resp.IdUsuario = req.IdUsuario;
+            resp.IdUsuario = tbUsuario.IdUsuario;
             resp.NmQuadro = req.NomeQuadro;
 
             return resp;
