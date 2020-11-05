@@ -26,6 +26,7 @@ function ConfiguracaoUsuario(props) {
   const [receberEmail, setReceberEmail] = useState('');
 
   const [imagem, setImagem] = useState('');
+  const [imagemSelector, setImagemSelector] = useState('');
   const [imagemPreview, setImagemPreview] = useState(fotoApi.buscarImagem(idLogin));
   const reqFoto = {
     idLogin,
@@ -52,6 +53,7 @@ function ConfiguracaoUsuario(props) {
       setNovaSenha(resp.senha);
       setReceberEmail(resp.receberEmail);
       setImagem(resp.fotoPerfil);
+      setImagemSelector(resp.fotoPerfil);
 
       return resp;
     } catch (e) {
@@ -61,7 +63,6 @@ function ConfiguracaoUsuario(props) {
 
   useEffect(() => {
     consultarUsuario();
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -101,7 +102,7 @@ function ConfiguracaoUsuario(props) {
 
   const alterarUsuarioClick = async () => {
     try {
-      if(imagem === '') {
+      if(imagem === imagemSelector) {
         setLoading(true);
 
         const respUsuario = await alterarUsuarioInfo();
@@ -116,11 +117,11 @@ function ConfiguracaoUsuario(props) {
           }
         });
 
+        window.location.reload(false)
+
         return respUsuario;
       } else {
         setLoading(true);
-
-        console.log(imagem);
 
         const respImagem = await alterarFotoUsuario();
 
@@ -135,6 +136,8 @@ function ConfiguracaoUsuario(props) {
             nomeUsuario: respUsuario.nomeUsuario
           }
         });
+
+        window.location.reload(false)
 
         return {respUsuario, respImagem};
       }
