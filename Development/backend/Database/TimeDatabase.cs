@@ -22,9 +22,15 @@ namespace backend.Database
             return req;
         }
 
-        public async Task<List<Models.TbTime>> ConsultarTimesPorIdQuadroAsync(int idQuadro)
+        public async Task<Models.TbTime> ConsultarTimePorIdTime(int idTime)
         {
-            return await ctx.TbTime.Include(x => x.TbTimeIntegrante).Where(x => x.IdQuadro == idQuadro).ToListAsync();
+            return await ctx.TbTime.FirstOrDefaultAsync(x => x.IdTime == idTime);
+        }
+
+        public async Task<List<Models.TbTime>> ConsultarTimesPorIdUsuarioAsync(int idUsuario)
+        {
+            return await ctx.TbTime.Include(x => x.TbTimeIntegrante)
+                                   .Where(x => x.TbTimeIntegrante.FirstOrDefault().IdUsuario == idUsuario).ToListAsync();
         }
 
         public async Task<Models.TbTime> AlterarTimeAsync(Models.TbTime timeAntigo, Models.TbTime timeAtual)

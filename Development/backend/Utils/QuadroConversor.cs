@@ -16,6 +16,16 @@ namespace backend.Utils
             return resp;
         }
 
+        public Models.TbQuadro ToTbQuadro(Models.Request.CadastrarAlterarTimeRequest req, Models.TbUsuario tbUsuario)
+        {
+            Models.TbQuadro resp = new Models.TbQuadro();
+
+            resp.IdUsuario = tbUsuario.IdUsuario;
+            resp.NmQuadro = req.NomeTime;
+
+            return resp;
+        }
+
         public Models.Response.QuadroResponse ToQuadroResponse(Models.TbQuadro req)
         {
             Models.Response.QuadroResponse resp = new Models.Response.QuadroResponse();
