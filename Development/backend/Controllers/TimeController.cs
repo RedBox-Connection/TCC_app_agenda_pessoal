@@ -64,7 +64,7 @@ namespace backend.Controllers
             {
                 return BadRequest(
                     new Models.Response.ErroResponse(
-                        400, e.Message
+                        404, e.Message
                     )
                 );
             }

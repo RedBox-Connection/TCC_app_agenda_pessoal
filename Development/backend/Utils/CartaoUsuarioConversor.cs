@@ -42,6 +42,16 @@ namespace backend.Utils
             return resp;
         }
 
+        public Models.TbCartao ToTbCartaoCheck(Models.Request.ChecklistRequest checklistReq, Models.TbUsuario tbUsuario)
+        {
+            Models.TbCartao tb = new Models.TbCartao();
+
+            tb.IdQuadroNavigation.IdUsuario = tbUsuario.IdUsuario;
+            tb.NmCartao = checklistReq.NomeChecklist;
+
+            return tb;
+        }
+
         public Models.Response.CartaoTarefaResponse ToCartaoTarefaResponse(Models.TbCartao req)
         {
             Models.Response.CartaoTarefaResponse resp = new Models.Response.CartaoTarefaResponse();
