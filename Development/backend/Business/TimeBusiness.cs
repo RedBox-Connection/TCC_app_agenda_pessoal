@@ -58,7 +58,7 @@ namespace backend.Business
 
             List<Models.TbTime> times = await timeDb.ConsultarTimesPorIdUsuarioAsync(idUsuario);
 
-            if(timeDb == null)
+            if(times == null || times.Count == 0)
                 throw new Exception("Você não possui ou faz parte de nenhum time ainda.");
 
             return times;
