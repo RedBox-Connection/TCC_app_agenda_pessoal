@@ -118,7 +118,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPut("alterar/foto")]
+        [HttpPatch("alterar/foto")]
         public async Task<ActionResult<Models.Response.AlterarFotoPerfilResponse>> AlterarFotoUsuarioAsync([FromForm] Models.Request.AlterarFotoPerfilRequest req)
         {
             try
@@ -143,7 +143,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPut("alterar/info")]
+        [HttpPatch("alterar/info")]
         public async Task<ActionResult<Models.Response.AlterarUsuarioResponse>> AlterarUsuarioAsync(Models.Request.AlterarUsuarioRequest req)
         {
             try

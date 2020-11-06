@@ -86,7 +86,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPut("recuperar-senha-deletar/{idLogin}")]
+        [HttpPatch("recuperar-senha-deletar/{idLogin}")]
         public async Task<ActionResult<Models.Response.CodigoRecuperacaoResponse>> AlterarSenhaDeletarCodigoAsync(int? idLogin, Models.Request.NovaSenhaRequest req)
         {
             try{

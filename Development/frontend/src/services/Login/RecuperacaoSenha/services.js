@@ -22,7 +22,7 @@ export default class ApiRecSenha{
     }
 
     async alterarSenha(idLogin, req) {
-        const res = await apiRecuperacaoSenha.put(`/recuperar-senha-deletar/${idLogin}`, req)
+        const res = await apiRecuperacaoSenha.patch(`/recuperar-senha-deletar/${idLogin}`, req)
         return res.data;
     }
 }

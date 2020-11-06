@@ -75,7 +75,7 @@ namespace backend.Business
 
         public async Task<Models.TbEsqueciSenha> ConsultarRecuperacaoDeSenhaPorCodigoAsync(long codigo)
         {
-            if(codigo <= 0 || codigo > 999999)
+            if(codigo < 111111 || codigo > 999999)
                 throw new Exception("Código inválido.");
 
             Models.TbEsqueciSenha resp = await esqueciSenhaDB.ConsultarRecuperacaoDeSenhaPorCodigoAsync(codigo);

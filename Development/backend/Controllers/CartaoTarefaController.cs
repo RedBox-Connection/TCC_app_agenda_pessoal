@@ -59,7 +59,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPut("alterar-cartao-tarefa")]
+        [HttpPatch("alterar-cartao-tarefa")]
         public async Task<ActionResult<Models.Response.CartaoTarefaResponse>> AlterarCartaoTarefaAsync(Models.Request.AlterarCartaoTarefaRequest req)
         {
             try

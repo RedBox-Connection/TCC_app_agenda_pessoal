@@ -16,7 +16,7 @@ export default class ApiConfiguracaoUsuario{
         formData.append('idLogin', req.idLogin);
         formData.append('fotoPerfil', req.fotoPerfil);
 
-        const resp = await apiConfiguracaoUsuario.put('/alterar/foto', formData, {
+        const resp = await apiConfiguracaoUsuario.patch('/alterar/foto', formData, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
@@ -25,7 +25,7 @@ export default class ApiConfiguracaoUsuario{
     }
 
     async alterarUsuarioInfoAsync(req) {
-        const resp = await apiConfiguracaoUsuario.put('/alterar/info', req);
+        const resp = await apiConfiguracaoUsuario.patch('/alterar/info', req);
         return resp.data;
     }
 }
