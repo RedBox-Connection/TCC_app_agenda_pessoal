@@ -66,7 +66,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPut("alterar-checklist/{idChecklist")]
+        [HttpPut("alterar-checklist/{idChecklist}")]
         public async Task<ActionResult<Models.Response.ChecklistResponse>> AlterarChecklistAsync(int idChecklist, Models.Request.ChecklistRequest req)
         {
             try
