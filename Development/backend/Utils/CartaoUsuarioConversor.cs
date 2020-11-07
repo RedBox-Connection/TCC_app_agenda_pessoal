@@ -59,6 +59,8 @@ namespace backend.Utils
             resp.IdCartao = req.IdCartao;
             resp.IdQuadro = req.IdQuadro;
             resp.Status = req.DsStatus;
+            resp.NomeCartao = req.NmCartao;
+            resp.DataCartao = req.DtTermino;
 
             return resp;
         }
