@@ -12,10 +12,12 @@ namespace backend.Controllers
     public class TimeController : ControllerBase
     {
         Business.TimeBusiness timeBsn = new Business.TimeBusiness();
+        Business.TimeIntegranteBusiness timeIntegranteBsn = new Business.TimeIntegranteBusiness();
         Business.UsuarioBusiness usuarioBsn = new Business.UsuarioBusiness();
         Business.QuadroBusiness quadroBsn = new Business.QuadroBusiness();
 
         Utils.TimeConversor timeCnv = new Utils.TimeConversor();
+        Utils.TimeIntegranteConversor timeIntegranteCnv = new Utils.TimeIntegranteConversor();
         Utils.QuadroConversor quadroCnv = new Utils.QuadroConversor();
 
         [HttpPost("cadastrar")]
@@ -34,6 +36,10 @@ namespace backend.Controllers
                 tbTime = await timeBsn.CadastrarTimeAsync(tbTime);
 
                 tbTime = await timeBsn.SalvarLinkAsync(tbTime, tbTime);
+
+                Models.TbTimeIntegrante timeIntegrante = timeIntegranteCnv.ToTbIntegrante(tbUsuario.IdUsuario, tbTime.IdTime);
+
+                timeIntegrante = await timeIntegranteBsn.CadastrarTimeIntegranteAsync(timeIntegrante);
 
                 Models.Response.CadastrarAlterarTimeResponse resp = timeCnv.ToTimeResponse(tbTime);
 

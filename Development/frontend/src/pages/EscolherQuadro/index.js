@@ -28,11 +28,9 @@ function EscolherQuadro(props) {
       ref.current.continuousStart();
 
       const respQuadros = await apiQuadro.consultarQuadrosAsync(idLogin);
-      const respTimes = await apiTime.consultarTimesAsync(idLogin);
 
       setQuadros([...respQuadros]);
-      setTimes([...respTimes]);
-      
+
       ref.current.complete();
 
       return {respQuadros};
@@ -42,8 +40,30 @@ function EscolherQuadro(props) {
     }
   }
 
-  useEffect(() => {
+  const consultarTimesClick = async () => {
+    try {
+      ref.current.continuousStart();
+
+      const respTimes = await apiTime.consultarTimesAsync(idLogin);
+
+      setTimes([...respTimes]);
+
+      ref.current.complete();
+
+      return respTimes;
+    } catch (e) {
+      ref.current.complete();
+      toast.error(e.response.data.erro);
+    }
+  }
+
+  const consultarTudoClick = async () => {
     consultarQuadrosClick();
+    consultarTimesClick();
+  }
+
+  useEffect(() => {
+    consultarTudoClick();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

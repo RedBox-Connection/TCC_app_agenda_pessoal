@@ -18,6 +18,17 @@ namespace backend.Utils
             return integrante;
         }
 
+        public Models.TbTimeIntegrante ToTbIntegrante(int idUsuario, int idTime)
+        {
+            Models.TbTimeIntegrante integrante = new Models.TbTimeIntegrante();
+
+            integrante.IdUsuario = idUsuario;
+            integrante.IdTime = idTime;
+            integrante.DsPermissao = "Admin";
+
+            return integrante;
+        }
+
         public Models.Response.TimeIntegranteResponse ToIntegranteResponse(Models.TbTimeIntegrante req)
         {
             Models.Response.TimeIntegranteResponse resp = new Models.Response.TimeIntegranteResponse();
