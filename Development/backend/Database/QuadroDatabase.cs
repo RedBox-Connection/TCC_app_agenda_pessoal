@@ -14,7 +14,10 @@ namespace backend.Database
 
         public async Task<List<Models.TbQuadro>> ConsultarQuadrosPorIdUsuarioAsync(int idUsuario)
         {
-            return await ctx.TbQuadro.Where(x => x.IdUsuario == idUsuario).ToListAsync();
+            return await ctx.TbQuadro.Include(x => x.TbTime)
+                                     .Where(x => x.IdUsuario == idUsuario && (
+                                         x.IdQuadro != x.TbTime.First().IdQuadro
+                                     )).ToListAsync();
         }
 
         public async Task<Models.TbQuadro> ConsultarQuadroPorIdQuadroAsync(int idQuadro)

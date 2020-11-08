@@ -64,3 +64,10 @@ export const AddBoard = styled.div`
   border-radius:5px;
   font-size:20px;
 `;
+
+export const Divider = styled.div`
+  height:1px;
+  width:100%;
+  margin:5px 0;
+  background-color:#ccc;
+`;

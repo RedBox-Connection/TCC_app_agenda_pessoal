@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CabecalhoSimples from '../../components/CabecalhoSimples';
 import QuadroButton from '../../components/QuadroButton';
 
-import { Container, Content, QuadrosContainer, AddTeam, AddBoard } from './styles';
+import { Divider, Container, Content, QuadrosContainer, AddTeam, AddBoard } from './styles';
 
 import ApiQuadro from '../../services/Quadro/services';
 import { toast } from 'react-toastify';
@@ -50,21 +50,6 @@ function EscolherQuadro(props) {
               <h1>Olá {nomeUsuario}, escolha o quadro que deseja entrar:</h1>
               <QuadrosContainer>
                 <Link to={{
-                  pathname: "/Novo-time",
-                  state: {
-                    idLogin,
-                    nomeUsuario
-                  }  
-                }}>
-                  <AddTeam>
-                       Criar um time
-                  </AddTeam>
-                </Link>
-                  {quadros.map(quadro => (
-                     <QuadroButton nomeQuadro={quadro.nomeQuadro} nomeUsuario={nomeUsuario}
-                                   idLogin={idLogin}/>
-                  ))}
-                <Link to={{
                   pathname: "/Novo-quadro",
                   state: {
                     idLogin,
@@ -74,6 +59,22 @@ function EscolherQuadro(props) {
                   <AddBoard>
                        Criar um quadro
                   </AddBoard>
+                </Link>
+                  {quadros.map(quadro => (
+                     <QuadroButton nomeQuadro={quadro.nomeQuadro} nomeUsuario={nomeUsuario}
+                                   idLogin={idLogin}/>
+                  ))}
+                <Divider />
+                <Link to={{
+                  pathname: "/Novo-time",
+                  state: {
+                    idLogin,
+                    nomeUsuario
+                  }  
+                }}>
+                  <AddTeam>
+                       Criar um time
+                  </AddTeam>
                 </Link>
               </QuadrosContainer>
           </Content>
