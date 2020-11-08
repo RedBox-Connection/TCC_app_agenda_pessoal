@@ -9,11 +9,8 @@ import Modal from '../Modal';
 import { CardContent, Color, Content } from './styles';
 
 //Import Api
-import cardsApi from '../../services/Cards/services';
 
-const apiCards = new cardsApi();
-
-export default function Card() {
+export default function Card(props) {
 
     //Services Api
     
@@ -46,7 +43,7 @@ export default function Card() {
             <button id="Card-Button" onClick={() =>setIsModalVisible(true)}>
                 <Color />
                 <Content>
-                    <h3>Título</h3>
+                    <h3>Titulo</h3>
                     <h1>18:00</h1>
                 </Content>
             </button>

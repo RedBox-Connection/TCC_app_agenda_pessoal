@@ -1,0 +1,10 @@
+Mano fiz a "Casca" mas para mim é muito dificíl essa parte de conexao
+então deixei comentado para não dar erro na hora de subir.
+Ai vai ficar faltando comentarios, checklist e drag n drop que vou fazer amanha.
+A de cadastrar ta na Components/CreateCardModal,
+a de consultar ta na Components/List porém só fiz na lista hoje pois sei que esta 
+errado e ia fazer na outras atoa e nessa de consultar coloquei um botao de consulta 
+só para facilitar agora e depois a gente tira e boata autoReload,
+a de deletar ta no Components/Modal,
+e a de alterar não consegui fazer.
+Foi mal pelo vacilo manin mas é que essa parte ta realmente dificil para mim.
