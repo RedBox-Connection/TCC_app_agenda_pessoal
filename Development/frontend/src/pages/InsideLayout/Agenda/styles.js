@@ -16,4 +16,12 @@ export const CardContainer = styled.div`
     flex-direction:row;
     
     background-color: white;
+
+    #Add {
+       width:42px;
+       height:42px;
+       border-radius:7px;
+       border: 0;
+       cursor:pointer; 
+    }
 `;

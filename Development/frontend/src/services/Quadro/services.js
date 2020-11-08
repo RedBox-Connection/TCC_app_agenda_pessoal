@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const quadroApi = axios.create({
-    baseURL: 'http://localhost:5000/quadro'
+    baseURL: 'http://54.152.237.245:5000/quadro'
 })
 
 export default class ApiQuadro{

@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 `;
 
-export const TodoText = styled.div`
+export const TodoText = styled.h6`
 
 `;
 

@@ -43,6 +43,7 @@ export default function TodoForm(props) {
                         onChange={handleChange}
                         name='text'
                         id='todo-input'
+                        maxLength="25"
                     />
                     <button onClick={handleSubmit} id='todo-button'>
                         Add tarefa

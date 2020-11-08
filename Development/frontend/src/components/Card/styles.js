@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const CardContent = styled.div`
-    > button{
+    #Card-Button{
         height:75px;
-        width:175px;
+        width:225px;
         margin:10px;
 
         display:flex;
@@ -13,10 +13,24 @@ export const CardContent = styled.div`
 
         border-radius:7px;
         border:none;
-        box-shadow: 0 1px 4px 0 rgba(192, 208, 203, 0.8);
-
-        cursor:grab;
+        box-shadow: 0 2px 5px 0 rgba(192, 208, 203, 0.8);
     }
+
+    ${props => props.isDragging && css`
+        height:75px;
+        width:225px;
+        margin:10px;
+
+        border: 2px dashed rgba(0,0,0,0.2);
+        border-radius:0;
+
+        background:transparent;
+        box-shadow:none;
+
+        button{
+            opacity:0;
+        }
+    `}
 `;
 
 export const Color = styled.div`
@@ -37,7 +51,7 @@ export const Content = styled.div`
 
     padding:5px;
 
-    > h3{
+    > h4{
         margin-right:15px;
     }
 `;
