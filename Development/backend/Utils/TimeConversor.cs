@@ -40,6 +40,7 @@ namespace backend.Utils
 
                 x.IdTime = time.IdTime;
                 x.NomeTime = time.NmTime;
+                x.Descricao = "Time";
 
                 times.Add(x);
             }

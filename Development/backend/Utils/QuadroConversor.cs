@@ -32,6 +32,7 @@ namespace backend.Utils
 
             resp.IdQuadro = req.IdQuadro;
             resp.NomeQuadro = req.NmQuadro;
+            resp.Descricao = "Quadro";
 
             return resp;
         }

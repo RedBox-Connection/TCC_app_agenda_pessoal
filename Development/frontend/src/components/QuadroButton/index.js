@@ -10,7 +10,9 @@ function QuadroButton(props) {
       pathname: '/Inicial',
       state: {
         idLogin: props.idLogin,
-        nomeUsuario: props.nomeUsuario
+        nomeUsuario: props.nomeUsuario,
+        descricao: props.descricao,
+        idTipo: props.idTipo
       }
     }}>
       <Container>

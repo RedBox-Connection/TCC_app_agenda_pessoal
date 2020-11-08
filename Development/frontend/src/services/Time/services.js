@@ -11,4 +11,9 @@ export default class ApiTime{
         const resp = await timeApi.post('/cadastrar', req)
         return resp.data;
     }
+
+    async consultarTimesAsync(idLogin) {
+        const resp = await timeApi.get(`/consultar/${idLogin}`);
+        return resp.data.times;
+    }
 }

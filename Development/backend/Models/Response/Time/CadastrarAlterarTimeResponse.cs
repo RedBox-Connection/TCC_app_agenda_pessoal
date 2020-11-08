@@ -4,5 +4,6 @@ namespace backend.Models.Response
     {
         public int IdTime { get; set; }
         public string NomeTime { get; set; }
+        public string Descricao { get; set; }
     }
 }
