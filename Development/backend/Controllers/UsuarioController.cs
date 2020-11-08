@@ -14,6 +14,7 @@ namespace backend.Controllers
         Utils.UsuarioConversor usuarioCnv = new Utils.UsuarioConversor();
         Business.QuadroBusiness quadroBsn = new Business.QuadroBusiness();
         Business.GerenciadorFoto gerenciadorFoto = new Business.GerenciadorFoto();
+        Business.GerenciadorEmail gerenciadorEmail = new Business.GerenciadorEmail();
         Business.EsqueciSenhaBusiness esqueciSenhaBsn = new Business.EsqueciSenhaBusiness();
 
         [HttpPost("cadastrar")]
@@ -38,6 +39,8 @@ namespace backend.Controllers
                 Models.TbQuadro tbQuadro = usuarioCnv.ToTbQuadro(tbUsuario.IdUsuario);
 
                 tbQuadro = await quadroBsn.CadastrarQuadroAsync(tbQuadro);
+
+                gerenciadorEmail.EnviarEmailCadastroDeUsuario(tbLogin.DsEmail);
 
                 Models.Response.LoginResponse resp = usuarioCnv.ToLoginResponse(tbLogin, tbUsuario.NmUsuario);
 

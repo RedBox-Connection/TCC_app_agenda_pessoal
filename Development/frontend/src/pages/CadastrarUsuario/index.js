@@ -95,6 +95,7 @@ function CadastrarUsuario() {
                         <input type="password" placeholder="********" onChange={e => setSenha(e.target.value)}/>
                         <p>
                             A senha deve conter pelo menos 8 caracteres, <br/> 
+                            2 números, <br/>
                             1 letra maiuscula, <br/>
                             1 minuscula e<br/>
                             1 caracterer especial.        

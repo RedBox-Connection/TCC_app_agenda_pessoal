@@ -11,7 +11,7 @@ namespace backend.Business
 {
     public class GerenciadorEmail
     {
-        public void EnviarEmail(string destinatario, DateTime expiracao, long codigo)
+        public void EnviarEmailCodigo(string destinatario, DateTime expiracao, long codigo)
         {
             string htmlString = $@"<html>
                                     <header>
@@ -26,6 +26,36 @@ namespace backend.Business
                                    </html>";
 
             MailMessage mensagem = new MailMessage("noreply.organizer.mailsender@gmail.com", destinatario, "Codigo de Recuperação", htmlString);
+
+            using (var smtpClient = new SmtpClient())
+            {
+                mensagem.IsBodyHtml = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new System.Net.NetworkCredential("noreply.organizer.mailsender@gmail.com", "Redbox123");
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
+                smtpClient.Timeout = 20_000;
+                smtpClient.Send(mensagem);
+            }
+        }
+
+        public void EnviarEmailCadastroDeUsuario(string destinatario)
+        {
+            string htmlString = $@"<html>
+                                    <header>
+                                        <h1>Ola e bom dia</h1>
+                                    </header>
+                                    <body>
+                                        <h6>Confirmamos o seu cadastro no Organizer com o email: {destinatario}</h6>
+                                    </body>
+                                    <footer>
+                                        CopyRight -- RedBox
+                                    </footer>
+                                   </html>";
+
+            MailMessage mensagem = new MailMessage("noreply.organizer.mailsender@gmail.com", destinatario, "Confirmação de Cadastro", htmlString);
 
             using (var smtpClient = new SmtpClient())
             {
