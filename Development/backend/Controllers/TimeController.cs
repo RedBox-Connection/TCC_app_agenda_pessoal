@@ -33,6 +33,8 @@ namespace backend.Controllers
                 
                 tbTime = await timeBsn.CadastrarTimeAsync(tbTime);
 
+                tbTime = await timeBsn.SalvarLinkAsync(tbTime, tbTime);
+
                 Models.Response.CadastrarAlterarTimeResponse resp = timeCnv.ToTimeResponse(tbTime);
 
                 return resp;           

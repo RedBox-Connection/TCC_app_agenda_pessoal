@@ -37,7 +37,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpGet("consultar-cartoes-tarefa")]
+        [HttpGet("consultar-cartoes-tarefa/{idQuadro}")]
         public async Task<ActionResult<Models.Response.CartoesTarefasResponse>> ConsultarCartoesTarefasAsync(int idQuadro)
         {
             try

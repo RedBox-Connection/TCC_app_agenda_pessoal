@@ -4,6 +4,8 @@ namespace backend.Business
 {
     public class GerenciadorLink
     {
+        Database.TimeDatabase timeDb = new Database.TimeDatabase();
+
         public string GerarLink(int idTime, int idQuadroTime)
         {
             string url = "host:3000/Inicial?idTime=" + idTime + "&idQuadroTime=" + idQuadroTime + "/invitation";

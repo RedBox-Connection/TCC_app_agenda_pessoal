@@ -52,6 +52,21 @@ namespace backend.Utils
             return tb;
         }
 
+        private string VerificarStatusDoDia(DateTime dataTermino)
+        {
+            string statusDia = "";
+            if(dataTermino >= DateTime.Now.AddDays(3))
+                statusDia = "futuramente";
+            else if(dataTermino >= DateTime.Now.AddDays(2))
+                statusDia = "depois de amanha";
+            else if(dataTermino >= DateTime.Now.AddDays(1))
+                statusDia = "amanha";
+            else if(dataTermino >= DateTime.Now)
+                statusDia = "hoje";
+
+            return statusDia;
+        }
+
         public Models.Response.CartaoTarefaResponse ToCartaoTarefaResponse(Models.TbCartao req)
         {
             Models.Response.CartaoTarefaResponse resp = new Models.Response.CartaoTarefaResponse();
@@ -61,6 +76,8 @@ namespace backend.Utils
             resp.Status = req.DsStatus;
             resp.NomeCartao = req.NmCartao;
             resp.DataCartao = req.DtTermino;
+
+            resp.StatusDia = this.VerificarStatusDoDia(req.DtTermino);
 
             return resp;
         }

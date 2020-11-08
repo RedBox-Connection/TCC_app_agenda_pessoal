@@ -19,8 +19,6 @@ namespace backend.Business
 
             if(req.DsLinkConvite == string.Empty)
                 throw new Exception("Não foi possível gerar o link pro seu time.");
-
-            gerenciadorLink.ValidarLink(req.DsLinkConvite);
         }
 
         public async Task<Models.TbTime> CadastrarTimeAsync(Models.TbTime req)
@@ -82,6 +80,17 @@ namespace backend.Business
         public async Task<Models.TbTime> DeletarTimeAsync(Models.TbTime req)
         {
             return await timeDb.DeletarTimeAsync(req);
+        }
+
+        public async Task<Models.TbTime> SalvarLinkAsync(Models.TbTime timeAntigo, Models.TbTime timeNovo)
+        {
+            timeNovo.DsLinkConvite = gerenciadorLink.GerarLink(timeAntigo.IdTime, timeAntigo.IdQuadro);
+
+            gerenciadorLink.ValidarLink(timeNovo.DsLinkConvite);
+
+            timeAntigo = await timeDb.SalvarLinkAsync(timeAntigo, timeNovo);
+
+            return timeAntigo;
         }
     }
 }

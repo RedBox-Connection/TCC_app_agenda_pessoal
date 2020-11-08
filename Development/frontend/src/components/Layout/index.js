@@ -24,14 +24,13 @@ import Feitos from '../../pages/InsideLayout/Agenda/Feitos';
 
 function Layout(props) {
 
-  //const nomeUsuario = props.location.state.nomeUsuario;
-  //const idLogin = props.location.state.idLogin;
+  const nomeUsuario = props.location.state.nomeUsuario;
+  const idLogin = props.location.state.idLogin;
 
   return (
       <Container>
         <BrowserRouter>
-            <CabecalhoLayout //nomeUsuario={nomeUsuario} idLogin={idLogin}
-            />
+            <CabecalhoLayout nomeUsuario={nomeUsuario} idLogin={idLogin}/>
             <Main>
               
             <MenuLateral />

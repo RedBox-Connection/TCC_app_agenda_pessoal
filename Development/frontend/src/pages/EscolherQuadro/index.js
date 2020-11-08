@@ -49,7 +49,13 @@ function EscolherQuadro(props) {
           <Content>
               <h1>Olá {nomeUsuario}, escolha o quadro que deseja entrar:</h1>
               <QuadrosContainer>
-                <Link to="/Novo-time" >
+                <Link to={{
+                  pathname: "/Novo-time",
+                  state: {
+                    idLogin,
+                    nomeUsuario
+                  }  
+                }}>
                   <AddTeam>
                        Criar um time
                   </AddTeam>

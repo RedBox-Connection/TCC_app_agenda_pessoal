@@ -7,6 +7,7 @@ namespace backend.Models.Response
         public int IdCartao { get; set; }
         public string NomeCartao { get; set; }
         public DateTime DataCartao { get; set; }
+        public string StatusDia { get; set; }
         public string Status { get; set; }
         public int IdQuadro { get; set; }
     }

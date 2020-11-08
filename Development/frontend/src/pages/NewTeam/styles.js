@@ -49,31 +49,6 @@ export const InputWrapper = styled.div`
   }
 `;
 
-// export const LinkWrapper = styled.div`
-//   display:flex;
-//   flex-direction:column;
-
-//   width: 400px;
-
-//   margin: 5px 0;
-
-//   > div{
-//       display:flex;
-//       justify-content:space-between;
-//   }
-
-//   > div input{
-//       height:35px;
-//       width:320px;
-
-//       padding:0 15px;
-//   }
-
-//   > div button{
-//       padding:0 10px;
-//   }
-// `;
-
 export const ButtonBox = styled.div`
   display:flex;
   flex-direction:column;
@@ -99,4 +74,17 @@ export const ButtonBox = styled.div`
   > a:hover{
       text-decoration:underline;
   }
+`;
+
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  transform: translate(0%, 620%);
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
 `;

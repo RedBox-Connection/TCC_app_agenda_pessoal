@@ -51,5 +51,14 @@ namespace backend.Database
 
             return req;
         }
+
+        public async Task<Models.TbTime> SalvarLinkAsync(Models.TbTime timeAntigo, Models.TbTime timeNovo)
+        {
+            timeAntigo.DsLinkConvite = timeNovo.DsLinkConvite;
+
+            await ctx.SaveChangesAsync();
+
+            return timeAntigo;
+        }
     }
 }
