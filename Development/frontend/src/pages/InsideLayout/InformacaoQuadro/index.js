@@ -7,7 +7,7 @@ function InfoQuadro() {
     return(
         <Container>
             <Title>
-                <h1>Alterer Nome do Quadro</h1>
+                <h1>Alterar Nome do Quadro</h1>
             </Title>
             <Content>
                 <input type="text" placeholder="'Nome do quadro'"/>

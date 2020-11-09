@@ -40,10 +40,12 @@ export const Content = styled.div`
     }
 
     #Update{
-        background:#99ff99;
+        background:var(--verde);
+        color:#fff;
     }
 
     #Delete{
-        background:#ff4d4d;
+        background:var(--vermelho);
+        color:#fff;
     }
 `;
