@@ -11,9 +11,10 @@ export const Container = styled.div`
 
 export const CardContainer = styled.div`
     display:flex;
-    flex-direction:row;
-    justify-content:center;
-    
 
     background-color: white;
+
+    h1{
+      margin:20px;
+    }
 `;

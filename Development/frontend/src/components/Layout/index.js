@@ -20,7 +20,7 @@ import WelcomePage from '../../pages/InsideLayout/WelcomePage';
 //Agenda 
 import Agenda from '../../pages/InsideLayout/Agenda';
 import Feitos from '../../pages/InsideLayout/Agenda/Feitos';
-//import Atrasados from '../../pages/Agenda/Atrasados';
+import Atrasados from '../../pages/InsideLayout/Agenda/Atrasados';
 
 //Quadro
 import InfoQuadro from '../../pages/InsideLayout/InformacaoQuadro';
@@ -44,6 +44,7 @@ function Layout(props) {
 
                   <Route path="/inicial/Agenda" component={Agenda} />
                   <Route path="/inicial/Feitos" component={Feitos} />
+                  <Route path="/Inicial/Atrasados" component={Atrasados} />
 
                   <Route path="/inicial/Configuracoes" component={ConfiguracaoUsuario} />
 
