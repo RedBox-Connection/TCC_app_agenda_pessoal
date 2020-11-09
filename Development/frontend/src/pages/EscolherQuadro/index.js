@@ -8,7 +8,7 @@ import { Divider, Container, Content, QuadrosContainer, AddTeam, AddBoard } from
 
 import ApiQuadro from '../../services/Quadro/services';
 import ApiTime from '../../services/Time/services';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import LoadingBar from 'react-top-loading-bar'
 const apiQuadro = new ApiQuadro();
 const apiTime = new ApiTime();
@@ -107,6 +107,7 @@ function EscolherQuadro(props) {
                   ))}
               </QuadrosContainer>
           </Content>
+          <ToastContainer />
       </Container>
   );
 }
