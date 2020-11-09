@@ -86,8 +86,12 @@ function EscolherQuadro(props) {
                   </AddBoard>
                 </Link>
                 {quadros.map(quadro => (
-                    <QuadroButton descricao={quadro.descricao} nomeQuadro={quadro.nomeQuadro} nomeUsuario={nomeUsuario}
-                                  idLogin={idLogin} idTipo={quadro.idQuadro}/>
+                    <QuadroButton 
+                      key={quadro.nomeQuadro}
+                      descricao={quadro.descricao} 
+                      nomeQuadro={quadro.nomeQuadro} 
+                      nomeUsuario={nomeUsuario}
+                      idLogin={idLogin} idTipo={quadro.idQuadro}/>
                 ))}
                 <Divider />
                 <Link to={{
@@ -102,8 +106,12 @@ function EscolherQuadro(props) {
                   </AddTeam>
                 </Link>
                 {times.map(time => (
-                     <QuadroButton descricao={time.descricao} nomeQuadro={time.nomeTime} nomeUsuario={nomeUsuario}
-                                   idLogin={idLogin} idTipo={time.idTime}/>
+                     <QuadroButton 
+                        key={time.nomeTime}
+                        descricao={time.descricao} 
+                        nomeQuadro={time.nomeTime} 
+                        nomeUsuario={nomeUsuario}
+                        idLogin={idLogin} idTipo={time.idTime}/>
                   ))}
               </QuadrosContainer>
           </Content>
