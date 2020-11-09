@@ -63,8 +63,17 @@ namespace backend.Utils
                 statusDia = "amanha";
             else if(dataTermino >= DateTime.Now)
                 statusDia = "hoje";
+            else
+                statusDia = "Status de Quadro";
 
             return statusDia;
+        }
+
+        private string RetornarHoraMinuto(DateTime dataTermino)
+        {
+            string dataCompleta = dataTermino.GetDateTimeFormats().ToList()[14];
+            string horaMinuto = dataCompleta.Substring(dataCompleta.IndexOf(':') - 2);
+            return horaMinuto;   
         }
 
         public Models.Response.CartaoTarefaResponse ToCartaoTarefaResponse(Models.TbCartao req)
@@ -76,8 +85,10 @@ namespace backend.Utils
             resp.Status = req.DsStatus;
             resp.NomeCartao = req.NmCartao;
             resp.DataCartao = req.DtTermino;
+            resp.Cor = req.DsCor;
 
             resp.StatusDia = this.VerificarStatusDoDia(req.DtTermino);
+            resp.Hora = this.RetornarHoraMinuto(req.DtTermino);
 
             return resp;
         }
@@ -90,9 +101,7 @@ namespace backend.Utils
             {
                 Models.Response.CartaoTarefaResponse x = new Models.Response.CartaoTarefaResponse();
 
-                x.IdCartao = tb.IdCartao;
-                x.IdQuadro = tb.IdQuadro;
-                x.Status = tb.DsStatus;
+                x = this.ToCartaoTarefaResponse(tb);
 
                 resps.Add(x);
             }

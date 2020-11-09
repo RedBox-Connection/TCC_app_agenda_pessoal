@@ -6,6 +6,10 @@ export const Container = styled.div`
 
   display:flex;
   flex-direction:column;
+
+  > h1{
+    margin:20px;
+  }
 `;
 
 export const CardContainer = styled.div`
