@@ -56,7 +56,7 @@ export const UserPhoto = styled.div`
 
 
 export const UserInfo = styled.div`
-  width:30%;
+  width:35%;
   
   display:flex;
   flex-direction:column;
@@ -123,7 +123,9 @@ export const Logout = styled.div`
 
 export const LogoutBox = styled.div`
   display:flex;
+  flex-direction:row;
   align-items:center;
+  justify-content:space-between;
 
   > Link{
     margin-left:5px;

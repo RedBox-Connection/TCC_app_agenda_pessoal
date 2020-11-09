@@ -8,22 +8,7 @@ import Modal from '../Modal';
 //Import Styles
 import { CardContent, Color, Content } from './styles';
 
-//Import Api
-
 export default function Card(props) {
-
-    //Services Api
-    const nomeCartao = props.nomeCartao;
-    const dataHora = props.dataCartao;
-
-    const [hora, setHora] = useState('');
-
-    try {
-        setHora(dataHora.substr(dataHora.indexOf(':') - 2, 5));
-    } catch (e) {
-        setHora('');
-    }
-    
 
     //Modal Function
     const [isModalVisible,setIsModalVisible] = useState(false);

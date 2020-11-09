@@ -13,7 +13,6 @@ export default function ListFuturamente() {
             </header>
 
             <ul>
-                <Card />
             </ul>
         </Container>
     )

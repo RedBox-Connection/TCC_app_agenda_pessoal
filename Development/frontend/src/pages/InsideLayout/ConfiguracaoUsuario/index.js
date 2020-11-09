@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DoorOpenFill, PencilFill } from 'react-bootstrap-icons';
+import { DoorOpenFill, PencilFill, TrashFill } from 'react-bootstrap-icons';
 
 import { Loader, Container, Title, Content,UserProfile ,UserPhoto, UserInfo, InputWrapper,ButtonBox , Logout, LogoutBox } from './styles';
 import ClipLoader from "react-spinners/ClipLoader";
@@ -228,8 +228,14 @@ function ConfiguracaoUsuario(props) {
           </Content>
           <Logout>
               <LogoutBox>
-                <DoorOpenFill />
-                <Link onClick={zerarTudo} to='/'>Sair</Link>
+                <div>
+                  <DoorOpenFill />
+                  <Link onClick={zerarTudo} to='/'>Sair</Link>
+                </div>
+                <div>
+                  <TrashFill />
+                  <Link to='/'>Deletar Conta</Link>
+                </div>
               </LogoutBox>
           </Logout>
           <ToastContainer />

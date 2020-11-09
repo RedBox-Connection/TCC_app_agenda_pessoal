@@ -11,7 +11,6 @@ import CadastrarUsuario from './pages/CadastrarUsuario';
 import Login from './pages/Login';
 
 // Esqueci a senha
-
 import EsqueciSenha from './pages/Login/EsqueciSenha';
 import AutenticacaoSenha from './pages/Login/AutenticacaoSenha';
 import NovaSenha from './pages/Login/NovaSenha';
@@ -29,6 +28,7 @@ import ConviteTime from './pages/ConviteTime';
 //Criar quadros
 import NewTeam from './pages/NewTeam';
 import CriarQuadro from './pages/CriarQuadro';
+
 
 
 function Routes() {

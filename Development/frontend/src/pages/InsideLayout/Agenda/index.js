@@ -26,13 +26,15 @@ export default function Agenda() {
         <DndProvider backend={HTML5Backend}> 
             <Container>
                 <CardContainer>
-                    <button id="Add" type="button" onClick={() =>setIsModalVisible(true)}>
+                    <button id="Add" type="button" onClick={() => setIsModalVisible(true)}>
                         <Calendar2Plus height="25px" width="25px"/>
                     </button>
+
                     <ListHoje />
                     <ListAmanha />
                     <ListDepoisDeAmanha />
                     <ListFuturamente />
+
                     {isModalVisible ? <CreateCardModal onClose={() => setIsModalVisible(false)}/> : null}
                 </CardContainer>
             </Container>

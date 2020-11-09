@@ -22,6 +22,9 @@ import Agenda from '../../pages/InsideLayout/Agenda';
 import Feitos from '../../pages/InsideLayout/Agenda/Feitos';
 //import Atrasados from '../../pages/Agenda/Atrasados';
 
+//Quadro
+import InfoQuadro from '../../pages/InsideLayout/InformacaoQuadro';
+
 function Layout(props) {
 
   const nomeUsuario = props.location.state.nomeUsuario;
@@ -45,6 +48,8 @@ function Layout(props) {
                   <Route path="/inicial/Configuracoes" component={ConfiguracaoUsuario} />
 
                   <Route path="/inicial/ConfigurarTime" component={ConfiguracaoTime} />
+
+                  <Route path="/inicial/InfoQuadro" component={InfoQuadro} />
 
                   <Route path="*" component={NotFound} />
                 </Switch>

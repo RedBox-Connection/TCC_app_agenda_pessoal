@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Journal, CheckCircle, Alarm, Sliders } from 'react-bootstrap-icons';
+import { Journal, CheckCircle, Alarm, Sliders, Calendar2Week } from 'react-bootstrap-icons';
 
 import { Container, ItemLink } from './styles';
 
@@ -11,19 +11,23 @@ function MenuLateral() {
       <Container>
           <ItemLink>
               <Journal />
-              <Link to="/inicial/Agenda">Agenda</Link>
+              <Link to="/Inicial/Agenda">Agenda</Link>
           </ItemLink>
           <ItemLink>
               <CheckCircle />
-              <Link to="/inicial/Feitos">Feitos</Link>
+              <Link to="/Inicial/Feitos">Feitos</Link>
           </ItemLink>
           <ItemLink>
               <Alarm />
               <Link to="/Inicial/Atrasados">Atrasados</Link>
           </ItemLink>
           <ItemLink>
+              <Calendar2Week />
+              <Link to="/Inicial/InfoQuadro">Info Quadro</Link>
+          </ItemLink>
+          <ItemLink>
               <Sliders />
-              <Link to="/inicial/ConfigurarTime">Configurações</Link>
+              <Link to="/Inicial/ConfigurarTime">Configurações</Link>
           </ItemLink>
       </Container>
   );

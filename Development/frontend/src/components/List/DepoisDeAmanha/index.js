@@ -13,7 +13,6 @@ export default function ListDepoisDeAmanha() {
             </header>
 
             <ul>
-                <Card />
             </ul>
         </Container>
     )
