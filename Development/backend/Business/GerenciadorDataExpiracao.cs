@@ -50,7 +50,7 @@ namespace backend.Business
         {
             string dataCompleta = expiracao.GetDateTimeFormats().ToList()[14];
             string diaDaSemanaEnUs = dataCompleta.Substring(0,
-                                     dataCompleta.IndexOf(',') - 1);
+                                     dataCompleta.IndexOf(','));
             string diaDaSemanaPtBr = this.ConverterDiaPtBr(diaDaSemanaEnUs);
             return diaDaSemanaPtBr;
         }
@@ -59,7 +59,7 @@ namespace backend.Business
         {
             string dataCompleta = expiracao.GetDateTimeFormats().ToList()[14];
             string mesEnUs = dataCompleta.Substring(dataCompleta.IndexOf(',') + 2,
-                         dataCompleta.LastIndexOf(',') - 4);
+                             ((dataCompleta.IndexOf(' ', dataCompleta.IndexOf(' '))) + 1));
             string mesPtBr = this.ConverterMesPtBr(mesEnUs);
             return mesPtBr;
         }
@@ -89,6 +89,7 @@ namespace backend.Business
                 case "7": hrMin="07"; break;
                 case "8": hrMin="08"; break;
                 case "9": hrMin="09"; break;
+                default: hrMin=horaMinuto; break;
             }
             return hrMin;
         }

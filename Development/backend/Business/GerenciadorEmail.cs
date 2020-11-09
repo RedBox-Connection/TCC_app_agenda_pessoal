@@ -27,12 +27,6 @@ namespace backend.Business
                                         <body style='box-sizing: border-box;
                                                     margin: 0%;
                                                     padding: 1%;
-                                                    width: 100vw;
-                                                    height: 100vh;
-                                                    display: flex;
-                                                    flex-direction: column;
-                                                    align-items: center;
-                                                    justify-content: space-evenly;
                                                     background-color: #489FB5;'>
                                             <!-- Header -->
                                             <div style='display: flex;
@@ -48,24 +42,30 @@ namespace backend.Business
                                                 <div style='display: flex;
                                                             align-items: center;
                                                             justify-content: space-evenly;
-                                                            width: 17%;'>
-                                                    <span style='color: darkred;
-                                                                font-weight: bolder;'>Red<span style='color: black; font-weight: bolder;'>Box</span>
-                                                    </span>
-                                                    <span style='color: white;
-                                                                font-weight: bolder;'>
-                                                                Connection
-                                                    </span>
+                                                            width: 50%;'>
 
                                                     <img src='https://raw.githubusercontent.com/RedBox-Connection/TCC_app_agenda_pessoal/master/Development/backend/Storage/Images/redBoxLogo.png' alt='redBoxLogo'
-                                                        style='height: 50px;
-                                                                width: 50px;
-                                                                border-radius: 100%;'/>
+                                                    style='height: 50px;
+                                                        width: 50px;
+                                                        border-radius: 100%;
+                                                        margin-top: 6%;
+                                                        margin-left: 2%;
+                                                        margin-right: 1%;'/>
+                                                    <span style='margin-top: 12%'>
+                                                        <span style='color: darkred;
+                                                                    font-weight: bolder;'>Red<span style='color: black; font-weight: bolder;'>Box</span>
+                                                        </span>
+                                                        <span style='color: white;
+                                                                    font-weight: bolder;'>
+                                                                    Connection
+                                                        </span>
+                                                    </span>
+                                                    
                                                 </div>
                                                 <!-- Motivo -->
-                                                <div>
-                                                    <p style='font-weight: bolder;'>
-                                                        Código para Recuperação de Senha
+                                                <div style='width: 50%;'>
+                                                    <p style='font-weight: bolder; margin-top: 12%; text-align: end; margin-right: 2%'>
+                                                        Código de Recuperação de Senha
                                                     </p>
                                                 </div>
                                             </div>
@@ -80,16 +80,14 @@ namespace backend.Business
                                                         border-radius: 5px;
                                                         margin: 0.2%;'>
                                                 <!-- Mensagem -->
-                                                <div style='display: flex;
-                                                            align-items: center;
-                                                            justify-content: space-between;
-                                                            color: white;
+                                                <div style='color: white;
                                                             font-weight: bolder;
-                                                            height: 70vh;
-                                                            width: 80%;
+                                                            text-align: center;
+                                                            height: calc(100% - 100px);
+                                                            width: calc(100% - 100px);
                                                             background-color: rgb(0, 0, 0, 0.2);
                                                             border-radius: 5px;
-                                                            margin: 0.2%;'>
+                                                            margin: 50px'>
                                                     <p>
                                                         O código à seguir ficará disponível até: {dateExp}. Então, fique atento ao prazo limite.
                                                         Código: <strong>{codigo.ToString()}</strong>
@@ -110,16 +108,19 @@ namespace backend.Business
                                                 <div style='display: flex;
                                                             align-items: center;
                                                             justify-content: space-evenly;
-                                                            width: 22%;'>
+                                                            width: 50%;
+                                                            margin-top: 6%;
+                                                            margin-left: 1%'>
                                                     <div style='font-weight: bolder;
                                                                 color: black;
                                                                 display: flex;
                                                                 align-items: center;
-                                                                '>
+                                                                margin-right: 1%;'>
                                                         Copyrigth &copy; by
                                                     </div>
                                                     <span style='color: darkred;
-                                                                font-weight: bolder;'
+                                                                font-weight: bolder;
+                                                                margin-right: 1%;'
                                                         >Red<span style='color: black;
                                                                         font-weight: bolder;'
                                                                 >Box
@@ -134,16 +135,18 @@ namespace backend.Business
                                                 <div style='display: flex;
                                                             align-items: center;
                                                             justify-content: space-evenly;
-                                                            width: 15%;
-                                                            font-weight: bolder;'>
-                                                    <span>&#x2691;</span>
-                                                    <span>São Paulo, Brasil.</span>
+                                                            width: 50%;
+                                                            font-weight: bolder;
+                                                            margin-top: 6%;
+                                                            margin-right: 1%;'>
+                                                    <p style='text-align: end; margin: 0%;
+                                                            width: 100%;'>&#x2691; São Paulo, Brasil.</p>
                                                 </div>
                                             </div>
                                         </body>
                                     </html>";
 
-            MailMessage mensagem = new MailMessage("noreply.organizer.mailsender@gmail.com", destinatario, "", htmlString);
+            MailMessage mensagem = new MailMessage("noreply.organizer.mailsender@gmail.com", destinatario, "Código de Recuperação de Senha", htmlString);
 
             using (var smtpClient = new SmtpClient())
             {
@@ -171,12 +174,6 @@ namespace backend.Business
                                         <body style='box-sizing: border-box;
                                                     margin: 0%;
                                                     padding: 1%;
-                                                    width: 50vw;
-                                                    height: 100vh;
-                                                    display: flex;
-                                                    flex-direction: column;
-                                                    align-items: center;
-                                                    justify-content: space-evenly;
                                                     background-color: #489FB5;'>
                                             <!-- Header -->
                                             <div style='display: flex;
@@ -192,24 +189,30 @@ namespace backend.Business
                                                 <div style='display: flex;
                                                             align-items: center;
                                                             justify-content: space-evenly;
-                                                            width: 35%;'>
-                                                    <span style='color: darkred;
-                                                                font-weight: bolder;'>Red<span style='color: black; font-weight: bolder;'>Box</span>
-                                                    </span>
-                                                    <span style='color: white;
-                                                                font-weight: bolder;'>
-                                                                Connection
-                                                    </span>
+                                                            width: 50%;'>
 
                                                     <img src='https://raw.githubusercontent.com/RedBox-Connection/TCC_app_agenda_pessoal/master/Development/backend/Storage/Images/redBoxLogo.png' alt='redBoxLogo'
-                                                        style='height: 50px;
-                                                                width: 50px;
-                                                                border-radius: 100%;'/>
+                                                    style='height: 50px;
+                                                        width: 50px;
+                                                        border-radius: 100%;
+                                                        margin-top: 6%;
+                                                        margin-left: 2%;
+                                                        margin-right: 1%;'/>
+                                                    <span style='margin-top: 12%'>
+                                                        <span style='color: darkred;
+                                                                    font-weight: bolder;'>Red<span style='color: black; font-weight: bolder;'>Box</span>
+                                                        </span>
+                                                        <span style='color: white;
+                                                                    font-weight: bolder;'>
+                                                                    Connection
+                                                        </span>
+                                                    </span>
+                                                    
                                                 </div>
                                                 <!-- Motivo -->
-                                                <div>
-                                                    <p style='font-weight: bolder;'>
-                                                        Código para Recuperação de Senha
+                                                <div style='width: 50%;'>
+                                                    <p style='font-weight: bolder; margin-top: 12%; text-align: end; margin-right: 2%'>
+                                                        Bem vindo(a) ao nosso Organizer!
                                                     </p>
                                                 </div>
                                             </div>
@@ -224,18 +227,17 @@ namespace backend.Business
                                                         border-radius: 5px;
                                                         margin: 0.2%;'>
                                                 <!-- Mensagem -->
-                                                <div style='display: flex;
-                                                            align-items: center;
-                                                            justify-content: center;
-                                                            color: white;
+                                                <div style='color: white;
                                                             font-weight: bolder;
-                                                            height: 70vh;
-                                                            width: 80%;
+                                                            text-align: center;
+                                                            height: calc(100% - 100px);
+                                                            width: calc(100% - 100px);
                                                             background-color: rgb(0, 0, 0, 0.2);
                                                             border-radius: 5px;
-                                                            margin: 0.2%;'>
+                                                            margin: 50px;'>
                                                     <p>
-                                                        <!-- text here -->
+                                                        Nossa equipe agradece a preferência e a opção pelo RedBox Organizer.
+                                                        Desfrute de um organizador completo compartilhável à você e seus colegas de time!
                                                     </p>
                                                 </div>
                                             </div>
@@ -253,16 +255,19 @@ namespace backend.Business
                                                 <div style='display: flex;
                                                             align-items: center;
                                                             justify-content: space-evenly;
-                                                            width: 50%;'>
+                                                            width: 50%;
+                                                            margin-top: 6%;
+                                                            margin-left: 1%'>
                                                     <div style='font-weight: bolder;
                                                                 color: black;
                                                                 display: flex;
                                                                 align-items: center;
-                                                                '>
+                                                                margin-right: 1%;'>
                                                         Copyrigth &copy; by
                                                     </div>
                                                     <span style='color: darkred;
-                                                                font-weight: bolder;'
+                                                                font-weight: bolder;
+                                                                margin-right: 1%;'
                                                         >Red<span style='color: black;
                                                                         font-weight: bolder;'
                                                                 >Box
@@ -278,9 +283,11 @@ namespace backend.Business
                                                             align-items: center;
                                                             justify-content: space-evenly;
                                                             width: 50%;
-                                                            font-weight: bolder;'>
-                                                    <span>&#x2691;</span>
-                                                    <span>São Paulo, Brasil.</span>
+                                                            font-weight: bolder;
+                                                            margin-top: 6%;
+                                                            margin-right: 1%;'>
+                                                    <p style='text-align: end; margin: 0%;
+                                                            width: 100%;'>&#x2691; São Paulo, Brasil.</p>
                                                 </div>
                                             </div>
                                         </body>
