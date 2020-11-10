@@ -30,8 +30,8 @@ namespace backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseMySql("server=localhost;user id=root;password=1234;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=A1234;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=1234;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
+                // optionsBuilder.UseMySql("server=localhost;user id=root;password=A1234;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
                 //optionsBuilder.UseMySql("server=localhost;user id=admin;password=Red@Box123;database=tccdb", x => x.ServerVersion("8.0.21-mysql"));
             }
         }

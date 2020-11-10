@@ -34,6 +34,20 @@ export const Content = styled.div`
 
   margin:10px 0;
   }
+
+  > #salvar {
+    background-color:var(--verde);
+    color:#fff;
+
+    border:none;
+    width:fit-content;
+
+    padding:10px 20px;
+
+    font-size:18px;
+
+    margin:10px 0;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -95,18 +109,4 @@ export const Integrante = styled.div`
 
        margin-right:10px;
    }
-`;
-
-export const Save = styled.button`
-  background-color:var(--verde);
-  color:#fff;
-
-  border:none;
-  width:fit-content;
-
-  padding:10px 20px;
-
-  font-size:18px;
-
-  margin:10px 0;
 `;

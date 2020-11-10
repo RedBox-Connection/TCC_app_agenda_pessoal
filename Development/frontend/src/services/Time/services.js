@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const timeApi = axios.create({
-    baseURL: 'http://54.152.237.245:5000/time'
-    //baseURL: 'http://localhost:5000/time'
+    // baseURL: 'http://54.152.237.245:5000/time'
+    baseURL: 'http://localhost:5000/time'
 })
 
 export default class ApiTime{
@@ -19,6 +19,11 @@ export default class ApiTime{
 
     async deletarTime(idTime){
         const resp = await timeApi.delete(`/deletar/${idTime}`);
+        return resp.data;
+    }
+
+    async alterarTime(req, idTime){
+        const resp = await timeApi.put(`/alterar/${idTime}`, req);
         return resp.data;
     }
 }
