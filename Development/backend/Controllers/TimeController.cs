@@ -112,7 +112,9 @@ namespace backend.Controllers
             {
                 Models.TbTime tbTime = await timeBsn.ConsultarTimePorIdTime(idTime);
 
-                tbTime = await timeBsn.DeletarTimeAsync(tbTime);
+                Models.TbQuadro tbQuadro = await quadroBsn.ConsultarQuadroPorIdQuadroAsync(tbTime.IdQuadro);
+
+                tbQuadro = await quadroBsn.DeletarQuadroAsync(tbQuadro);
 
                 Models.Response.CadastrarAlterarTimeResponse resp = timeCnv.ToTimeResponse(tbTime);
 
