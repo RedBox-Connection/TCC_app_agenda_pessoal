@@ -6,7 +6,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import Modal from '../Modal';
 
 //Import Styles
-import { CardContent, Color, Content } from './styles';
+import { CardContent, Content } from './styles';
 
 export default function Card(props) {
 
@@ -36,7 +36,6 @@ export default function Card(props) {
         <CardContent ref={ref} isDragging={isDragging}>
 
             <button id="Card-Button" onClick={() =>setIsModalVisible(true)}>
-                <Color />
                 <Content>
                     <h3>Titulo</h3>
                     <h1>18:00</h1>

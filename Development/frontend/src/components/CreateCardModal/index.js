@@ -23,8 +23,6 @@ const Modal = ({id = 'Modal', onClose = () => {}}) => {
                         <input type="time"/>
 
                         <input type="date"/>
-
-                        <button>Cor</button>
                     </InputWrapper>
 
                     <InputDescription>

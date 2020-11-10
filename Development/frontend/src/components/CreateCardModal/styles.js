@@ -49,7 +49,7 @@ export const InputWrapper = styled.div`
 
     >input{
         height:30px;
-        width:150px;
+        width:175px;
         margin-right:5px;
     }
     >button{
@@ -66,11 +66,17 @@ export const InputDescription = styled.div`
 
     display:flex;
     flex-direction:column;
+
+    resize: none;
     
     >textarea{
         height:275px;
+        width:350px;
+
         margin-top:10px;
         padding:10px;
+
+        resize: none;
     }
 `;
 
