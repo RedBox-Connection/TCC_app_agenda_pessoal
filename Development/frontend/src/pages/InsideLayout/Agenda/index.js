@@ -18,7 +18,9 @@ import ListFuturamente from '../../../components/List/Futuramente';
 import { CardContainer, Container } from './styles';
 import { Calendar2Plus } from 'react-bootstrap-icons';
 
-export default function Agenda() {
+export default function Agenda(props) {
+
+    const idQuadro = props.location.state.idQuadro
 
     const [isModalVisible,setIsModalVisible] = useState(false);
 
@@ -35,7 +37,7 @@ export default function Agenda() {
                     <ListDepoisDeAmanha />
                     <ListFuturamente />
 
-                    {isModalVisible ? <CreateCardModal onClose={() => setIsModalVisible(false)}/> : null}
+                    {isModalVisible ? <CreateCardModal idQuadro={idQuadro} onClose={() => setIsModalVisible(false)}/> : null}
                 </CardContainer>
             </Container>
         </DndProvider>
