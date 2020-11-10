@@ -16,4 +16,9 @@ export default class ApiTime{
         const resp = await timeApi.get(`/consultar/${idLogin}`);
         return resp.data.times;
     }
+
+    async deletarTime(idTime){
+        const resp = await timeApi.delete(`/deletar/${idTime}`);
+        return resp.data;
+    }
 }

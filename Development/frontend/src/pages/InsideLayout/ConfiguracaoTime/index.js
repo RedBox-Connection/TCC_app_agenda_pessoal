@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, Content, InputWrapper, IntegrantesBox, Integrante } from './styles';
+import { Container, Content, InputWrapper, IntegrantesBox, Integrante, Save, Delete } from './styles';
 
-function ConfiguracaoTime() {
+import ApiTime from '../../../services/Time/services'
+import { ToastContainer , toast} from 'react-toastify';
+
+const api = new ApiTime();
+
+function ConfiguracaoTime(props) {
+
+    const idTime = props.location.state.idTipo;
 
     function copiarTexto(){
         const input = document.getElementById("link-para-convite");
@@ -11,6 +18,15 @@ function ConfiguracaoTime() {
         document.execCommand('copy')
     }
   
+    const deletarTimeClick = async () => {
+        try {
+            const resp = await api.deletarTime(idTime);
+            return resp;
+        } catch (e) {
+            toast.error(e.response.data.erro)
+        }
+    }
+
   return (
       <Container>
           <h1>Configurar 'Nome do time'</h1>
@@ -150,7 +166,16 @@ function ConfiguracaoTime() {
                     <button onClick={copiarTexto}>Copiar</button>
                 </div>
               </InputWrapper>
+
+              <Save>
+                  Salvar alterações
+              </Save>
+
+              <button id="deletar" onClick={deletarTimeClick}>
+                  Deletar time
+              </button>
           </Content>
+          <ToastContainer/>
       </Container>
   );
 }
