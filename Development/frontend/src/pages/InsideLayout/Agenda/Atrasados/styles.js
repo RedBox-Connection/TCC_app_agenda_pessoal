@@ -7,6 +7,10 @@ export const Container = styled.div`
   display:flex;
   flex-direction:column;
 
+  h1{
+      margin:20px;
+    }
+
 `;
 
 export const CardContainer = styled.div`
@@ -14,7 +18,5 @@ export const CardContainer = styled.div`
 
     background-color: white;
 
-    h1{
-      margin:20px;
-    }
+    
 `;
