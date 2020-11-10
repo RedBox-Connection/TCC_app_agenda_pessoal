@@ -36,7 +36,9 @@ function Layout(props) {
   return (
       <Container>
         <BrowserRouter>
-            <CabecalhoLayout nomeUsuario={nomeUsuario} idLogin={idLogin}/>
+            <CabecalhoLayout idLogin={idLogin} quadroType={quadroType}
+                         idTipo={idTipo} nomeQuadro={nomeQuadro}
+                         nomeUsuario={nomeUsuario}/>
             <Main>
               
             <MenuLateral idLogin={idLogin} quadroType={quadroType}

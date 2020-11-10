@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const apiConfiguracaoUsuario = axios.create({
-    //baseURL: 'http://54.152.237.245:5000/usuario'
-    baseURL: 'http://localhost:5000/usuario'
+    baseURL: 'http://54.152.237.245:5000/usuario'
+    //baseURL: 'http://localhost:5000/usuario'
 });
 
 export default class ApiConfiguracaoUsuario{
@@ -27,6 +27,11 @@ export default class ApiConfiguracaoUsuario{
 
     async alterarUsuarioInfoAsync(req) {
         const resp = await apiConfiguracaoUsuario.patch('/alterar/info', req);
+        return resp.data;
+    }
+
+    async deletarUsuarioAsync(idLogin) {
+        const resp = await apiConfiguracaoUsuario.delete(`/deletar/${idLogin}`);
         return resp.data;
     }
 }

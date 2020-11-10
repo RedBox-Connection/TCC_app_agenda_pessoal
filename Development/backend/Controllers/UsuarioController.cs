@@ -192,5 +192,28 @@ namespace backend.Controllers
                 );
             }
         }
+
+        [HttpDelete("deletar/{idLogin}")]
+        public async Task<ActionResult<Models.Response.DeletarLoginResponse>> DeletarLoginAsync(int idLogin)
+        {
+            try
+            {
+                Models.TbLogin tbLogin = await usuarioBsn.ConsultarLoginPorIdLogin(idLogin);
+
+                tbLogin = await usuarioBsn.DeletarLoginAsync(tbLogin);
+
+                Models.Response.DeletarLoginResponse resp = usuarioCnv.ToDeletarLoginResponse(tbLogin);
+
+                return resp;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(
+                        400, e.Message
+                    )
+                );
+            }
+        }
     }
 }

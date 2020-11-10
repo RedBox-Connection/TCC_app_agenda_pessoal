@@ -131,5 +131,19 @@ namespace backend.Database
 
             return loginAntigo;
         }
+
+        public async Task<Models.TbLogin> ConsultarLoginPorIdLogin(int idLogin)
+        {
+            return await ctx.TbLogin.FirstOrDefaultAsync(x => x.IdLogin == idLogin);
+        }
+
+        public async Task<Models.TbLogin> DeletarLoginAsync(Models.TbLogin req)
+        {
+            ctx.TbLogin.Remove(req);
+
+            await ctx.SaveChangesAsync();
+
+            return req;
+        }
     }
 }

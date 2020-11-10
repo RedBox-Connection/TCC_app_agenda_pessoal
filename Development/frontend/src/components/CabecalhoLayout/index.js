@@ -10,7 +10,10 @@ const apiCabecalhoLayout = new ApiCabecalhoLayout();
 
 function CabecalhoLayout(props) {
 
-    const nome = props.nomeUsuario;
+    const nomeUsuario = props.nomeUsuario;
+    const descricao = props.quadroType;
+    const idTipo = props.idTipo;
+    const nomeQuadro = props.nomeQuadro;   
     const idLogin = props.idLogin;
 
     const [fotoPerfil, setFotoPerfil] = useState(apiCabecalhoLayout.buscarImagem(idLogin));
@@ -42,10 +45,13 @@ function CabecalhoLayout(props) {
                 <Link to={{
                     pathname: '/inicial/Configuracoes',
                     state: {
-                        nomeUsuario: nome,
-                        idLogin: idLogin
+                        nomeUsuario,
+                        idLogin,
+                        descricao,
+                        idTipo,
+                        nomeQuadro
                     }
-                }}>{nome}</Link>
+                }}>{nomeUsuario}</Link>
                 <img src={fotoPerfil} alt='fotoPerfil'/>
             </Profile>
         </Container>
