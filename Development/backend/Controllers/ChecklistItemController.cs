@@ -83,7 +83,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPost("deletar-checklit- item/{idChecklistItem}")]
+        [HttpDelete("deletar-checklist-item/{idChecklistItem}")]
         public async Task<ActionResult<Models.Response.ChecklistItemResponse>> DeletarChecklistAsync(int idChecklistItem)
         {
             try
