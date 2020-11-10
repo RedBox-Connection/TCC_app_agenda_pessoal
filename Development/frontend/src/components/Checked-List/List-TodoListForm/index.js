@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { PencilSquare, Trash } from 'react-bootstrap-icons';
 
-import { ContainerTodoForm, TodoFormContent, TodoFormContentEdit, FormCrud } from './styles';
+import { ContainerTodoForm, TodoFormContent, TodoFormContentEdit } from './styles';
 
 export default function TodoForm(props) {
 
@@ -39,21 +38,16 @@ export default function TodoForm(props) {
             ) : (
                 <TodoFormContent>
                     <input
-                        placeholder='Adicionar sub tarefa'
+                        placeholder='Criar lista de sub tarefas'
                         value={input}
                         onChange={handleChange}
                         name='text'
                         id='todo-input'
                         maxLength="30"
                     />
-                    <FormCrud>
-                        <button onClick={handleSubmit} id='todo-button'>
-                            Add tarefa
-                        </button>
-                        <Trash height="30px" width="30px"/>
-                        <PencilSquare height="30px" width="30px"/>
-                    </FormCrud>
-                    
+                    <button onClick={handleSubmit} id='todo-button'>
+                        Add list
+                    </button>
                 </TodoFormContent>
             )}
         </ContainerTodoForm>

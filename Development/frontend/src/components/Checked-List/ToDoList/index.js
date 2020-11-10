@@ -33,23 +33,22 @@ export default function TodoList() {
     setTodos(removedArr);
   };
 
-  const completeTodo = id => {
-    let updatedTodos = todos.map(todo => {
-      if (todo.id === id) {
-        todo.isComplete = !todo.isComplete;
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
-  };
+  //const completeTodo = id => {
+    //let updatedTodos = todos.map(todo => {
+      //if (todo.id === id) {
+        //todo.isComplete = !todo.isComplete;
+      //}
+      //return todo;
+    //});
+    //setTodos(updatedTodos);
+  //};
 
     return (
         <Container>
-            <h5>Qual seus planos para hoje?</h5>
             <TodoForm onSubmit={addTodo}/>
             <Todo
                 todos={todos}
-                completeTodo={completeTodo}
+                //completeTodo={completeTodo}
                 removeTodo={removeTodo}
                 updateTodo={updateTodo}
             />

@@ -2,7 +2,8 @@ import React from 'react';
 
 import { Calendar2Check, X, PencilSquare, Trash } from 'react-bootstrap-icons';
 
-import TodoList from '../Checked-List/ToDoList';
+//import ListTodoList from '../Checked-List/List-TodoList';
+//Fazer o Check List
 
 import { ModalContent, Container, InputTitle, InputWrapper, InputDescription, End } from './styles';
 
@@ -33,8 +34,6 @@ const Modal = ({id = 'Modal', onClose = () => {}}) => {
                     <InputDescription>
                         <textarea placeholder="Descrição"/>
                     </InputDescription>
-
-                    <TodoList />
 
                     <End>
                         <button> <Trash width="30px" height="50px"/> </button>

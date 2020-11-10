@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
+export const Check = styled.h6`
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+`;
+
+
 export const Container = styled.div`
     height:50px;
-    width:325px;
+    width:350px;
     margin:10px;
     padding:10px;
 
@@ -18,24 +25,12 @@ export const Container = styled.div`
 
 `;
 
-export const TodoText = styled.h6`
-
+export const TodoText = styled.h4`
+    margin-left:5px;
 `;
 
 export const Icons = styled.div`
-    .delete-icon{
-        height:30px;
-        width:60px;
-        background:#ff3333;
-        border:none;
-        margin:5px;
-    }
-    
-    .edit-icon{
-        height:30px;
-        width:60px;
-        background:#ffff80;
-        border:none;
-        margin:5px;
+    .Icon{
+        margin-top:5px;
     }
 `;

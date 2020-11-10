@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const ContainerTodoForm = styled.div`
     margin-top:10px;
-    width:375px;
 
     display:flex;
     flex-direction:row;
@@ -12,24 +11,7 @@ export const ContainerTodoForm = styled.div`
 
 export const TodoFormContent = styled.div`
     height:30px;
-    width:375px;
-
-    display:flex;
-    flex-direction:column;
-
-    #todo-input{
-        height:30px;
-        width:360px;
-        padding:10px;
-        margin:5px;
-
-        border:none;
-    }
-`;
-
-export const FormCrud = styled.div`
-    height:30px;
-    width:375px;
+    width:397px;
     padding:10px;
 
     display:flex;
@@ -37,9 +19,18 @@ export const FormCrud = styled.div`
     align-items:center;
     justify-content:space-between;
 
+    #todo-input{
+        height:30px;
+        width:297px;
+        padding:10px;
+        margin-bottom:25px;
+        margin-top:25px;
+
+        border:none;
+    }
+
     #todo-button{
         height:30px;
-        width:300px;
         padding:10px;
         margin-bottom:25px;
         margin-top:25px;
@@ -50,7 +41,6 @@ export const FormCrud = styled.div`
     }
 
 `;
-
 
 export const TodoFormContentEdit = styled.div`
     height:30px;

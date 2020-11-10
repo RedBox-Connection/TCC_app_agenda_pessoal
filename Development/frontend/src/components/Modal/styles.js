@@ -18,7 +18,7 @@ export const Container = styled.div`
     background-color: white;
 
     height:590px;
-    width:410px;
+    width:450px;
     margin-top:10vh;
 
     display:flex;
@@ -45,7 +45,7 @@ export const Container = styled.div`
 export const InputTitle = styled.div`
     >input{
         height:30px;
-        width:350px;
+        width:400px;
         margin:10px;
         padding:10px;
     }
@@ -56,7 +56,7 @@ export const InputWrapper = styled.div`
 
     >input{
         height:30px;
-        width:172px;
+        width:197px;
         margin-right:5px;
     }
     >button{
@@ -69,13 +69,14 @@ export const InputWrapper = styled.div`
 
 export const InputDescription = styled.div`
     margin:10px;
-    width:350px;
+    width:400px;
 
     display:flex;
     flex-direction:column;
     
     >textarea{
-        height:250px;
+        height:225px;
+        width:400px;
         margin-top:10px;
         padding:10px;
         resize:none;
@@ -89,6 +90,8 @@ export const End = styled.div`
     flex-direction:row;
     justify-content:space-between;
     align-items:center;
+
+    margin-top:25px;
 
     >button{
         background-color: transparent;
