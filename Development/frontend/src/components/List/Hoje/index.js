@@ -13,7 +13,7 @@ export default function ListHoje() {
             </header>
 
             <ul>
-                <Card />
+                
             </ul>
         </Container>
     )
