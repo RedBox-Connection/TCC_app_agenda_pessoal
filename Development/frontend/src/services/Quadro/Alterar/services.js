@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const alterarQuadroApi = axios.create({
-    // baseURL: 'http://54.152.237.245:5000/quadro'
+    //baseURL: 'http://54.152.237.245:5000/quadro'
     baseURL: 'http://localhost:5000/quadro'
 })
 
@@ -13,5 +13,6 @@ export default class ApiAlterarQuadro{
 
     async deletarQuadro(idQuadro){
         const resp = await alterarQuadroApi.delete(`/deletar${idQuadro}`)
+        return resp.data;
     }
 }

@@ -29,6 +29,9 @@ function Layout(props) {
 
   const nomeUsuario = props.location.state.nomeUsuario;
   const idLogin = props.location.state.idLogin;
+  const quadroType = props.location.state.descricao;
+  const idTipo = props.location.state.idTipo;
+  const nomeQuadro = props.location.state.nomeQuadro;
 
   return (
       <Container>
@@ -36,7 +39,7 @@ function Layout(props) {
             <CabecalhoLayout nomeUsuario={nomeUsuario} idLogin={idLogin}/>
             <Main>
               
-            <MenuLateral />
+            <MenuLateral quadroType={quadroType} idTipo={idTipo} nomeQuadro={nomeQuadro}/>
               <Content>
                 <Switch>
 
