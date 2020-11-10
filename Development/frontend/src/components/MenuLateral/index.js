@@ -19,7 +19,18 @@ function MenuLateral(props) {
             <Container>
                 <ItemLink>
                     <Journal />
-                    <Link to="/Inicial/Agenda">Agenda</Link>
+                    <Link to={
+                        {
+                            pathname: "/Inicial/Agenda",
+                            state: {
+                                idTipo,
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
+                            }
+                        }
+                    }>Agenda</Link>
                 </ItemLink>
                 <ItemLink>
                     <CheckCircle />
@@ -51,7 +62,18 @@ function MenuLateral(props) {
             <Container>
                 <ItemLink>
                     <Journal />
-                    <Link to="/Inicial/Agenda">Agenda</Link>
+                    <Link to={
+                        {
+                            pathname: "/Inicial/Agenda",
+                            state: {
+                                idTipo,
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
+                            }
+                        }
+                    }>Agenda</Link>
                 </ItemLink>
                 <ItemLink>
                     <CheckCircle />
@@ -83,7 +105,18 @@ function MenuLateral(props) {
             <Container>
                 <ItemLink>
                     <Journal />
-                    <Link to="/Inicial/Agenda">Agenda</Link>
+                    <Link to={
+                        {
+                            pathname: "/Inicial/Agenda",
+                            state: {
+                                idTipo,
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
+                            }
+                        }
+                    }>Agenda</Link>
                 </ItemLink>
                 <ItemLink>
                     <CheckCircle />

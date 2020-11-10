@@ -20,7 +20,7 @@ import { Calendar2Plus } from 'react-bootstrap-icons';
 
 export default function Agenda(props) {
 
-    const idQuadro = props.location.state.idQuadro
+    const idQuadro = props.location.state.idTipo;
 
     const [isModalVisible,setIsModalVisible] = useState(false);
 
