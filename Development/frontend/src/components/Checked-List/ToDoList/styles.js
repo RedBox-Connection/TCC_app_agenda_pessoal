@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width:400px;
+    min-height:100px;
+    width:390px;
+
+    margin:5px;
 
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
 
     border-radius:7px;
     border:none;
 
-    background:#f2f2f2;
+    background:#cccccc;
 
     h5{
         margin:10px;

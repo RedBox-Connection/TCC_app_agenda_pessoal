@@ -19,7 +19,7 @@ export const Content = styled.div`
     margin-top:10px;
 
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
 `;

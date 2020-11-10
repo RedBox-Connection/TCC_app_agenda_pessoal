@@ -25,7 +25,7 @@ export const CardContent = styled.div`
 
         background:transparent;
         box-shadow:none;
-
+        
         button{
             opacity:0;
         }

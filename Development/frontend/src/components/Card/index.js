@@ -8,7 +8,7 @@ import Modal from '../Modal';
 //Import Styles
 import { CardContent, Content } from './styles';
 
-export default function Card(props) {
+export default function Card() {
 
     //Modal Function
     const [isModalVisible,setIsModalVisible] = useState(false);
@@ -33,9 +33,9 @@ export default function Card(props) {
     dargRef(dropRef(ref));
 
     return (
-        <CardContent ref={ref} isDragging={isDragging}>
+        <CardContent isDragging={isDragging}>
 
-            <button id="Card-Button" onClick={() =>setIsModalVisible(true)}>
+            <button id="Card-Button" onClick={() =>setIsModalVisible(true)} ref={ref} >
                 <Content>
                     <h3>Titulo</h3>
                     <h1>18:00</h1>

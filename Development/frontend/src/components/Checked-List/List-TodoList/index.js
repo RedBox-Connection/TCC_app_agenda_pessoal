@@ -43,6 +43,12 @@ export default function TodoList() {
                 removeTodo={removeTodo}
                 updateTodo={updateTodo}
               />
+
+              <ListTodo
+                listTodos={listTodos}
+                removeTodo={removeTodo}
+                updateTodo={updateTodo}
+              />
             </Content>
         </Container>
     )
