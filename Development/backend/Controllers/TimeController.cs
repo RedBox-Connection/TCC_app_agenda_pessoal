@@ -105,7 +105,7 @@ namespace backend.Controllers
             }
         }
 
-        [HttpPost("deletar/{idTime}")]
+        [HttpDelete("deletar/{idTime}")]
         public async Task<ActionResult<Models.Response.CadastrarAlterarTimeResponse>> DeletarTimeAsync(int idTime)
         {
             try
