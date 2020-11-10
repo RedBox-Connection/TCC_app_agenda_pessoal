@@ -264,5 +264,23 @@ namespace backend.Business
 
             return true;
         }
+
+        public async Task<Models.TbLogin> ConsultarLoginPorIdLogin(int idLogin)
+        {
+            if(idLogin <= 0)
+                throw new Exception("Usuário não encontrado.");
+
+            Models.TbLogin resp = await usuarioDb.ConsultarLoginPorIdLogin(idLogin);
+
+            if(resp == null)
+                throw new Exception("Usuário não encontrado.");
+
+            return resp;
+        }
+
+        public async Task<Models.TbLogin> DeletarLoginAsync(Models.TbLogin req)
+        {
+            return await usuarioDb.DeletarLoginAsync(req);
+        }
     }
 }

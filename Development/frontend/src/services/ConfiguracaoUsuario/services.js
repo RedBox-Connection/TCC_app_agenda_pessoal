@@ -29,4 +29,9 @@ export default class ApiConfiguracaoUsuario{
         const resp = await apiConfiguracaoUsuario.patch('/alterar/info', req);
         return resp.data;
     }
+
+    async deletarUsuarioAsync(idLogin) {
+        const resp = await apiConfiguracaoUsuario.delete(`/deletar/${idLogin}`);
+        return resp.data;
+    }
 }

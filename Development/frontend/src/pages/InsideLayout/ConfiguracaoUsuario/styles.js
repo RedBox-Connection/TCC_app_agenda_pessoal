@@ -130,6 +130,10 @@ export const LogoutBox = styled.div`
   > Link{
     margin-left:5px;
   }
+
+  > div {
+    cursor: pointer;
+  }
 `;
 
 export const Loader = styled.div`
@@ -137,7 +141,7 @@ export const Loader = styled.div`
   width: 50px;
 
   position: absolute;
-  transform: translate(0%, 300%);
+  transform: translate(0%, 0%);
 
   display: flex;
   flex-direction: row;

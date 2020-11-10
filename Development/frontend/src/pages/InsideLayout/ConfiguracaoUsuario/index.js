@@ -18,6 +18,9 @@ function ConfiguracaoUsuario(props) {
   const [loading, setLoading] = useState(false);
   const navegation = useHistory();
 
+  const descricao = props.location.state.descricao;
+  const idTipo = props.location.state.idTipo;
+
   const [email, setEmail] = useState('');
   const [nomePerfil, setNomePerfil] = useState('');
   const [nomeUsuario, setNomeUsuario] = useState(props.location.state.nomeUsuario);
@@ -113,7 +116,9 @@ function ConfiguracaoUsuario(props) {
           pathname: '/Inicial',
           state: {
             idLogin,
-            nomeUsuario: respUsuario.nomeUsuario
+            nomeUsuario: respUsuario.nomeUsuario,
+            descricao,
+            idTipo
           }
         });
 
@@ -133,7 +138,9 @@ function ConfiguracaoUsuario(props) {
           pathname: '/Inicial',
           state: {
             idLogin,
-            nomeUsuario: respUsuario.nomeUsuario
+            nomeUsuario: respUsuario.nomeUsuario,
+            descricao,
+            idTipo
           }
         });
 
@@ -159,7 +166,28 @@ function ConfiguracaoUsuario(props) {
     setImagem('');
     setImagemPreview('');
 
+    navegation.push('/');
+
     window.location.reload(false)
+  }
+
+  const deletarConta = async () => {
+    try {
+      setLoading(true);
+
+      const resp = await configuracaoUsuarioApi.deletarUsuarioAsync(idLogin);
+
+      setLoading(false);
+
+      navegation.push('/');
+
+      window.location.reload(false);
+
+      return resp;
+    } catch(e) {
+      setLoading(false);
+      toast.error(e.response.data.erro);
+    }
   }
 
   return (
@@ -231,12 +259,12 @@ function ConfiguracaoUsuario(props) {
           <Logout>
               <LogoutBox>
                 <div>
-                  <DoorOpenFill />
-                  <Link onClick={zerarTudo} to='/'>Sair</Link>
+                  <DoorOpenFill  onClick={zerarTudo}/>
+                  <label>Sair</label>
                 </div>
                 <div>
-                  <TrashFill />
-                  <Link to='/'>Deletar Conta</Link>
+                  <TrashFill onClick={deletarConta}/>
+                  <label>Deletar Conta</label>
                 </div>
               </LogoutBox>
           </Logout>

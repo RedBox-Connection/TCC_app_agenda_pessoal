@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Title, Content } from './styles';
+import { Loader, Container, Title, Content } from './styles';
 
 import ApiAlterarQuadro from '../../../services/Quadro/Alterar/services';
 import ApiQuadro from '../../../services/Quadro/services';
 import { toast, ToastContainer } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 
 const apiAlterarQuadro = new ApiAlterarQuadro();
 const apiQuadro = new ApiQuadro();
@@ -104,6 +105,9 @@ function InfoQuadro(props) {
                 <input type="text" placeholder={nomeQuadroAtual} onChange={(e) => {setNomeQuadro(e.target.value)}}/>
                 <button id="Update" onClick={alterarQuadro}>Alterar Nome do Quadro</button>
                 <button id="Delete" onClick={deletarQuadro}>Deletar Quadro</button>
+                <Loader>
+                    <ClipLoader loading={loading}/>
+                </Loader>
             </Content>
             <ToastContainer />
         </Container>

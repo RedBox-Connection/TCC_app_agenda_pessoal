@@ -59,6 +59,15 @@ namespace backend.Utils
             return resp;
         }
 
+        public Models.Response.DeletarLoginResponse ToDeletarLoginResponse(Models.TbLogin req)
+        {
+            Models.Response.DeletarLoginResponse resp = new Models.Response.DeletarLoginResponse();
+
+            resp.IdLogin = req.IdLogin;
+
+            return resp;
+        }
+
          public Models.Response.LoginResponse ToLoginResponse(Models.TbLogin tb)
         {
             Models.Response.LoginResponse resp = new Models.Response.LoginResponse();
