@@ -8,9 +8,11 @@ import { Container, ItemLink } from './styles';
 
 function MenuLateral(props) {
 
+    const nomeUsuario = props.nomeUsuario;
     const quadroType = props.quadroType;
     const idTipo = props.idTipo;
     const nomeQuadro = props.nomeQuadro;   
+    const idLogin = props.idLogin;
 
     if(quadroType === 'Time') {
         return (
@@ -34,7 +36,10 @@ function MenuLateral(props) {
                             pathname: "/Inicial/ConfigurarTime",
                             state: {
                                 idTipo,
-                                nomeQuadro
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
                             }
                         }
                     }>Configurações</Link>
@@ -63,7 +68,10 @@ function MenuLateral(props) {
                             pathname: "/Inicial/InfoQuadro",
                             state: {
                                 idTipo,
-                                nomeQuadro
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
                             }
                         }
                     }>Configurações</Link>

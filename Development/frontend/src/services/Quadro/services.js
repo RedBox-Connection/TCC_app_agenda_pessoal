@@ -12,6 +12,11 @@ export default class ApiQuadro{
         return resp.data.quadros;
     }
 
+    async consultarQuadroAsync(idQuadro) {
+        const resp = await quadroApi.get(`/consultarQuadro/${idQuadro}`);
+        return resp.data;
+    }
+
     async cadastrarQuadrosAsync(req) {
         const resp = await quadroApi.post('/cadastrar', req)
         return resp.data;

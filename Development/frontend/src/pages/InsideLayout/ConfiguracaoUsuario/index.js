@@ -158,6 +158,8 @@ function ConfiguracaoUsuario(props) {
     setIdLogin('');
     setImagem('');
     setImagemPreview('');
+
+    window.location.reload(false)
   }
 
   return (

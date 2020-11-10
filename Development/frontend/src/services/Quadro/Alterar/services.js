@@ -7,12 +7,12 @@ const alterarQuadroApi = axios.create({
 
 export default class ApiAlterarQuadro{
     async alterarNomeQuadro(req, idQuadro){
-        const resp = await alterarQuadroApi.put(`/alterar/${idQuadro}`);
+        const resp = await alterarQuadroApi.put(`/alterar/${idQuadro}`, req);
         return resp.data;
     }
 
     async deletarQuadro(idQuadro){
-        const resp = await alterarQuadroApi.delete(`/deletar${idQuadro}`)
+        const resp = await alterarQuadroApi.delete(`/deletar/${idQuadro}`)
         return resp.data;
     }
 }

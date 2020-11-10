@@ -39,7 +39,9 @@ function Layout(props) {
             <CabecalhoLayout nomeUsuario={nomeUsuario} idLogin={idLogin}/>
             <Main>
               
-            <MenuLateral quadroType={quadroType} idTipo={idTipo} nomeQuadro={nomeQuadro}/>
+            <MenuLateral idLogin={idLogin} quadroType={quadroType}
+                         idTipo={idTipo} nomeQuadro={nomeQuadro}
+                         nomeUsuario={nomeUsuario}/>
               <Content>
                 <Switch>
 

@@ -63,6 +63,30 @@ namespace backend.Controllers
             }
         }
 
+        [HttpGet("consultarQuadro/{idQuadro}")]
+        public async Task<ActionResult<Models.Response.QuadroResponse>> ConsultarQuadroAsync(int idQuadro)
+        {
+            try
+            {
+                Models.TbQuadro tbQuadro = await quadroBsn.ConsultarQuadroPorIdQuadroAsync(idQuadro);
+
+                if(tbQuadro == null)
+                    return NotFound();
+
+                Models.Response.QuadroResponse resp = quadroCnv.ToQuadroResponse(tbQuadro);
+
+                return resp;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(
+                        400, e.Message
+                    )
+                );
+            }
+        }
+
         [HttpPut("alterar/{idQuadro}")]
         public async Task<ActionResult<Models.Response.QuadroResponse>> AlterarQuadroAsync(int idQuadro, Models.Request.CadastrarAlterarQuadroRequest req)
         {

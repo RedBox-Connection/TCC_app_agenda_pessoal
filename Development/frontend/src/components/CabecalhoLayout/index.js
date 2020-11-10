@@ -32,6 +32,8 @@ function CabecalhoLayout(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    // useEffect(()=> { fetchData(); }, [data])
+
     return (
         <Container>
             <h1>Organizer</h1>
