@@ -15,11 +15,12 @@ const Modal = ({id = 'Modal', onClose = () => {}}) => {
     return(
         <ModalContent id={id} onClick={handleOutsideClick}>
 
-                <Container color="lightgreen">
+                <Container>
                     
                     <button onClick={onClose}>
                         <X width="30px" height="30px"/>
                     </button>
+                    
                     <InputTitle>
                         <input type="text" placeholder="Tarefa"/>
                     </InputTitle>
@@ -27,7 +28,6 @@ const Modal = ({id = 'Modal', onClose = () => {}}) => {
                     <InputWrapper>
                         <input type="time" />
                         <input type="date" />
-                        <button>Cor</button>
                     </InputWrapper>
 
                     <InputDescription>

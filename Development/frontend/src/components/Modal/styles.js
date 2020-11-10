@@ -26,8 +26,6 @@ export const Container = styled.div`
     align-items:center;
     justify-content:space-between;
 
-    border:5px solid ${props => props.color};
-
     overflow:hidden;
     overflow:auto;
 
@@ -58,7 +56,7 @@ export const InputWrapper = styled.div`
 
     >input{
         height:30px;
-        width:150px;
+        width:172px;
         margin-right:5px;
     }
     >button{
@@ -80,6 +78,7 @@ export const InputDescription = styled.div`
         height:250px;
         margin-top:10px;
         padding:10px;
+        resize:none;
     }
 `;
 
