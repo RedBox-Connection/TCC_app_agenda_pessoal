@@ -116,10 +116,10 @@ namespace backend.Business
 
         private void ValidarUsuarioRequest(Models.TbUsuario req)
         {            
-            if(req.NmUsuario == string.Empty)
+            if(req.NmUsuario == string.Empty || req.NmUsuario.Count(x => x != ' ') <=0)
                 throw new Exception("Nome de usuário não pode estar vazio.");
 
-            if(req.NmPerfil == string.Empty)
+            if(req.NmPerfil == string.Empty || req.NmPerfil.Count(x => x != ' ') <=0)
                 throw new Exception("Nome não pode estar vazio.");
         }
 
