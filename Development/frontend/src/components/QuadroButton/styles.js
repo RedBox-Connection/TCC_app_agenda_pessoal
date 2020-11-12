@@ -16,4 +16,11 @@ export const Container = styled.div`
   background-color:#d4d4d4;
 
   font-size:18px;
+
+  overflow:hidden;
+
+  > p {
+    height: 100%;
+    width: 100%;
+  }
 `;

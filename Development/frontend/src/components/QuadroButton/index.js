@@ -16,7 +16,9 @@ function QuadroButton(props) {
       }
     }}>
       <Container>
+        <p>
           {props.nomeQuadro}
+        </p>
       </Container>
     </Link>
   );
