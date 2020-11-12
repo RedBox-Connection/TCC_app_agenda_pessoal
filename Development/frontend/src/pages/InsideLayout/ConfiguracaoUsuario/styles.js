@@ -127,11 +127,15 @@ export const LogoutBox = styled.div`
   align-items:center;
   justify-content:space-between;
 
-  > Link{
+  > a{
     margin-left:5px;
   }
 
   > div {
+    cursor: pointer;
+  }
+
+  > div a {
     cursor: pointer;
   }
 `;

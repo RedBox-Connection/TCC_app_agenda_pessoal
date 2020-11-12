@@ -11,6 +11,7 @@ import NotFound from '../../pages/NotFound';
 //Configurações
 import ConfiguracaoUsuario from '../../pages/InsideLayout/ConfiguracaoUsuario/index';
 import ConfiguracaoTime from '../../pages/InsideLayout/ConfiguracaoTime';
+import ConfirmacaoDelete from '../../pages/InsideLayout/ConfiguracaoUsuario/ConfirmacaoDelete';
 
 
 //inicial
@@ -53,7 +54,8 @@ function Layout(props) {
                   <Route path="/inicial/Feitos" component={Feitos} />
                   <Route path="/Inicial/Atrasados" component={Atrasados} />
 
-                  <Route path="/inicial/Configuracoes" component={ConfiguracaoUsuario} />
+                  <Route path="/inicial/Configuracoes" component={ConfiguracaoUsuario} exact/>
+                  <Route path="/inicial/Configuracoes/deletar-conta" component={ConfirmacaoDelete} />
 
                   <Route path="/inicial/ConfigurarTime" component={ConfiguracaoTime} />
 

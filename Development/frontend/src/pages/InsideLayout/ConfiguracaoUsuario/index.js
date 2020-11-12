@@ -171,24 +171,7 @@ function ConfiguracaoUsuario(props) {
     window.location.reload(false)
   }
 
-  const deletarConta = async () => {
-    try {
-      setLoading(true);
 
-      const resp = await configuracaoUsuarioApi.deletarUsuarioAsync(idLogin);
-
-      setLoading(false);
-
-      navegation.push('/');
-
-      window.location.reload(false);
-
-      return resp;
-    } catch(e) {
-      setLoading(false);
-      toast.error(e.response.data.erro);
-    }
-  }
 
   return (
       <Container>
@@ -263,8 +246,17 @@ function ConfiguracaoUsuario(props) {
                   <label>Sair</label>
                 </div>
                 <div>
-                  <TrashFill onClick={deletarConta}/>
-                  <label>Deletar Conta</label>
+                  <Link to={
+                    {
+                      pathname:"/inicial/Configuracoes/deletar-conta",
+                      state:{
+                        idLogin
+                      }
+                    }
+                  }>
+                    <TrashFill/>
+                    <label>Deletar Conta</label>
+                  </Link>
                 </div>
               </LogoutBox>
           </Logout>
