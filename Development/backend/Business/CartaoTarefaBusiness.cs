@@ -29,7 +29,7 @@ namespace backend.Business
             if(req.IdQuadro <= 0)
                 throw new Exception("ID do quadro inválido.");
 
-            if(req.NmCartao == string.Empty)
+            if(req.NmCartao == string.Empty || req.NmCartao.Count(x => x != ' ') <= 0)
                 throw new Exception("Nome do quadro não pode ser vazio.");
         }
 

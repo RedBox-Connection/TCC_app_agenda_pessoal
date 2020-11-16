@@ -14,7 +14,7 @@ namespace backend.Business
 
         private void ValidarTimeRequest(Models.TbTime req)
         {
-            if(req.NmTime == string.Empty)
+            if(req.NmTime == string.Empty || req.NmTime.Count(x => x != ' ') <= 0)
                 throw new Exception("Nome do time não pode ser vazio.");
 
             if(req.DsLinkConvite == string.Empty)

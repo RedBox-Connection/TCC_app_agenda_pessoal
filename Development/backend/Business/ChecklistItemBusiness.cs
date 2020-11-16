@@ -14,7 +14,7 @@ namespace backend.Business
         Database.ChecklistItemDatabase checklistItemDb = new Database.ChecklistItemDatabase();
         public void ValidarChecklistItemAsync(Models.TbChecklistItem tb)
         {
-            if(tb.NmItem == string.Empty)
+            if(tb.NmItem == string.Empty || tb.NmItem.Count(x => x != ' ') <= 0)
                 throw new Exception("Nome do Item do Checklist não pode ser vazio.");
         }
 

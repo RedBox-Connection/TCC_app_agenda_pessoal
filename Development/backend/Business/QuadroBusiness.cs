@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace backend.Business
             if(req.IdUsuario <= 0)
                 throw new Exception("Id de usuário inválido.");
 
-            if(req.NmQuadro == string.Empty)
+            if(req.NmQuadro == string.Empty || req.NmQuadro.Count(x => x != ' ') <= 0)
                 throw new Exception("Nome do quadro não pode ser vazio.");
         }
 
