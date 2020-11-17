@@ -1,30 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { Container, Content, InputWrapper, IntegrantesBox, Integrante } from './styles';
+import { Loader, Container, Content, InputWrapper, IntegrantesBox, Integrante } from './styles';
 
 import ApiTime from '../../../services/Time/services'
 import { ToastContainer , toast} from 'react-toastify';
 
+import ApiTimeIntegrante from '../../../services/Time/Integrantes/services';
+import FotoApi from '../../../services/CabecalhoLayout/services';
+import { ClipLoader } from 'react-spinners';
+
+const apiIntegrante = new ApiTimeIntegrante();
 const api = new ApiTime();
+const apiFoto = new FotoApi();
 
 function ConfiguracaoTime(props) {
-    
-    console.log(props)
 
     const navigation = useHistory();
 
+    const [loading, setLoading] = useState(false);
+
+    const descricao = props.location.state.quadroType;
     const idTime = props.location.state.idTipo;
+    const [nomeTime, setNomeTime] = useState(props.location.state.nomeQuadro);
     const idLogin = props.location.state.idLogin;
     const nomeUsuario = props.location.state.nomeUsuario;
+    const [descricaoTime, setDescricaoTime] = useState('');
 
-    const [descricaoTime, setDescricaoTime] = useState(props.location.state.descricaoTime);
-    const [nomeTime, setNomeTime] = useState(props.location.state.nomeTime);
+    const [nomeTimeNovo, setNomeTimeNovo] = useState('');
+    const [novoDescricaoTime, setNovoDescricaoTime] = useState('');
+
+    const [integrantes, setIntegrantes] = useState([]);
 
     const reqTime={
         idLogin,
-        descricaoTime,
-        nomeTime
+        nomeTime: nomeTimeNovo,
+        descricaoTime: novoDescricaoTime
     }
 
     console.log(reqTime);
@@ -36,18 +47,37 @@ function ConfiguracaoTime(props) {
     }
   
     const consultarTime = async () => {
-        const resp = await api.consultarTimesAsync(idLogin);
+        try {
+            const resp = await api.consultarTimeAsync(idTime);
 
-        setNomeTime(resp.nomeTime);
-        setDescricaoTime(resp.descricaoTime);
+            setNomeTime(resp.nomeTime);
+            setDescricaoTime(resp.descricao);
+            setNomeTimeNovo(nomeTime);
+            setNovoDescricaoTime(descricaoTime);
 
-        return resp;
+            return resp;
+        } catch(e) {
+            toast.error(e.response.data.erro);
+        }
+    }
+
+    const consultarIntegrantes = async () => {
+        try {
+            const resp = await apiIntegrante.consultarTimeIntegrantesAsync(idTime);
+
+            setIntegrantes(resp.integrantes);
+
+            return resp;
+        } catch(e) {
+            toast.error(e.response.data.erro);
+        }
     }
 
     useEffect(() => {
         consultarTime();
+        consultarIntegrantes();
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+    }, [])
 
     const deletarTimeClick = async () => {
         try {
@@ -71,9 +101,29 @@ function ConfiguracaoTime(props) {
 
     const alterarTimeClick = async () => {
         try {
-            const resp = await api.alterarTime(reqTime);
+            console.log(reqTime)
+
+            setLoading(true);
+
+            const resp = await api.alterarTime(reqTime, idTime);
+
+            setLoading(false);
+
+            navigation.push({
+                pathname: '/Inicial',
+                state: {
+                    idLogin,
+                    nomeUsuario,
+                    descricao,
+                    idTipo: idTime
+                }
+            });
+
             return resp;
+
+
         } catch (e) {
+            setLoading(false);
             toast.error(e.response.data.erro)
         }
     }
@@ -84,52 +134,31 @@ function ConfiguracaoTime(props) {
           <Content>
               <InputWrapper>
                 <span>Nome do time:</span>
-                <input type="text" value={nomeTime}  onChange={(e) => {setNomeTime(e.target.value)}} />
+                <input type="text" placeholder={nomeTime}  onChange={(e) => {setNomeTimeNovo(e.target.value)}} />
               </InputWrapper>
               <InputWrapper>
                 <span>Integrantes:</span>
                 <IntegrantesBox>
 
-                    <Link to="*">
-                        <Integrante>
-                            <img src="https://avatars1.githubusercontent.com/u/56550863?s=460&u=ef549fa73dea75355c40e6004fcc062fa0925e6e&v=4" alt="userphoto" draggable={false}/>
-                            <span>Zezinho 1</span>
+                    {integrantes.map(integrante => 
+                        <Integrante key={integrante.idIntegrante}>
+                            <img src={apiFoto.buscarImagem(integrante.idLogin)} alt="userphoto" draggable={false}/>
+                            <span>{integrante.nomeUsuario}</span>
                         </Integrante>
-                    </Link>
-
-                    <Link to="*">
-                        <Integrante>
-                            <img src="https://avatars1.githubusercontent.com/u/56550863?s=460&u=ef549fa73dea75355c40e6004fcc062fa0925e6e&v=4" alt="userphoto" draggable={false}/>
-                            <span>Zezinho 2</span>
-                        </Integrante>
-                    </Link>
-
-                    <Link to="*">
-                        <Integrante>
-                            <img src="https://avatars1.githubusercontent.com/u/56550863?s=460&u=ef549fa73dea75355c40e6004fcc062fa0925e6e&v=4" alt="userphoto" draggable={false}/>
-                            <span>Zezinho 3</span>
-                        </Integrante>
-                    </Link>
-
-                    <Link to="*">
-                        <Integrante>
-                            <img src="https://avatars1.githubusercontent.com/u/56550863?s=460&u=ef549fa73dea75355c40e6004fcc062fa0925e6e&v=4" alt="userphoto" draggable={false}/>
-                            <span>Zezinho 4</span>
-                        </Integrante>
-                    </Link>
+                    )}
 
                 </IntegrantesBox>
               </InputWrapper>
 
               <InputWrapper>
                 <span>Descrição:</span>
-                <textarea onChange={(e) => {setDescricaoTime(e.target.value)}}>{descricaoTime}</textarea>
+                <textarea placeholder={descricaoTime} onChange={(e) => {setNovoDescricaoTime(e.target.value)}}></textarea>
               </InputWrapper>
 
               <InputWrapper>
                 <span>Link para convite:</span>
                 <div>
-                    <input type="text" value="hgdfjkghkfdjgidf" id="link-para-convite"/>
+                    <input type="text" value="link/em/desenvolvimento" id="link-para-convite"/>
                     <button onClick={copiarTexto}>Copiar</button>
                 </div>
               </InputWrapper>
@@ -143,6 +172,9 @@ function ConfiguracaoTime(props) {
               </button>
           </Content>
           <ToastContainer/>
+          <Loader>
+              <ClipLoader loading={loading}/>
+          </Loader>
       </Container>
   );
 }

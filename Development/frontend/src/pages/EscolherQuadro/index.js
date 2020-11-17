@@ -53,7 +53,9 @@ function EscolherQuadro(props) {
       return respTimes;
     } catch (e) {
       ref.current.complete();
-      toast.error(e.response.data.erro);
+      if(quadros === []) {
+        toast.error(e.response.data.erro);
+      }
     }
   }
 

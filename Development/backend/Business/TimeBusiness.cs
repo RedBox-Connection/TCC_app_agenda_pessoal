@@ -66,9 +66,6 @@ namespace backend.Business
         {
             this.ValidarTimeRequest(timeAtual);
 
-            if(timeAtual.IdTime <= 0)
-                throw new Exception("Id do time inválido.");
-
             if(timeAtual.IdQuadro <= 0)
                 throw new Exception("Quadro do time não encontrado.");
 

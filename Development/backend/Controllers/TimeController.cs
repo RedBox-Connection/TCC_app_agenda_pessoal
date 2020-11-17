@@ -55,6 +55,30 @@ namespace backend.Controllers
             }
         }
 
+        [HttpGet("consultar-info/{idTime}")]
+        public async Task<ActionResult<Models.Response.CadastrarAlterarTimeResponse>> ConsultarTimePorIdQuadroAsync(int idTime)
+        {
+            try 
+            {
+                Models.TbTime tbTime = await timeBsn.ConsultarTimePorIdTime(idTime);
+
+                if(tbTime == null)
+                    return NotFound();
+
+                Models.Response.CadastrarAlterarTimeResponse resp = timeCnv.ToTimeResponse(tbTime);
+
+                return resp;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(
+                    new Models.Response.ErroResponse(
+                        400, e.Message
+                    )
+                );
+            }
+        }
+
         [HttpGet("consultar/{idLogin}")]
         public async Task<ActionResult<Models.Response.ConsultarTimesResponse>> ConsultarTimesAsync(int idLogin)
         {

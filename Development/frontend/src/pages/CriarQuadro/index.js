@@ -6,7 +6,7 @@ import { Loader, Container, Content, Main, InputWrapper } from './styles';
 import ClipLoader from "react-spinners/ClipLoader";
 import QuadroApi from '../../services/Quadro/services';
 import { useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const quadrApi = new QuadroApi();
 
@@ -61,6 +61,7 @@ function CriarQuadro(props) {
                   <button onClick={cadastrarQuadrClick}>Criar Quadro</button>
               </Main>
           </Content>
+          <ToastContainer />
       </Container>
   );
 }

@@ -22,7 +22,8 @@ namespace backend.Database
 
         public async Task<List<Models.TbTimeIntegrante>> ConsultarTimeIntegrantesPorIdTimeAsync(int idTime)
         {
-            return await ctx.TbTimeIntegrante.Where(x => x.IdTime == idTime).ToListAsync();
+            return await ctx.TbTimeIntegrante.Include(x => x.IdUsuarioNavigation)
+                                             .Where(x => x.IdTime == idTime).ToListAsync();
         }
 
         public async Task<Models.TbTimeIntegrante> ConsultarIntegrantePorIdIntegrante(int idIntegrante)

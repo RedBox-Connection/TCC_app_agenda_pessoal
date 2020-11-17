@@ -10,7 +10,7 @@ export const Container = styled.div`
   justify-content:center;
 
   > h1 {
-      font-size:45px;
+      font-size:40px;
   }
 `;
 

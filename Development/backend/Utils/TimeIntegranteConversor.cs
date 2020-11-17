@@ -51,6 +51,9 @@ namespace backend.Utils
 
                 x.IdIntegrante = integrante.IdIntegrante;
                 x.Permissao = integrante.DsPermissao;
+                x.FotoPerfil = integrante.IdUsuarioNavigation.DsFoto;
+                x.NomeUsuario = integrante.IdUsuarioNavigation.NmUsuario;
+                x.IdLogin = integrante.IdUsuarioNavigation.IdLogin;
 
                 integrantes.Add(x);
             }

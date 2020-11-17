@@ -204,12 +204,12 @@ function ConfiguracaoUsuario(props) {
 
                 <InputWrapper>
                   <span>Senha : </span>
-                  <input type="password" placeholder={senha} onChange={(e) => {setSenha(e.target.value)}}/>
+                  <input type="password" placeholder="********" onChange={(e) => {setSenha(e.target.value)}}/>
                 </InputWrapper>
 
                 <InputWrapper>
                   <span>Confirmar senha : </span>
-                  <input type="password" placeholder={senha} onChange={(e) => {setNovaSenha(e.target.value)}}/>
+                  <input type="password" placeholder="********" onChange={(e) => {setNovaSenha(e.target.value)}}/>
                 </InputWrapper>
 
                 <InputWrapper>
@@ -250,7 +250,10 @@ function ConfiguracaoUsuario(props) {
                     {
                       pathname:"/inicial/Configuracoes/deletar-conta",
                       state:{
-                        idLogin
+                        idLogin,
+                        descricao,
+                        idTipo,
+                        nomeUsuario
                       }
                     }
                   }>

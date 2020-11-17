@@ -17,6 +17,7 @@ import ListFuturamente from '../../../components/List/Futuramente';
 //Import Styles
 import { CardContainer, Container } from './styles';
 import { Calendar2Plus } from 'react-bootstrap-icons';
+import { ToastContainer } from 'react-toastify';
 
 export default function Agenda(props) {
 
@@ -28,7 +29,7 @@ export default function Agenda(props) {
         <DndProvider backend={HTML5Backend}> 
             <Container>
                 <CardContainer>
-                    <button id="Add" type="button" onClick={() => setIsModalVisible(true)}>
+                    <button id="Add" type="button" onClick={() => {setIsModalVisible(true); }}>
                         <Calendar2Plus height="25px" width="25px"/>
                     </button>
 
@@ -39,6 +40,7 @@ export default function Agenda(props) {
 
                     {isModalVisible ? <CreateCardModal idQuadro={idQuadro} onClose={() => setIsModalVisible(false)}/> : null}
                 </CardContainer>
+                <ToastContainer />
             </Container>
         </DndProvider>
     )

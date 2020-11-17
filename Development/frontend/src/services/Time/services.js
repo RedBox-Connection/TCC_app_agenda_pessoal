@@ -1,14 +1,19 @@
 import axios from 'axios';
 
 const timeApi = axios.create({
-    baseURL: 'http://54.152.237.245:5000/time'
-    //baseURL: 'http://localhost:5000/time'
+    // baseURL: 'http://54.152.237.245:5000/time'
+    baseURL: 'http://localhost:5000/time'
 })
 
 export default class ApiTime{
 
     async cadastrarTimeAsync(req) {
         const resp = await timeApi.post('/cadastrar', req)
+        return resp.data;
+    }
+
+    async consultarTimeAsync(idTime) {
+        const resp = await timeApi.get(`/consultar-info/${idTime}`)
         return resp.data;
     }
 
@@ -23,7 +28,7 @@ export default class ApiTime{
     }
 
     async alterarTime(req, idTime){
-        const resp = await timeApi.put(`/alterar/${idTime}`, req);
+        const resp = await timeApi.patch(`/alterar/${idTime}`, req);
         return resp.data;
     }
 }

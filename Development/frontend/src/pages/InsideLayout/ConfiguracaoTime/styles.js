@@ -110,3 +110,16 @@ export const Integrante = styled.div`
        margin-right:10px;
    }
 `;
+
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  transform: translate(450%, -10%);
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+`;

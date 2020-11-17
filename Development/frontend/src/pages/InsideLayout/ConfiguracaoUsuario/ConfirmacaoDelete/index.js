@@ -10,7 +10,11 @@ import ConfiguracaoUsuarioApi from '../../../../services/ConfiguracaoUsuario/ser
 const configuracaoUsuarioApi = new ConfiguracaoUsuarioApi();
 
 function ConfirmacaoDelete(props) {
-
+  
+    const nomeUsuario = props.location.state.nomeUsuario;
+    const descricao = props.location.state.quadroType;
+    const idTipo = props.location.state.idTipo;
+    const nomeQuadro = props.location.state.nomeQuadro;   
     const idLogin = props.location.state.idLogin;
 
     const navegation = useHistory();
@@ -32,10 +36,21 @@ function ConfirmacaoDelete(props) {
 
   return (
       <Container>
-          <h1>Deseja mesmo deletar sua conta para sempre?</h1>
+          <h1>Deseja mesmo deletar sua conta permanentemente?</h1>
           <ButtonBox>
               <Delete onClick={deletarConta}>Excluir conta</Delete>
-              <Link to="/inicial/Configuracoes">Cancelar</Link>
+              <Link to={
+                {
+                  pathname: "/inicial/Configuracoes",
+                  state: {
+                    nomeUsuario,
+                    idLogin,
+                    descricao,
+                    idTipo,
+                    nomeQuadro
+                  }
+                }
+              }>Cancelar</Link>
           </ButtonBox>
           <ToastContainer />
       </Container>

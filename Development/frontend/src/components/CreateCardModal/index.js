@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 
-import { ModalContent, Container, InputTitle, InputWrapper, InputDescription, End } from './styles';
+import { Loader, ModalContent, Container, InputTitle, InputWrapper, InputDescription, End } from './styles';
 
 import { toast, ToastContainer } from 'react-toastify';
 
 import ApiCards from '../../services/Cards/services';
 import { useHistory } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 
 const api = new ApiCards();
 
 const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
 
-    //const [loading, setLoading] = false;
+    const [loading, setLoading] = useState(false);
 
     const idQuadro = props.idQuadro;
     const [nomeCartao, setNomeCartao] = useState('');
     const [hora, setHora] = useState('');
     const [data, setData] = useState(''); 
     const [descricao, setDescricao] = useState('');
-    const [cor, setCor] = useState();
+    const [cor, setCor] = useState('black');
     const req = {
         nomeCartao,
         hora,
@@ -32,19 +33,21 @@ const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
 
     const adicionarCardClick = async () =>{
         try {
-            //setLoading(true);
+            setLoading(true);
 
             const resp = await api.cadastrarCartaoTarefa(req)
 
             navegation.push({
-                pathname:"/Meus-quadros"
+                pathname:"/inicial/Agenda",
+                state: {
+                    idTipo: idQuadro
+                }
             })
-
-            //setLoading(false);
 
             return resp;
         } catch (e) {
-            //setLoading(false);
+            setLoading(false);
+            console.log(e);
             toast.error(e.response.data.erro);
         }
     }
@@ -79,7 +82,14 @@ const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
                         <button id="AddTarefa" onClick={adicionarCardClick}>Criar Tarefa</button>
                         <button onClick={onClose} id="Cancel">Cancelar</button>
                     </End>
+
+                    <Loader>
+                        <ClipLoader loading={loading}/>
+                    </Loader>
+
                 </Container>
+
+                <ToastContainer />
 
             </ModalContent>
     ) 

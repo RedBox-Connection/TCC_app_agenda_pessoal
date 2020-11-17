@@ -24,6 +24,7 @@ namespace backend.Utils
 
             resp.IdTime = req.IdTime;
             resp.NomeTime = req.NmTime;
+            resp.Descricao = req.DsTime;
 
             return resp;
         }
