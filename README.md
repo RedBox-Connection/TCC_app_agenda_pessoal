@@ -8,27 +8,39 @@ O organizer é um sistema de organização baseado no metódo kanban, ele foi cr
   
   ![](https://github.com/RedBox-Connection/TCC_app_agenda_pessoal/blob/master/Software_Engineer/UseCase/imagens%20use%20case/cart%C3%A3o%20tarefa.PNG?raw=true)
   
+  O usuário tem total controle sobre o cartão de tarefa, ele poderá marcar como concluido, deletar, alterar nome e adicionar mais to-dos, mas se até a data de entrega ele não marcar como concluido o cartão será transferido para parte de atrasados
+  
   ## Cartão Time
   
   ![](https://github.com/RedBox-Connection/TCC_app_agenda_pessoal/blob/master/Software_Engineer/UseCase/imagens%20use%20case/cart%C3%A3o%20time.PNG?raw=true)
+  
+  O cartão de time possui as mesmas funcionalidades que o cartão individual, porém só os admins do time podem deleta-los e altera-los
+  
+  Obs: Um admin pode promover um usuário a admin na tela de configuração de time
   
   ## Conta
   
   ![](https://github.com/RedBox-Connection/TCC_app_agenda_pessoal/blob/master/Software_Engineer/UseCase/imagens%20use%20case/conta.PNG?raw=true)
   
-  ## Esqueci a senha
+  O usuário tem total controle sobre a própria conta, ele pode alterar o nome, nome de usuário, senha; o osuário também pode deletar sua conta
+  
+  ## Login
   
   ![](https://github.com/RedBox-Connection/TCC_app_agenda_pessoal/blob/master/Software_Engineer/UseCase/imagens%20use%20case/esqueci%20a%20senha.PNG?raw=true)
+  
+  O usuário pode entrar em sua conta com o email e senha, se por um acaso o usuário esquecer a senha ele receberá um email com um código de verificação e poderá redefinir sua senha 
   
   ## Time
 
   ![](https://github.com/RedBox-Connection/TCC_app_agenda_pessoal/blob/master/Software_Engineer/UseCase/imagens%20use%20case/time.PNG?raw=true)
+  
+  O admin pode convidar pessoas para seu time através do link disponiblizado nas configurações do time, pode deletar o time, alterar o nome do time, retirar cargos de admins e promover usuários comuns a admin do time
 
 # Mer
   ![](https://github.com/RedBox-Connection/TCC_app_agenda_pessoal/blob/master/Software_Engineer/Database_MER/Mer.png?raw=true)
   
   ## Scrip do Bando de Dados
-  ~~~drop database tccdb;
+  ```drop database tccdb;
 create database tccdb;
 
 use tccdb;
@@ -121,7 +133,7 @@ create table tb_checklist_item(
     id_checklist int not null,
     foreign key (id_checklist) references tb_checklist (id_checklist) on delete cascade
 );
-~~~
+```
   
 # Protótipos
 
