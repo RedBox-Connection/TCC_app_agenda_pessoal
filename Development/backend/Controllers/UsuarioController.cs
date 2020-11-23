@@ -40,7 +40,7 @@ namespace backend.Controllers
 
                 tbQuadro = await quadroBsn.CadastrarQuadroAsync(tbQuadro);
 
-                gerenciadorEmail.EnviarEmailCadastroDeUsuario(tbLogin.DsEmail);
+                
 
                 Models.Response.LoginResponse resp = usuarioCnv.ToLoginResponse(tbLogin, tbUsuario.NmUsuario);
 

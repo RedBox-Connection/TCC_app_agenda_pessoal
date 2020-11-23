@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const cardsApi = axios.create({
-    baseURL: 'http://54.152.237.245:5000/cartaotarefa'
-    // baseURL: 'http://localhost:5000/cartaotarefa'
+    //baseURL: 'http://54.152.237.245:5000/cartaotarefa'
+    baseURL: 'http://localhost:5000/cartaotarefa'
 });
 
 export default class apiCards{
