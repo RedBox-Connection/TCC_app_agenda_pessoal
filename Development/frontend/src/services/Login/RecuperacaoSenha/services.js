@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const apiRecuperacaoSenha = axios.create({
-    //baseURL: 'http://54.152.237.245:5000/esquecisenha'
-    baseURL: 'http://localhost:5000/esquecisenha'
+    baseURL: 'http://54.152.237.245:5000/esquecisenha'
+    // baseURL: 'http://localhost:5000/esquecisenha'
 })
 
 export default class ApiRecSenha{
