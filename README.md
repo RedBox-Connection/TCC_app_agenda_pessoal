@@ -2,6 +2,14 @@
 
 O organizer é um sistema de organização baseado no metódo kanban, ele foi criado pensando em como se organizar em projetos de muitas tarefas
 
+Feito por : RedBox Connection
+
+### Colaboradores: 
+   * [Kevin Alves](https://github.com/KevinAlvss)
+   * [Gustavo Apolonio](https://github.com/Gustavo-Apolonio)
+   * [Diego Souza](https://github.com/diego0425)
+   * [Arthur Pereira](https://github.com/uArthurSPereira)
+
 # Casos de Uso
   
   ## Cartão Tarefa
