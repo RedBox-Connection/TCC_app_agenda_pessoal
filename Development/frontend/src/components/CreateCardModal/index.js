@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { Loader, ModalContent, Container, InputTitle, InputWrapper, InputDescription, End } from './styles';
 
@@ -40,7 +40,7 @@ const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
             navegation.push({
                 pathname:"/inicial/Agenda",
                 state: {
-                    idTipo: idQuadro
+                    idQuadro
                 }
             })
 
@@ -52,6 +52,7 @@ const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
         }
     }
 
+    
 
     const handleOutsideClick = (e) => {
         if(e.target.id === id) onClose()
