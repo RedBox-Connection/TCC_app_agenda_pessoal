@@ -25,7 +25,7 @@ export default function Agenda(props) {
 
     const [isModalVisible,setIsModalVisible] = useState(false);
 
-    return(  
+    return(
         <DndProvider backend={HTML5Backend}> 
             <Container>
                 <CardContainer>
@@ -33,10 +33,10 @@ export default function Agenda(props) {
                         <Calendar2Plus height="25px" width="25px"/>
                     </button>
 
-                    <ListHoje />
-                    <ListAmanha />
-                    <ListDepoisDeAmanha />
-                    <ListFuturamente />
+                    <ListHoje idQuadro={idQuadro}/>
+                    <ListAmanha idQuadro={idQuadro}/>
+                    <ListDepoisDeAmanha idQuadro={idQuadro}/>
+                    <ListFuturamente idQuadro={idQuadro}/>
 
                     {isModalVisible ? <CreateCardModal idQuadro={idQuadro} onClose={() => setIsModalVisible(false)}/> : null}
                 </CardContainer>

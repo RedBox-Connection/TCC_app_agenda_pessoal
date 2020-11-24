@@ -86,6 +86,7 @@ namespace backend.Utils
             resp.NomeCartao = req.NmCartao;
             resp.DataCartao = req.DtTermino;
             resp.Cor = req.DsCor;
+            resp.Descricao = req.DsCartao;
 
             resp.StatusDia = this.VerificarStatusDoDia(req.DtTermino);
             resp.Hora = this.RetornarHoraMinuto(req.DtTermino);

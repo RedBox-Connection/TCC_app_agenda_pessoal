@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalContent = styled.div`
+export const ModalContent = styled.div
     width: 100%;
     height: 100vh;
 
@@ -12,9 +12,9 @@ export const ModalContent = styled.div`
 
     display:flex;
     justify-content:center;
-`;
+;
 
-export const Container = styled.div`
+export const Container = styled.div
     background-color: white;
 
     height:590px;
@@ -29,8 +29,6 @@ export const Container = styled.div`
     overflow:hidden;
     overflow:auto;
 
-    border: 5px solid;
-
     >button{
         background-color:transparent;
 
@@ -42,19 +40,19 @@ export const Container = styled.div`
 
         border:none;
     }
-`;
+;
 
-export const InputTitle = styled.div`
+export const InputTitle = styled.div
     >input{
         height:30px;
         width:400px;
         margin:10px;
         padding:10px;
     }
-`;
+;
 
-export const InputWrapper = styled.div`
-    margin:10px 0 10px 0;
+export const InputWrapper = styled.div
+    margin:10px;
 
     >input{
         height:30px;
@@ -67,31 +65,9 @@ export const InputWrapper = styled.div`
         
         border:none;
     }
-`;
+;
 
-export const InputColor = styled.div`
-    >h5{
-        margin-left:10px;
-    }
-
-    >div{
-        #colorInput{
-            height:30px;
-            width:315px;
-            margin:0 5px 10px 10px;
-
-            background:none;
-        }
-
-        #colorButton{
-            height:30px;
-            width:83px;
-            margin:0 10px 10px 0px;
-        }
-    }
-`;
-
-export const InputDescription = styled.div`
+export const InputDescription = styled.div
     margin:10px;
     width:400px;
 
@@ -105,13 +81,9 @@ export const InputDescription = styled.div`
         padding:10px;
         resize:none;
     }
-`;
+;
 
-export const TodoArea = styled.div`
-
-`;
-
-export const End = styled.div`
+export const End = styled.div
     width:350px;
 
     display:flex;
@@ -125,4 +97,17 @@ export const End = styled.div`
         background-color: transparent;
         border:none;
     }
-`;
+;
+
+export const Loader = styled.div
+  height: 50px;
+  width: 50px;
+
+  position: absolute;
+  transform: translate(0%, 300%);
+
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+;

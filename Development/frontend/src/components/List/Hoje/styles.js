@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div
     padding:0 15px;
     height:100%;
     width:275px;
@@ -23,4 +23,15 @@ export const Container = styled.div`
     ul {
         margin-top:15px;
     }
-`;
+;
+
+export const Content = styled.div
+    padding:0 15px;
+    max-height:90%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+        display:none;
+    }
+    width:275px;
+;

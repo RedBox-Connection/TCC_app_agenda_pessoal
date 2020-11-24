@@ -11,7 +11,7 @@ function MenuLateral(props) {
     const nomeUsuario = props.nomeUsuario;
     const quadroType = props.quadroType;
     const idTipo = props.idTipo;
-    const nomeQuadro = props.nomeQuadro;   
+    const nomeQuadro = props.nomeQuadro;
     const idLogin = props.idLogin;
 
     if(quadroType === 'Time') {
@@ -32,13 +32,35 @@ function MenuLateral(props) {
                         }
                     }>Agenda</Link>
                 </ItemLink>
-                <ItemLink>
+<ItemLink>
                     <CheckCircle />
-                    <Link to="/Inicial/Feitos">Feitos</Link>
+                    <Link to={
+                        {
+                            pathname: "/Inicial/Feitos",
+                            state: {
+                                idTipo,
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
+                            }
+                        }
+                    }>Feitos</Link>
                 </ItemLink>
                 <ItemLink>
                     <Alarm />
-                    <Link to="/Inicial/Atrasados">Atrasados</Link>
+                    <Link to={
+                        {
+                            pathname: "/Inicial/Atrasados",
+                            state: {
+                                idTipo,
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
+                            }
+                        }
+                    }>Atrasados</Link>
                 </ItemLink>
                 <ItemLink>
                     <Sliders />
@@ -55,8 +77,8 @@ function MenuLateral(props) {
                         }
                     }>Configurações</Link>
                 </ItemLink>
-            </Container>
-        );   
+</Container>
+        );
     } else if(quadroType === 'Quadro') {
         return (
             <Container>
@@ -77,11 +99,33 @@ function MenuLateral(props) {
                 </ItemLink>
                 <ItemLink>
                     <CheckCircle />
-                    <Link to="/Inicial/Feitos">Feitos</Link>
+                    <Link to={
+                        {
+                            pathname: "/Inicial/Feitos",
+                            state: {
+                                idTipo,
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
+                            }
+                        }
+                    }>Feitos</Link>
                 </ItemLink>
                 <ItemLink>
                     <Alarm />
-                    <Link to="/Inicial/Atrasados">Atrasados</Link>
+                    <Link to={
+                        {
+                            pathname: "/Inicial/Atrasados",
+                            state: {
+                                idTipo,
+                                nomeQuadro,
+                                idLogin,
+                                nomeUsuario,
+                                quadroType
+                            }
+                        }
+                    }>Atrasados</Link>
                 </ItemLink>
                 <ItemLink>
                     <Calendar2Week />

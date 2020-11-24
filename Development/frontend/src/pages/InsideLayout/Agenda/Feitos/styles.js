@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div
   height: calc(100vh - 9vh);
   width:100%;
 
@@ -10,14 +10,13 @@ export const Container = styled.div`
   > h1{
     margin:20px;
   }
-`;
+;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div
     display:flex;
     flex-direction:row;
-    justify-content:center;
     flex-wrap:wrap;
-    
+
+    padding: 0 20px;    
 
     background-color: white;
-`;

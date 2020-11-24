@@ -8,41 +8,50 @@ import Modal from '../Modal';
 //Import Styles
 import { CardContent, Content } from './styles';
 
-export default function Card() {
+export default function Card(props) {
+
+    const nomeCartao = props.card.nomeCartao;
+    const idCartao = props.card.idCartao;
+    const hora = props.card.hora;
+    const idQuadro = props.idQuadro;
 
     //Modal Function
     const [isModalVisible,setIsModalVisible] = useState(false);
 
     //Drag n' Drop Functions
-    const ref = useRef();
+    // const ref = useRef();
 
-    const [{isDragging}, dargRef] = useDrag({
-        item: { type: 'CARD'},
-        collect: monitor =>({
-            isDragging: monitor.isDragging(),
-        }),
-    });
+    // const [{isDragging}, dargRef] = useDrag({
+    //     item: { type: 'CARD'},
+    //     collect: monitor =>({
+    //         isDragging: monitor.isDragging(),
+    //     }),
+    // });
 
-    const [, dropRef] = useDrop({
-        accept:'CARD',
-        hover(item, monitor) {
-            
-        }
-    })
+    // const [, dropRef] = useDrop({
+    //     accept:'CARD',
+    //     hover(item, monitor) {
 
-    dargRef(dropRef(ref));
+    //     }
+    // })
+
+    // dargRef(dropRef(ref));
+
+    // isDragging={isDragging}
+
+    // ref={ref}
 
     return (
-        <CardContent isDragging={isDragging}>
+        <CardContent>
 
-            <button id="Card-Button" onClick={() =>setIsModalVisible(true)} ref={ref} >
+            <button id="Card-Button" onClick={() =>setIsModalVisible(true)} >
                 <Content>
-                    <h3>Titulo</h3>
-                    <h1>18:00</h1>
+                    <p>{nomeCartao}</p>
+                    <h3>{hora}</h3>
                 </Content>
             </button>
 
-            {isModalVisible ? <Modal onClose={() => setIsModalVisible(false)}/> : null}
+            {isModalVisible ? <Modal card={props.card} idQuadro={idQuadro} onClose={() => setIsModalVisible(false)}/> : null}
 
         </CardContent>
     );

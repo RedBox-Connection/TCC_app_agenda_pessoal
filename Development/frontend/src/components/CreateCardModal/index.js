@@ -10,11 +10,11 @@ import { ClipLoader } from 'react-spinners';
 
 const api = new ApiCards();
 
-const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
+const Modal = (props, {id = 'Modal', onClose = () => {}}) => {
 
     const [loading, setLoading] = useState(false);
 
-    const idQuadro = props.idQuadro;
+    const idTeste = props.idQuadro;
     const [nomeCartao, setNomeCartao] = useState('');
     const [hora, setHora] = useState('');
     const [data, setData] = useState(''); 
@@ -26,7 +26,7 @@ const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
         data,
         descricao,
         cor,
-        idQuadro
+        idQuadro: idTeste
     }
 
     const navegation = useHistory();
@@ -40,21 +40,19 @@ const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
             navegation.push({
                 pathname:"/inicial/Agenda",
                 state: {
-                    idQuadro
+                    idTeste
                 }
             })
+
+            setLoading(false);
 
             return resp;
         } catch (e) {
             setLoading(false);
-            console.log(e);
             toast.error(e.response.data.erro);
         }
     }
-
-    
-
-    const handleOutsideClick = (e) => {
+const handleOutsideClick = (e) => {
         if(e.target.id === id) onClose()
     }
 
@@ -88,9 +86,9 @@ const Modal = ({id = 'Modal', onClose = () => {}}, props) => {
                         <ClipLoader loading={loading}/>
                     </Loader>
 
-                </Container>
+                    <ToastContainer />
 
-                <ToastContainer />
+                </Container>
 
             </ModalContent>
     ) 

@@ -85,12 +85,12 @@ namespace backend.Controllers
             }
         }
 
-        [HttpDelete("deletar-cartao-tarefa")]
-        public async Task<ActionResult<Models.Response.CartaoTarefaResponse>> DeletarCartaoTarefaAsync(Models.Request.DeletarCartaoTarefaRequest req)
+        [HttpDelete("deletar-cartao-tarefa/{idCartao}")]
+        public async Task<ActionResult<Models.Response.CartaoTarefaResponse>> DeletarCartaoTarefaAsync(int idCartao)
         {
             try
             {
-                Models.TbCartao tbCartao = await cartaoBsn.ConsultarCartaoTarefaPorIdAsync(req.IdCartao);
+                Models.TbCartao tbCartao = await cartaoBsn.ConsultarCartaoTarefaPorIdAsync(idCartao);
 
                 if(tbCartao == null)
                     return NotFound();

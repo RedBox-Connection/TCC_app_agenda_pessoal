@@ -12,5 +12,6 @@ namespace backend.Models.Response
         public string Status { get; set; }
         public int IdQuadro { get; set; }
         public string Cor { get; set; }
+        public string Descricao { get; set; }
     }
 }
