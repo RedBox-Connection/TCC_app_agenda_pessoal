@@ -143,6 +143,3 @@ const Modal = (props, {id = 'Modal', onClose = () => {}}) => {
 }
 
 export default Modal;
-
-
-export default Modal;
