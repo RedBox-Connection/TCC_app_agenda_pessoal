@@ -29,6 +29,8 @@ export const Container = styled.div`
     overflow:hidden;
     overflow:auto;
 
+    border: 5px solid;
+
     >button{
         background-color:transparent;
 
@@ -52,7 +54,7 @@ export const InputTitle = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-    margin:10px;
+    margin:10px 0 10px 0;
 
     >input{
         height:30px;
@@ -64,6 +66,28 @@ export const InputWrapper = styled.div`
         width:40px;
         
         border:none;
+    }
+`;
+
+export const InputColor = styled.div`
+    >h5{
+        margin-left:10px;
+    }
+
+    >div{
+        #colorInput{
+            height:30px;
+            width:315px;
+            margin:0 5px 10px 10px;
+
+            background:none;
+        }
+
+        #colorButton{
+            height:30px;
+            width:83px;
+            margin:0 10px 10px 0px;
+        }
     }
 `;
 
@@ -81,6 +105,10 @@ export const InputDescription = styled.div`
         padding:10px;
         resize:none;
     }
+`;
+
+export const TodoArea = styled.div`
+
 `;
 
 export const End = styled.div`

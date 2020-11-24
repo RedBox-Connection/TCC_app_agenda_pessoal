@@ -39,12 +39,14 @@ function Layout(props) {
         <BrowserRouter>
             <CabecalhoLayout idLogin={idLogin} quadroType={quadroType}
                          idTipo={idTipo} nomeQuadro={nomeQuadro}
-                         nomeUsuario={nomeUsuario}/>
+                         nomeUsuario={nomeUsuario}
+                         />
             <Main>
               
             <MenuLateral idLogin={idLogin} quadroType={quadroType}
                          idTipo={idTipo} nomeQuadro={nomeQuadro}
-                         nomeUsuario={nomeUsuario}/>
+                         nomeUsuario={nomeUsuario}
+                         />
               <Content>
                 <Switch>
 
