@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const CardContent = styled.div
+export const CardContent = styled.div`
     #Card-Button{
         height:75px;
         width:225px;
@@ -15,7 +15,7 @@ export const CardContent = styled.div
         box-shadow: 0 2px 5px 0 rgba(192, 208, 203, 0.8);
     }
 
-    ${props => props.isDragging && css
+    ${props => props.isDragging && css`
         height:75px;
         width:225px;
         margin:10px;
@@ -29,10 +29,10 @@ export const CardContent = styled.div
         button{
             opacity:0;
         }
-    }
-;
+    `}
+`;
 
-export const Content = styled.div
+export const Content = styled.div`
     display:flex;
     flex-direction:row;
     align-items:center;
@@ -50,4 +50,4 @@ export const Content = styled.div
         height: 100%;
         max-width: 100%;
     }
-;
+`;

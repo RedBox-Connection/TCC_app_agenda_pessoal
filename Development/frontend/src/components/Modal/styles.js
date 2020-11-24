@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalContent = styled.div
+export const ModalContent = styled.div`
     width: 100%;
     height: 100vh;
 
@@ -12,9 +12,9 @@ export const ModalContent = styled.div
 
     display:flex;
     justify-content:center;
-;
+`;
 
-export const Container = styled.div
+export const Container = styled.div`
     background-color: white;
 
     height:590px;
@@ -40,18 +40,18 @@ export const Container = styled.div
 
         border:none;
     }
-;
+`;
 
-export const InputTitle = styled.div
+export const InputTitle = styled.div`
     >input{
         height:30px;
         width:400px;
         margin:10px;
         padding:10px;
     }
-;
+`;
 
-export const InputWrapper = styled.div
+export const InputWrapper = styled.div`
     margin:10px;
 
     >input{
@@ -65,9 +65,9 @@ export const InputWrapper = styled.div
         
         border:none;
     }
-;
+`;
 
-export const InputDescription = styled.div
+export const InputDescription = styled.div`
     margin:10px;
     width:400px;
 
@@ -81,9 +81,9 @@ export const InputDescription = styled.div
         padding:10px;
         resize:none;
     }
-;
+`;
 
-export const End = styled.div
+export const End = styled.div`
     width:350px;
 
     display:flex;
@@ -97,9 +97,9 @@ export const End = styled.div
         background-color: transparent;
         border:none;
     }
-;
+`;
 
-export const Loader = styled.div
+export const Loader = styled.div`
   height: 50px;
   width: 50px;
 
@@ -110,4 +110,4 @@ export const Loader = styled.div
   flex-direction: row;
   align-items:center;
   justify-content:center;
-;
+`;
