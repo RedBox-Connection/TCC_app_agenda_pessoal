@@ -24,7 +24,6 @@ function Feitos(props) {
 
       return resp;
     } catch (e) {
-      console.log(e);
       toast.error(e.response.data.erro);
     }
   }

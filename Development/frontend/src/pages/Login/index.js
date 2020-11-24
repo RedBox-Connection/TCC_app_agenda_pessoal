@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Loader, Header, Form, Cadastro, Container, ImageContainer, Content} from './styles';
+import { Voltar, Loader, Header, Form, Cadastro, Container, ImageContainer, Content} from './styles';
 import { InputBox, InputWrapper } from '../CadastrarUsuario/styles';
 
 
@@ -56,9 +56,20 @@ function Login() {
   return(
       <Container>
         <ImageContainer>
-          <h1>Organizer</h1>
+          <Link to='/'>
+            <h1>Organizer</h1>
+          </Link>
           <img src={loginimage} alt="loginimage" draggable={false}/>
         </ImageContainer>
+        
+        <Voltar>
+          <Link to='/'>
+            <p>
+              Voltar
+            </p>
+          </Link>
+        </Voltar>
+
         <Content>
           <Header>
             <span>Olá quem é?</span>

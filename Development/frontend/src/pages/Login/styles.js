@@ -25,7 +25,7 @@ export const ImageContainer = styled.div`
         width:80%;
     }
 
-    > h1{
+    > a > h1{
         font-size:45px;
         margin-bottom:30px;
     }
@@ -97,4 +97,15 @@ export const Loader = styled.div`
   flex-direction: row;
   align-items:center;
   justify-content:center;
+`;
+
+export const Voltar = styled.div`
+    position: absolute;
+    bottom: 5%;
+    right: 95%;
+
+    > p {
+        margin: 0%;
+        font-size: 10pt;
+    }
 `;
