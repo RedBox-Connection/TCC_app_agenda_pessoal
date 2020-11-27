@@ -18,12 +18,12 @@ export default class apiCards{
     }
 
     async alterarCartaoTarefa(req) {
-        const resp = await cardsApi.put(`/alterar-cartao-terefa`, req)
+        const resp = await cardsApi.patch(`/alterar-cartao-tArefa`, req)
         return resp.data;
     }
 
-    async deletarCartaoTarefa(req) {
-        const resp = await cardsApi.delete(`/deletar-cartao-tarefa`, req)
+    async deletarCartaoTarefa(idCartao) {
+        const resp = await cardsApi.delete(`/deletar-cartao-tarefa/${idCartao}`)
         return resp.data;
     }
 }
