@@ -12,6 +12,12 @@ Feito por : **RedBox Connection**
    * [Diego Souza N° 08](https://github.com/diego0425)
    * [Arthur Pereira N° 04](https://github.com/uArthurSPereira)
 
+
+# Links 
+
+[Trello](https://trello.com/b/R2EDLbiV/redbox-tcc)
+
+
 # Casos de Uso
   
   ## Cartão Tarefa
@@ -204,6 +210,4 @@ create table tb_checklist_item(
   
   ![](https://github.com/RedBox-Connection/TCC_app_agenda_pessoal/blob/master/Software_Engineer/Prototyping/imagens%20prototipos/tela%20de%20convite.PNG?raw=true)
   
-# Links 
 
-[Trello](https://trello.com/b/R2EDLbiV/redbox-tcc)
