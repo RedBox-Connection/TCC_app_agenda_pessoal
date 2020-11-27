@@ -2,13 +2,15 @@
 
 O organizer é um sistema de organização baseado no metódo kanban, ele foi criado pensando em como se organizar em projetos de muitas tarefas
 
+**[Entrar no organizer](http://54.152.237.245:3000/)**
+
 Feito por : **RedBox Connection**
 
 ### Colaboradores: 
-   * [Kevin Alves](https://github.com/KevinAlvss)
-   * [Gustavo Apolonio](https://github.com/Gustavo-Apolonio)
-   * [Diego Souza](https://github.com/diego0425)
-   * [Arthur Pereira](https://github.com/uArthurSPereira)
+   * [Kevin Alves](https://github.com/KevinAlvss) n24
+   * [Gustavo Apolonio](https://github.com/Gustavo-Apolonio) n15
+   * [Diego Souza](https://github.com/diego0425) n08
+   * [Arthur Pereira](https://github.com/uArthurSPereira) n04
 
 # Casos de Uso
   
