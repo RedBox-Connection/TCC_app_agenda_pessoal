@@ -1,16 +1,34 @@
 import React from 'react';
 
-import { CardContainer, Container } from './styles';
+import { Voltar, CardContainer, Container } from './styles';
 import Card from '../../../../components/Card';
 
 import cardApi from '../../../../services/Cards/services';
 import { toast, ToastContainer } from 'react-toastify';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const apiCard = new cardApi();
 
 export default function Atrasados(props) {
+
+  const idLogin = props.location.state.idLogin;
+  const nomeUsuario = props.location.state.nomeUsuario;
+
+  const navegation = useHistory();
+
+  const retornarClick = () => {
+      navegation.push({
+          pathname: '/Meus-quadros',
+          state: {
+              idLogin,
+              nomeUsuario
+          }
+      });
+
+      window.location.reload(false);
+  }
 
   const idQuadro = props.location.state.idTipo;
 
@@ -47,6 +65,13 @@ export default function Atrasados(props) {
                 </ul>
             </CardContainer>
             <ToastContainer />
+            <Voltar>
+                <button onClick={retornarClick}>
+                    <p>
+                    Voltar aos quadros
+                    </p>
+                </button>
+            </Voltar>
         </Container>
     )
 }

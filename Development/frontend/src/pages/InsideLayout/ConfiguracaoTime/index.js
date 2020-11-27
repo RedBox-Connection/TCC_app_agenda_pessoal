@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { Loader, Container, Content, InputWrapper, IntegrantesBox, Integrante } from './styles';
+import { Voltar, Loader, Container, Content, InputWrapper, IntegrantesBox, Integrante } from './styles';
 
 import ApiTime from '../../../services/Time/services'
 import { ToastContainer , toast} from 'react-toastify';
@@ -15,6 +15,18 @@ const api = new ApiTime();
 const apiFoto = new FotoApi();
 
 function ConfiguracaoTime(props) {
+
+    const retornarClick = () => {
+        navigation.push({
+            pathname: '/Meus-quadros',
+            state: {
+                idLogin,
+                nomeUsuario
+            }
+        });
+
+        window.location.reload(false);
+    }
 
     const navigation = useHistory();
 
@@ -175,6 +187,13 @@ function ConfiguracaoTime(props) {
           <Loader>
               <ClipLoader loading={loading}/>
           </Loader>
+            <Voltar>
+                <button onClick={retornarClick}>
+                    <p>
+                        Voltar aos quadros
+                    </p>
+                </button>
+            </Voltar>
       </Container>
   );
 }

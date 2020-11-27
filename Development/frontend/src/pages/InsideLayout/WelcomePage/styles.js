@@ -29,3 +29,21 @@ export const Main = styled.div`
       text-decoration:underline;
   }
 `;
+
+export const Voltar = styled.div`
+    position: absolute;
+    bottom: 5%;
+    left: 1%;
+
+    > p {
+        margin: 0%;
+        font-size: 15pt;
+    }
+
+    > button {
+      width: fit-content;
+      height: 35px;
+      background-color: transparent;
+      border: none;
+    }
+`;

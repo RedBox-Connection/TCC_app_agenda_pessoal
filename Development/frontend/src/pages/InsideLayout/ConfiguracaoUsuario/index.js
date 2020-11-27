@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DoorOpenFill, PencilFill, TrashFill } from 'react-bootstrap-icons';
 
-import { Loader, Container, Title, Content,UserProfile ,UserPhoto, UserInfo, InputWrapper,ButtonBox , Logout, LogoutBox } from './styles';
+import { Voltar, Loader, Container, Title, Content,UserProfile ,UserPhoto, UserInfo, InputWrapper,ButtonBox , Logout, LogoutBox } from './styles';
 import ClipLoader from "react-spinners/ClipLoader";
 import ConfiguracaoUsuarioApi from '../../../services/ConfiguracaoUsuario/services';
 import FotoApi from '../../../services/CabecalhoLayout/services';
@@ -12,6 +12,18 @@ const fotoApi = new FotoApi();
 const configuracaoUsuarioApi = new ConfiguracaoUsuarioApi();
 
 function ConfiguracaoUsuario(props) {
+
+  const retornarClick = () => {
+    navegation.push({
+        pathname: '/Meus-quadros',
+        state: {
+            idLogin,
+            nomeUsuario: props.location.state.nomeUsuario
+        }
+    });
+
+    window.location.reload(false);
+  }
 
   const [idLogin, setIdLogin] = useState(props.location.state.idLogin);
 
@@ -264,6 +276,13 @@ function ConfiguracaoUsuario(props) {
               </LogoutBox>
           </Logout>
           <ToastContainer />
+          <Voltar>
+              <button onClick={retornarClick}>
+                  <p>
+                    Voltar aos quadros
+                  </p>
+              </button>
+          </Voltar>
       </Container>
   );
 }

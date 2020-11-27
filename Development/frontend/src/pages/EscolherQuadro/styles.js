@@ -71,3 +71,14 @@ export const Divider = styled.div`
   margin:5px 0;
   background-color:#ccc;
 `;
+
+export const Voltar = styled.div`
+    position: absolute;
+    bottom: 5%;
+    right: 95%;
+
+    > p {
+        margin: 0%;
+        font-size: 15pt;
+    }
+`;

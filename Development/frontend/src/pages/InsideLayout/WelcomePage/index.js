@@ -1,9 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-import { Container, Main } from './styles';
+import { Voltar, Container, Main } from './styles';
 
 function WelcomePage(props) {
+
+    const navegation = useHistory();
+
+    const retornarClick = () => {
+        navegation.push({
+            pathname: '/Meus-quadros',
+            state: {
+                idLogin,
+                nomeUsuario
+            }
+        });
+
+        window.location.reload(false);
+    }
 
     const nomeUsuario = props.location.state.nomeUsuario;
     const quadroType = props.location.state.quadroType;
@@ -26,6 +40,14 @@ function WelcomePage(props) {
                             }
                         }
                     }>Agenda</Link> para continuar e deixar o seu dia mais fácil!</p>
+
+            <Voltar>
+                <button onClick={retornarClick}>
+                    <p>
+                    Voltar aos quadros
+                    </p>
+                </button>
+            </Voltar>
           </Main>
       </Container>
     );

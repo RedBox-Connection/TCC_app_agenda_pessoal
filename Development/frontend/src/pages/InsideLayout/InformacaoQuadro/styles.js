@@ -62,3 +62,21 @@ export const Loader = styled.div`
   align-items:center;
   justify-content:center;
 `;
+
+export const Voltar = styled.div`
+    position: absolute;
+    bottom: 5%;
+    left: 1%;
+
+    > p {
+        margin: 0%;
+        font-size: 15pt;
+    }
+
+    > button {
+      width: fit-content;
+      height: 35px;
+      background-color: transparent;
+      border: none;
+    }
+`;

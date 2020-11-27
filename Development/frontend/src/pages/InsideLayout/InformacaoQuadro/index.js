@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Loader, Container, Title, Content } from './styles';
+import { Voltar, Loader, Container, Title, Content } from './styles';
 
 import ApiAlterarQuadro from '../../../services/Quadro/Alterar/services';
 import ApiQuadro from '../../../services/Quadro/services';
@@ -12,6 +12,18 @@ const apiAlterarQuadro = new ApiAlterarQuadro();
 const apiQuadro = new ApiQuadro();
 
 function InfoQuadro(props) {
+
+    const retornarClick = () => {
+        navegation.push({
+            pathname: '/Meus-quadros',
+            state: {
+                idLogin,
+                nomeUsuario
+            }
+        });
+
+        window.location.reload(false);
+    }
 
     const [loading, setLoading] = useState(false);
     const navegation = useHistory();    
@@ -110,6 +122,13 @@ function InfoQuadro(props) {
                 </Loader>
             </Content>
             <ToastContainer />
+            <Voltar>
+                <button onClick={retornarClick}>
+                    <p>
+                        Voltar aos quadros
+                    </p>
+                </button>
+            </Voltar>
         </Container>
     )
 }

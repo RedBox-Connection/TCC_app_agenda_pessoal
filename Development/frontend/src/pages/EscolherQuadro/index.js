@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CabecalhoSimples from '../../components/CabecalhoSimples';
 import QuadroButton from '../../components/QuadroButton';
 
-import { Divider, Container, Content, QuadrosContainer, AddTeam, AddBoard } from './styles';
+import { Voltar, Divider, Container, Content, QuadrosContainer, AddTeam, AddBoard } from './styles';
 
 import ApiQuadro from '../../services/Quadro/services';
 import ApiTime from '../../services/Time/services';
@@ -118,6 +118,14 @@ function EscolherQuadro(props) {
               </QuadrosContainer>
           </Content>
           <ToastContainer />
+
+          <Voltar>
+            <Link to='/'>
+              <p>
+                Sair
+              </p>
+            </Link>
+          </Voltar>
       </Container>
   );
 }

@@ -15,11 +15,29 @@ import ListDepoisDeAmanha from '../../../components/List/DepoisDeAmanha';
 import ListFuturamente from '../../../components/List/Futuramente';
 
 //Import Styles
-import { CardContainer, Container } from './styles';
+import { Voltar, CardContainer, Container } from './styles';
 import { Calendar2Plus } from 'react-bootstrap-icons';
 import { ToastContainer } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 
 export default function Agenda(props) {
+
+    const idLogin = props.location.state.idLogin;
+    const nomeUsuario = props.location.state.nomeUsuario;
+
+    const navegation = useHistory();
+
+    const retornarClick = () => {
+        navegation.push({
+            pathname: '/Meus-quadros',
+            state: {
+                idLogin,
+                nomeUsuario
+            }
+        });
+
+        window.location.reload(false);
+    }
 
     const idQuadro = props.location.state.idTipo;
 
@@ -41,6 +59,13 @@ export default function Agenda(props) {
                     {isModalVisible ? <CreateCardModal idQuadro={idQuadro} onClose={() => setIsModalVisible(false)}/> : null}
                 </CardContainer>
                 <ToastContainer />
+                <Voltar>
+                    <button onClick={retornarClick}>
+                        <p>
+                            Voltar aos quadros
+                        </p>
+                    </button>
+                </Voltar>
             </Container>
         </DndProvider>
     )
