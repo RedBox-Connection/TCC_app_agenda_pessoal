@@ -62,7 +62,7 @@ namespace backend.Controllers
                 Models.TbLogin tbLoginAtual = usuarioCnv.ToCadastrarTbLogin(req.Email, req.Senha);
                 Models.TbLogin tbLoginAntigo = await usuarioBsn.ConsultarLoginPorEmailAsync(req.Email);
 
-                tbLoginAntigo = await usuarioBsn.LoginAsync(tbLoginAntigo);
+                tbLoginAntigo = await usuarioBsn.LoginAsync(tbLoginAtual);
 
                 tbLoginAtual = await usuarioBsn.AtualizarLoginAsync(tbLoginAntigo, tbLoginAtual);
 

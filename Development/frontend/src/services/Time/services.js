@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const timeApi = axios.create({
-    baseURL: 'http://54.152.237.245:5000/time'
-    // baseURL: 'http://localhost:5000/time'
+    // baseURL: 'http://54.152.237.245:5000/time'
+    baseURL: 'http://localhost:5000/time'
 })
 
 export default class ApiTime{
